@@ -1,0 +1,17 @@
+{
+    "type": "motobox:auto_mechanic_table",
+    "category": "motobox:frames",
+    "sortnum": 306,
+    "ingredients": [
+        {"item": "minecraft:iron_ingot"},
+        {"item": "minecraft:copper_block"},
+        {"item": "minecraft:pink_dye"},
+        {"item": "minecraft:leather"},
+        {"item": "minecraft:calcite"},
+        {"item": "minecraft:iron_ingot"}
+    ],
+    "result": {
+        "item": "motobox:automobile_frame",
+        "component": "motobox:standard_pink"
+    }
+}

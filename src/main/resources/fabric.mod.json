@@ -1,25 +1,27 @@
 {
   "schemaVersion": 1,
-  "id": "automobility",
+  "id": "motobox",
   "version": "${version}",
-  "name": "Automobility",
+  "name": "Motobox",
   "description": "Vehicles and whatnot",
   "authors": [
+    "Qboi123",
+    "DrAlpha",
     "FoundationGames"
   ],
   "contact": {
-    "homepage": "",
-    "sources": ""
+    "homepage": "https://ultreon.github.io/web/",
+    "sources": "https://github.com/Ultreon/motobox"
   },
   "license": "MIT",
-  "icon": "assets/automobility/icon.png",
+  "icon": "assets/motobox/icon.png",
   "environment": "*",
   "entrypoints": {
     "main": [
-      "io.github.foundationgames.automobility.Automobility"
+      "com.ultreon.mods.motobox.Automobility"
     ],
     "client": [
-      "io.github.foundationgames.automobility.AutomobilityClient"
+      "com.ultreon.mods.motobox.AutomobilityClient"
     ]
   },
   "mixins": [
@@ -28,7 +30,7 @@
   "depends": {
     "fabricloader": ">=0.11.3",
     "fabric": "*",
-    "minecraft": "1.18.x",
+    "minecraft": "1.19.x",
     "java": ">=17"
   },
   "suggests": {

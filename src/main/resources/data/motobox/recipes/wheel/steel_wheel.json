@@ -1,0 +1,14 @@
+{
+    "type": "motobox:auto_mechanic_table",
+    "category": "motobox:wheels",
+    "sortnum": 102,
+    "ingredients": [
+        {"item": "minecraft:gray_wool"},
+        {"item": "minecraft:iron_ingot"}
+    ],
+    "result": {
+        "item": "motobox:automobile_wheel",
+        "count": 2,
+        "component": "motobox:steel"
+    }
+}

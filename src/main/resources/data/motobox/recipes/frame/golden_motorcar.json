@@ -1,0 +1,18 @@
+{
+    "type": "motobox:auto_mechanic_table",
+    "category": "motobox:frames",
+    "sortnum": 3,
+    "ingredients": [
+        {"item": "minecraft:redstone"},
+        {"tag": "minecraft:logs"},
+        {"item": "minecraft:leather"},
+        {"item": "minecraft:gold_block"},
+        {"item": "minecraft:nether_brick"},
+        {"item": "minecraft:gold_block"},
+        {"item": "minecraft:gold_ingot"}
+    ],
+    "result": {
+        "item": "motobox:automobile_frame",
+        "component": "motobox:golden_motorcar"
+    }
+}

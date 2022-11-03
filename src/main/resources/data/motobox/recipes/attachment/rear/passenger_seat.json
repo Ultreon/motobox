@@ -1,0 +1,17 @@
+{
+    "type": "motobox:auto_mechanic_table",
+    "category": "motobox:attachments",
+    "sortnum": 100,
+    "ingredients": [
+        {"tag": "minecraft:wool"},
+        {"tag": "minecraft:wool"},
+        {"tag": "minecraft:planks"},
+        {"item": "minecraft:iron_ingot"},
+        {"item": "minecraft:stick"},
+        {"tag": "minecraft:logs"}
+    ],
+    "result": {
+        "item": "motobox:rear_attachment",
+        "component": "motobox:passenger_seat"
+    }
+}

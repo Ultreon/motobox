@@ -1,0 +1,16 @@
+{
+    "type": "motobox:auto_mechanic_table",
+    "category": "motobox:frames",
+    "sortnum": 102,
+    "ingredients": [
+        {"item": "minecraft:iron_ingot"},
+        {"item": "minecraft:copper_block"},
+        {"tag": "minecraft:stone_crafting_materials"},
+        {"item": "minecraft:green_dye"},
+        {"item": "minecraft:iron_bars"}
+    ],
+    "result": {
+        "item": "motobox:automobile_frame",
+        "component": "motobox:green_tractor"
+    }
+}

@@ -1,0 +1,15 @@
+{
+    "type": "motobox:auto_mechanic_table",
+    "category": "motobox:attachments",
+    "sortnum": 202,
+    "ingredients": [
+        {"item": "minecraft:loom"},
+        {"tag": "minecraft:stone_crafting_materials"},
+        {"item": "minecraft:stick"},
+        {"tag": "minecraft:planks"}
+    ],
+    "result": {
+        "item": "motobox:rear_attachment",
+        "component": "motobox:loom"
+    }
+}

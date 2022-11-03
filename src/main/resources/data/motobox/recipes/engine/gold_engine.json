@@ -1,0 +1,16 @@
+{
+    "type": "motobox:auto_mechanic_table",
+    "category": "motobox:engines",
+    "sortnum": 3,
+    "ingredients": [
+        {"item": "minecraft:gold_ingot"},
+        {"item": "minecraft:furnace"},
+        {"item": "minecraft:redstone_block"},
+        {"item": "minecraft:gold_block"},
+        {"item": "minecraft:iron_ingot"}
+    ],
+    "result": {
+        "item": "motobox:automobile_engine",
+        "component": "motobox:gold"
+    }
+}

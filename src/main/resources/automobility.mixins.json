@@ -1,14 +1,14 @@
 {
   "required": true,
   "minVersion": "0.8",
-  "package": "io.github.foundationgames.automobility.mixin",
+  "package": "com.ultreon.mods.motobox.mixin",
   "compatibilityLevel": "JAVA_16",
   "mixins": [
     "EnderChestInventoryMixin",
     "EntityMixin",
     "ForgingScreenHandlerMixin",
     "ScreenHandlerMixin",
-    "ServerPlayNetworkHandlerMixin",
+    "ServerPlayNetworkHandlerMixin"
   ],
   "client": [
     "ClientPlayerEntityMixin",
@@ -16,8 +16,7 @@
     "EntityRenderersMixin",
     "GameRendererMixin",
     "ModelElementDeserializerMixin",
-    "midnightcontrols.InputHandlersMixin",
-    "myron.AbstractObjLoaderMixin"
+    "midnightcontrols.InputHandlersMixin"
   ],
   "injectors": {
     "defaultRequire": 1

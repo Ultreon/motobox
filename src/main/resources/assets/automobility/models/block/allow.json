@@ -1,7 +1,0 @@
-{
-  "parent": "minecraft:block/cube_all",
-  "textures": {
-    "particle": "automobility:block/allow",
-    "all": "automobility:block/allow"
-  }
-}

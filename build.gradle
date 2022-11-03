@@ -1,5 +1,5 @@
 plugins {
-	id 'fabric-loom' version '0.10-SNAPSHOT'
+	id 'fabric-loom' version '1.0-SNAPSHOT'
 	id 'maven-publish'
 }
 
@@ -25,6 +25,15 @@ repositories {
 	maven { url = "https://hephaestus.dev/release" }
 	maven { url = "https://storage.googleapis.com/devan-maven/" }
 	maven { url = "https://api.modrinth.com/maven" }
+
+	maven {
+		name = "GitHubPackages"
+		url = uri("https://maven.pkg.github.com/Ultreon/myron-updated")
+		credentials {
+			username = rootProject.hasProperty("gpr.user") ? rootProject.property("gpr.user") : System.getenv("USERNAME")
+			password = rootProject.hasProperty("gpr.key") ? rootProject.property("gpr.key") : System.getenv("TOKEN")
+		}
+	}
 }
 
 dependencies {
@@ -46,8 +55,8 @@ dependencies {
 	}
 
 	// OBJ loader
-	modImplementation "dev.monarkhes:myron:${project.myron_version}"
-	include "dev.monarkhes:myron:${project.myron_version}"
+	modImplementation "com.ultreon.mods:myron-updated:${project.myron_version}"
+	include "com.ultreon.mods:myron-updated:${project.myron_version}"
 
 	// Json't
 	modImplementation "net.devtech:arrp:${project.arrp_version}"
