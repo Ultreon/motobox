@@ -1,5 +1,6 @@
 package com.ultreon.mods.motobox.entity;
 
+import com.ultreon.mods.motobox.automobile.render.frame.*;
 import com.ultreon.mods.motobox.entity.render.AutomobileEntityRenderer;
 import com.ultreon.mods.motobox.Automobility;
 import com.ultreon.mods.motobox.automobile.render.ExhaustFumesModel;
@@ -18,12 +19,6 @@ import com.ultreon.mods.motobox.automobile.render.engine.DiamondEngineModel;
 import com.ultreon.mods.motobox.automobile.render.engine.GoldEngineModel;
 import com.ultreon.mods.motobox.automobile.render.engine.IronEngineModel;
 import com.ultreon.mods.motobox.automobile.render.engine.StoneEngineModel;
-import com.ultreon.mods.motobox.automobile.render.frame.CARRFrameModel;
-import com.ultreon.mods.motobox.automobile.render.frame.MotorcarFrameModel;
-import com.ultreon.mods.motobox.automobile.render.frame.PineappleFrameModel;
-import com.ultreon.mods.motobox.automobile.render.frame.ShoppingCartFrameModel;
-import com.ultreon.mods.motobox.automobile.render.frame.StandardFrameModel;
-import com.ultreon.mods.motobox.automobile.render.frame.TractorFrameModel;
 import com.ultreon.mods.motobox.automobile.render.wheel.CarriageWheelModel;
 import com.ultreon.mods.motobox.automobile.render.wheel.OffRoadWheelModel;
 import com.ultreon.mods.motobox.automobile.render.wheel.StandardWheelModel;
@@ -62,6 +57,7 @@ public enum AutomobilityEntities {;
         JsonEM.registerModelLayer(StandardFrameModel.MODEL_LAYER);
         JsonEM.registerModelLayer(TractorFrameModel.MODEL_LAYER);
         JsonEM.registerModelLayer(MotorcarFrameModel.MODEL_LAYER);
+        JsonEM.registerModelLayer(TruckFrameModel.MODEL_LAYER);
         JsonEM.registerModelLayer(ShoppingCartFrameModel.MODEL_LAYER);
         JsonEM.registerModelLayer(CARRFrameModel.MODEL_LAYER);
         JsonEM.registerModelLayer(PineappleFrameModel.MODEL_LAYER);

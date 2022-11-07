@@ -39,6 +39,8 @@ public record AutomobileFrame(
     public static final AutomobileFrame GOLDEN_MOTORCAR = REGISTRY.register(motorcar("golden", 0.525f));
     public static final AutomobileFrame BEJEWELED_MOTORCAR = REGISTRY.register(motorcar("bejeweled", 0.555f));
 
+    public static final AutomobileFrame TRUCK = REGISTRY.register(truck());
+
     public static final AutomobileFrame STANDARD_WHITE = REGISTRY.register(standard("white"));
     public static final AutomobileFrame STANDARD_ORANGE = REGISTRY.register(standard("orange"));
     public static final AutomobileFrame STANDARD_MAGENTA = REGISTRY.register(standard("magenta"));
@@ -169,6 +171,24 @@ public record AutomobileFrame(
         );
     }
 
+    private static AutomobileFrame truck() {
+        return new AutomobileFrame(
+                Automobility.id("_truck"),
+                0.73f,
+                new FrameModel(
+                        Automobility.id("textures/entity/automobile/frame/truck.png"),
+                        Automobility.id("frame_truck"),
+                        WheelBase.offset(42, 22, -2),
+                        28,
+                        3,
+                        18,
+                        2,
+                        23,
+                        22
+                )
+        );
+    }
+
     private static AutomobileFrame tractor(String color) {
         return new AutomobileFrame(
                 Automobility.id(color+"_tractor"),
@@ -218,7 +238,7 @@ public record AutomobileFrame(
         return "frame."+id.getNamespace()+"."+id.getPath();
     }
 
-    public static record FrameModel(
+    public record FrameModel(
             Identifier texture,
             Identifier modelId,
             WheelBase wheelBase,

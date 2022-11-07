@@ -1,6 +1,5 @@
 package com.ultreon.mods.motobox.item;
 
-import com.ultreon.mods.motobox.automobile.*;
 import com.ultreon.mods.motobox.Automobility;
 import com.ultreon.mods.motobox.automobile.*;
 import com.ultreon.mods.motobox.automobile.attachment.FrontAttachmentType;
@@ -41,6 +40,7 @@ public enum AutomobilityItems {;
                 new AutomobilePrefab(Automobility.id("steel_motorcar"), AutomobileFrame.STEEL_MOTORCAR, AutomobileWheel.STREET, AutomobileEngine.IRON),
                 new AutomobilePrefab(Automobility.id("golden_motorcar"), AutomobileFrame.GOLDEN_MOTORCAR, AutomobileWheel.GILDED, AutomobileEngine.GOLD),
                 new AutomobilePrefab(Automobility.id("bejeweled_motorcar"), AutomobileFrame.BEJEWELED_MOTORCAR, AutomobileWheel.BEJEWELED, AutomobileEngine.DIAMOND),
+                new AutomobilePrefab(Automobility.id("truck"), AutomobileFrame.TRUCK, AutomobileWheel.OFF_ROAD, AutomobileEngine.IRON),
                 new AutomobilePrefab(Automobility.id("standard_white"), AutomobileFrame.STANDARD_WHITE, AutomobileWheel.STANDARD, AutomobileEngine.IRON),
                 new AutomobilePrefab(Automobility.id("standard_orange"), AutomobileFrame.STANDARD_ORANGE, AutomobileWheel.STANDARD, AutomobileEngine.IRON),
                 new AutomobilePrefab(Automobility.id("standard_magenta"), AutomobileFrame.STANDARD_MAGENTA, AutomobileWheel.STANDARD, AutomobileEngine.IRON),

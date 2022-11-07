@@ -19,9 +19,17 @@ public class WheelBase {
         BACK
     }
 
-    public static record WheelPos(float forward, float right, float scale, float yaw, WheelEnd end, WheelSide side) {}
+    public record WheelPos(float forward, float right, float scale, float yaw, WheelEnd end, WheelSide side) {}
 
     public static WheelBase basic(float separationLong, float separationWide) {
         return new BasicWheelBase(separationLong, separationWide);
+    }
+
+    public static WheelBase offset(float separationLong, float separationWide, float offset) {
+        return new OffsetWheelBase(separationLong, separationWide, offset);
+    }
+
+    public static WheelBase bicycle(float separationLong, float separationWide) {
+        return new BicycleWheelBase(separationLong, separationWide);
     }
 }
