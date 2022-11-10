@@ -32,8 +32,8 @@ public class AutomobilityClient implements ClientModInitializer {
 
         AutomobilityAssets.setup();
 
-        HandledScreens.register(Automobility.AUTO_MECHANIC_SCREEN, AutoMechanicTableScreen::new);
-        HandledScreens.register(Automobility.SINGLE_SLOT_SCREEN, SingleSlotScreen::new);
+        HandledScreens.register(Motobox.AUTO_MECHANIC_SCREEN, AutoMechanicTableScreen::new);
+        HandledScreens.register(Motobox.SINGLE_SLOT_SCREEN, SingleSlotScreen::new);
 
         HudRenderCallback.EVENT.register((matrices, delta) -> {
             var player = MinecraftClient.getInstance().player;

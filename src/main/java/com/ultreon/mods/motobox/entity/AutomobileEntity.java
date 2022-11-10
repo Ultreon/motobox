@@ -1,7 +1,7 @@
 package com.ultreon.mods.motobox.entity;
 
 import com.ultreon.mods.motobox.screen.AutomobileScreenHandlerContext;
-import com.ultreon.mods.motobox.Automobility;
+import com.ultreon.mods.motobox.Motobox;
 import com.ultreon.mods.motobox.automobile.AutomobileEngine;
 import com.ultreon.mods.motobox.automobile.AutomobileFrame;
 import com.ultreon.mods.motobox.automobile.AutomobileStats;
@@ -828,7 +828,7 @@ public class AutomobileEntity extends Entity implements RenderableAutomobile, En
         // This prevents the automobile from randomly jumping if it's moving down a slope quickly
         var below = new BlockPos(Math.floor(getX()), Math.floor(getY() - 0.51), Math.floor(getZ()));
         var state = world.getBlockState(below);
-        if (state.isIn(Automobility.STICKY_SLOPES)) {
+        if (state.isIn(Motobox.STICKY_SLOPES)) {
             slopeStickingTimer = 1;
         } else {
             slopeStickingTimer = Math.max(0, slopeStickingTimer--);

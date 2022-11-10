@@ -1,6 +1,6 @@
 package com.ultreon.mods.motobox.automobile.attachment;
 
-import com.ultreon.mods.motobox.Automobility;
+import com.ultreon.mods.motobox.Motobox;
 import com.ultreon.mods.motobox.automobile.AutomobileComponent;
 import com.ultreon.mods.motobox.automobile.DisplayStat;
 import com.ultreon.mods.motobox.entity.AutomobileEntity;
@@ -24,26 +24,26 @@ import java.util.function.Function;
 public record FrontAttachmentType<T extends FrontAttachment>(
         Identifier id, BiFunction<FrontAttachmentType<T>, AutomobileEntity, T> constructor, FrontAttachmentModel model
 ) implements AutomobileComponent<FrontAttachmentType<?>> {
-    public static final Identifier ID = Automobility.id("front_attachment");
+    public static final Identifier ID = Motobox.id("front_attachment");
     public static final SimpleMapContentRegistry<FrontAttachmentType<?>> REGISTRY = new SimpleMapContentRegistry<>();
 
     public static final FrontAttachmentType<EmptyFrontAttachment> EMPTY = register(new FrontAttachmentType<>(
-            Automobility.id("empty"), EmptyFrontAttachment::new, new FrontAttachmentModel(new Identifier("empty"), Automobility.id("empty"), 1)
+            Motobox.id("empty"), EmptyFrontAttachment::new, new FrontAttachmentModel(new Identifier("empty"), Motobox.id("empty"), 1)
     ));
 
     public static final FrontAttachmentType<MobControllerFrontAttachment> MOB_CONTROLLER = register(new FrontAttachmentType<>(
-            Automobility.id("mob_controller"), MobControllerFrontAttachment::new,
-            new FrontAttachmentModel(Automobility.id("textures/entity/automobile/front_attachment/mob_controller.png"), Automobility.id("frontatt_mob_controller"), 1.7f)
+            Motobox.id("mob_controller"), MobControllerFrontAttachment::new,
+            new FrontAttachmentModel(Motobox.id("textures/entity/automobile/front_attachment/mob_controller.png"), Motobox.id("frontatt_mob_controller"), 1.7f)
     ));
 
     public static final FrontAttachmentType<CropHarvesterFrontAttachment> CROP_HARVESTER = register(new FrontAttachmentType<>(
-            Automobility.id("crop_harvester"), CropHarvesterFrontAttachment::new,
-            new FrontAttachmentModel(Automobility.id("textures/entity/automobile/front_attachment/crop_harvester.png"), Automobility.id("frontatt_harvester"), 0.83f)
+            Motobox.id("crop_harvester"), CropHarvesterFrontAttachment::new,
+            new FrontAttachmentModel(Motobox.id("textures/entity/automobile/front_attachment/crop_harvester.png"), Motobox.id("frontatt_harvester"), 0.83f)
     ));
 
     public static final FrontAttachmentType<GrassCutterFrontAttachment> GRASS_CUTTER = register(new FrontAttachmentType<>(
-            Automobility.id("grass_cutter"), GrassCutterFrontAttachment::new,
-            new FrontAttachmentModel(Automobility.id("textures/entity/automobile/front_attachment/grass_cutter.png"), Automobility.id("frontatt_harvester"), 0.83f)
+            Motobox.id("grass_cutter"), GrassCutterFrontAttachment::new,
+            new FrontAttachmentModel(Motobox.id("textures/entity/automobile/front_attachment/grass_cutter.png"), Motobox.id("frontatt_harvester"), 0.83f)
     ));
 
     @Override

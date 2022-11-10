@@ -22,7 +22,7 @@ import net.minecraft.tag.TagKey;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
-public class Automobility implements ModInitializer {
+public class Motobox implements ModInitializer {
     public static final String MOD_ID = "motobox";
 
     public static final ItemGroup GROUP = FabricItemGroupBuilder.build(id("motobox"), AUtils::createGroupIcon);
@@ -35,9 +35,9 @@ public class Automobility implements ModInitializer {
     public static final TagKey<Block> STICKY_SLOPES = TagKey.of(Registry.BLOCK_KEY, id("sticky_slopes"));
 
     public static final ScreenHandlerType<AutoMechanicTableScreenHandler> AUTO_MECHANIC_SCREEN =
-            Registry.register(Registry.SCREEN_HANDLER, Automobility.id("auto_mechanic_table"), new ScreenHandlerType<>(AutoMechanicTableScreenHandler::new));
+            Registry.register(Registry.SCREEN_HANDLER, Motobox.id("auto_mechanic_table"), new ScreenHandlerType<>(AutoMechanicTableScreenHandler::new));
     public static final ScreenHandlerType<SingleSlotScreenHandler> SINGLE_SLOT_SCREEN =
-            Registry.register(Registry.SCREEN_HANDLER, Automobility.id("single_slot"), new ScreenHandlerType<>(SingleSlotScreenHandler::new));
+            Registry.register(Registry.SCREEN_HANDLER, Motobox.id("single_slot"), new ScreenHandlerType<>(SingleSlotScreenHandler::new));
 
     @Override
     public void onInitialize() {

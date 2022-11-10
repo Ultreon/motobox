@@ -3,7 +3,7 @@ package com.ultreon.mods.motobox.block;
 import com.ultreon.mods.motobox.block.entity.AutomobileAssemblerBlockEntity;
 import com.ultreon.mods.motobox.resource.AutomobilityAssets;
 import com.ultreon.mods.motobox.resource.AutomobilityData;
-import com.ultreon.mods.motobox.Automobility;
+import com.ultreon.mods.motobox.Motobox;
 import com.ultreon.mods.motobox.item.SlopeBlockItem;
 import com.ultreon.mods.motobox.item.SteepSlopeBlockItem;
 import com.ultreon.mods.motobox.item.TooltipBlockItem;
@@ -34,28 +34,28 @@ import net.minecraft.util.registry.Registry;
 import java.util.function.Function;
 
 public enum AutomobilityBlocks {;
-    public static final Block AUTO_MECHANIC_TABLE = register("auto_mechanic_table", new AutoMechanicTableBlock(FabricBlockSettings.copyOf(Blocks.COPPER_BLOCK)), Automobility.GROUP);
-    public static final Block AUTOMOBILE_ASSEMBLER = register("automobile_assembler", new AutomobileAssemblerBlock(FabricBlockSettings.copyOf(Blocks.ANVIL)), Automobility.GROUP);
+    public static final Block AUTO_MECHANIC_TABLE = register("auto_mechanic_table", new AutoMechanicTableBlock(FabricBlockSettings.copyOf(Blocks.COPPER_BLOCK)), Motobox.GROUP);
+    public static final Block AUTOMOBILE_ASSEMBLER = register("automobile_assembler", new AutomobileAssemblerBlock(FabricBlockSettings.copyOf(Blocks.ANVIL)), Motobox.GROUP);
 
-    public static final Block LAUNCH_GEL = register("launch_gel", new LaunchGelBlock(FabricBlockSettings.copyOf(Blocks.GLOW_LICHEN).sounds(BlockSoundGroup.HONEY).noCollision()), Automobility.COURSE_ELEMENTS);
+    public static final Block LAUNCH_GEL = register("launch_gel", new LaunchGelBlock(FabricBlockSettings.copyOf(Blocks.GLOW_LICHEN).sounds(BlockSoundGroup.HONEY).noCollision()), Motobox.COURSE_ELEMENTS);
     public static final Block ALLOW = register("allow", new Block(FabricBlockSettings.copyOf(Blocks.BARRIER).sounds(BlockSoundGroup.METAL)),
-            b -> new TooltipBlockItem(b, Text.translatable("tooltip.block.motobox.allow").formatted(Formatting.AQUA), new Item.Settings().group(Automobility.COURSE_ELEMENTS)));
+            b -> new TooltipBlockItem(b, Text.translatable("tooltip.block.motobox.allow").formatted(Formatting.AQUA), new Item.Settings().group(Motobox.COURSE_ELEMENTS)));
 
-    public static final Block GRASS_OFF_ROAD = register("grass_off_road", new OffRoadBlock(FabricBlockSettings.copyOf(Blocks.GRASS_BLOCK).noCollision(), AUtils.colorFromInt(0x406918)), Automobility.COURSE_ELEMENTS);
-    public static final Block DIRT_OFF_ROAD = register("dirt_off_road", new OffRoadBlock(FabricBlockSettings.copyOf(Blocks.DIRT).noCollision(), AUtils.colorFromInt(0x594227)), Automobility.COURSE_ELEMENTS);
-    public static final Block SAND_OFF_ROAD = register("sand_off_road", new OffRoadBlock(FabricBlockSettings.copyOf(Blocks.SAND).noCollision(), AUtils.colorFromInt(0xC2B185)), Automobility.COURSE_ELEMENTS);
-    public static final Block SNOW_OFF_ROAD = register("snow_off_road", new OffRoadBlock(FabricBlockSettings.copyOf(Blocks.SNOW).noCollision(), AUtils.colorFromInt(0xD0E7ED)), Automobility.COURSE_ELEMENTS);
+    public static final Block GRASS_OFF_ROAD = register("grass_off_road", new OffRoadBlock(FabricBlockSettings.copyOf(Blocks.GRASS_BLOCK).noCollision(), AUtils.colorFromInt(0x406918)), Motobox.COURSE_ELEMENTS);
+    public static final Block DIRT_OFF_ROAD = register("dirt_off_road", new OffRoadBlock(FabricBlockSettings.copyOf(Blocks.DIRT).noCollision(), AUtils.colorFromInt(0x594227)), Motobox.COURSE_ELEMENTS);
+    public static final Block SAND_OFF_ROAD = register("sand_off_road", new OffRoadBlock(FabricBlockSettings.copyOf(Blocks.SAND).noCollision(), AUtils.colorFromInt(0xC2B185)), Motobox.COURSE_ELEMENTS);
+    public static final Block SNOW_OFF_ROAD = register("snow_off_road", new OffRoadBlock(FabricBlockSettings.copyOf(Blocks.SNOW).noCollision(), AUtils.colorFromInt(0xD0E7ED)), Motobox.COURSE_ELEMENTS);
 
-    public static final Block DASH_PANEL = register("dash_panel", new DashPanelBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK).luminance(1).emissiveLighting((state, world, pos) -> true).noCollision()), Automobility.COURSE_ELEMENTS);
+    public static final Block DASH_PANEL = register("dash_panel", new DashPanelBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK).luminance(1).emissiveLighting((state, world, pos) -> true).noCollision()), Motobox.COURSE_ELEMENTS);
     public static final Block SLOPED_DASH_PANEL = register("sloped_dash_panel", new SlopedDashPanelBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK).luminance(1).emissiveLighting((state, world, pos) -> true)));
     public static final Block STEEP_SLOPED_DASH_PANEL = register("steep_sloped_dash_panel", new SteepSlopedDashPanelBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK).luminance(1).emissiveLighting((state, world, pos) -> true)));
 
     public static final BlockEntityType<AutomobileAssemblerBlockEntity> AUTOMOBILE_ASSEMBLER_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE,
-            Automobility.id("automobile_assembler"), FabricBlockEntityTypeBuilder.create(AutomobileAssemblerBlockEntity::new, AUTOMOBILE_ASSEMBLER).build());
+            Motobox.id("automobile_assembler"), FabricBlockEntityTypeBuilder.create(AutomobileAssemblerBlockEntity::new, AUTOMOBILE_ASSEMBLER).build());
 
     public static void init() {
-        Registry.register(Registry.ITEM, Automobility.id("sloped_dash_panel"), new SlopeBlockItem(null, SLOPED_DASH_PANEL, new Item.Settings().group(Automobility.COURSE_ELEMENTS)));
-        Registry.register(Registry.ITEM, Automobility.id("steep_sloped_dash_panel"), new SteepSlopeBlockItem(null, STEEP_SLOPED_DASH_PANEL, new Item.Settings().group(Automobility.COURSE_ELEMENTS)));
+        Registry.register(Registry.ITEM, Motobox.id("sloped_dash_panel"), new SlopeBlockItem(null, SLOPED_DASH_PANEL, new Item.Settings().group(Motobox.COURSE_ELEMENTS)));
+        Registry.register(Registry.ITEM, Motobox.id("steep_sloped_dash_panel"), new SteepSlopeBlockItem(null, STEEP_SLOPED_DASH_PANEL, new Item.Settings().group(Motobox.COURSE_ELEMENTS)));
         registerSlopes("minecraft");
     }
 
@@ -68,7 +68,7 @@ public enum AutomobilityBlocks {;
     }
 
     public static Block register(String name, Block block) {
-        return Registry.register(Registry.BLOCK, Automobility.id(name), block);
+        return Registry.register(Registry.BLOCK, Motobox.id(name), block);
     }
 
     public static Block register(String name, Block block, ItemGroup group) {
@@ -76,7 +76,7 @@ public enum AutomobilityBlocks {;
     }
 
     public static Block register(String name, Block block, Function<Block, BlockItem> item) {
-        Registry.register(Registry.ITEM, Automobility.id(name), item.apply(block));
+        Registry.register(Registry.ITEM, Motobox.id(name), item.apply(block));
         return register(name, block);
     }
 
@@ -88,8 +88,8 @@ public enum AutomobilityBlocks {;
     }
 
     public static void registerSlopes(String namespace) {
-        AutomobilityData.NON_STEEP_SLOPE_TAG_CANDIDATES.add(Automobility.id("sloped_dash_panel"));
-        AutomobilityData.STEEP_SLOPE_TAG_CANDIDATES.add(Automobility.id("steep_sloped_dash_panel"));
+        AutomobilityData.NON_STEEP_SLOPE_TAG_CANDIDATES.add(Motobox.id("sloped_dash_panel"));
+        AutomobilityData.STEEP_SLOPE_TAG_CANDIDATES.add(Motobox.id("steep_sloped_dash_panel"));
         for (var base : Registry.BLOCK) {
             if (base.getClass().equals(Block.class)) {
                 var id = Registry.BLOCK.getId(base);
@@ -97,11 +97,11 @@ public enum AutomobilityBlocks {;
                     var path = id.getPath()+"_slope";
                     var steepPath = "steep_"+path;
                     var block = register(path, new SlopeBlock(FabricBlockSettings.copyOf(base)));
-                    var normalId = Automobility.id(path);
-                    var steepId = Automobility.id(steepPath);
-                    Registry.register(Registry.ITEM, normalId, new SlopeBlockItem(base, block, new Item.Settings().group(Automobility.COURSE_ELEMENTS)));
+                    var normalId = Motobox.id(path);
+                    var steepId = Motobox.id(steepPath);
+                    Registry.register(Registry.ITEM, normalId, new SlopeBlockItem(base, block, new Item.Settings().group(Motobox.COURSE_ELEMENTS)));
                     block = register(steepPath, new SteepSlopeBlock(FabricBlockSettings.copyOf(base)));
-                    Registry.register(Registry.ITEM, steepId, new SteepSlopeBlockItem(base, block, new Item.Settings().group(Automobility.COURSE_ELEMENTS)));
+                    Registry.register(Registry.ITEM, steepId, new SteepSlopeBlockItem(base, block, new Item.Settings().group(Motobox.COURSE_ELEMENTS)));
                     AutomobilityAssets.addProcessor(pack -> AutomobilityAssets.addMinecraftSlope(path, id.getPath()));
                     AutomobilityData.NON_STEEP_SLOPE_TAG_CANDIDATES.add(normalId);
                     AutomobilityData.STEEP_SLOPE_TAG_CANDIDATES.add(steepId);

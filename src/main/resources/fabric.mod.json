@@ -18,20 +18,23 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "com.ultreon.mods.motobox.Automobility"
+      "com.ultreon.mods.motobox.Motobox"
     ],
     "client": [
       "com.ultreon.mods.motobox.AutomobilityClient"
     ]
   },
   "mixins": [
-    "automobility.mixins.json"
+    "motobox.mixins.json"
   ],
   "depends": {
     "fabricloader": ">=0.11.3",
-    "fabric": "*",
+    "fabric-api": "*",
     "minecraft": "1.19.x",
     "java": ">=17"
+  },
+  "breaks": {
+    "quiltloader": "*"
   },
   "suggests": {
     "lambdacontrols": "*"

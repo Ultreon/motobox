@@ -1,6 +1,6 @@
 package com.ultreon.mods.motobox.render;
 
-import com.ultreon.mods.motobox.Automobility;
+import com.ultreon.mods.motobox.Motobox;
 import com.ultreon.mods.motobox.automobile.render.EmptyModel;
 import com.ultreon.mods.motobox.automobile.render.attachment.front.HarvesterFrontAttachmentModel;
 import com.ultreon.mods.motobox.automobile.render.attachment.front.MobControllerFrontAttachmentModel;
@@ -40,39 +40,39 @@ public enum AutomobilityModels {;
 
     @Environment(EnvType.CLIENT)
     public static void init() {
-        MODELS.put(Automobility.id("empty"), EmptyModel::new);
+        MODELS.put(Motobox.id("empty"), EmptyModel::new);
 
-        MODELS.put(Automobility.id("frame_standard"), StandardFrameModel::new);
-        MODELS.put(Automobility.id("frame_tractor"), TractorFrameModel::new);
-        MODELS.put(Automobility.id("frame_shopping_cart"), ShoppingCartFrameModel::new);
-        MODELS.put(Automobility.id("frame_c_arr"), CARRFrameModel::new);
-        MODELS.put(Automobility.id("frame_pineapple"), PineappleFrameModel::new);
-        MODELS.put(Automobility.id("frame_motorcar"), MotorcarFrameModel::new);
-        MODELS.put(Automobility.id("frame_truck"), TruckFrameModel::new);
+        MODELS.put(Motobox.id("frame_standard"), StandardFrameModel::new);
+        MODELS.put(Motobox.id("frame_tractor"), TractorFrameModel::new);
+        MODELS.put(Motobox.id("frame_shopping_cart"), ShoppingCartFrameModel::new);
+        MODELS.put(Motobox.id("frame_c_arr"), CARRFrameModel::new);
+        MODELS.put(Motobox.id("frame_pineapple"), PineappleFrameModel::new);
+        MODELS.put(Motobox.id("frame_motorcar"), MotorcarFrameModel::new);
+        MODELS.put(Motobox.id("frame_truck"), TruckFrameModel::new);
 //        MODELS.put(Automobility.id("frame_dababy"), DaBabyFrameModel::new);
 
-        MODELS.put(Automobility.id("wheel_standard"), StandardWheelModel::new);
-        MODELS.put(Automobility.id("wheel_off_road"), OffRoadWheelModel::new);
-        MODELS.put(Automobility.id("wheel_steel"), SteelWheelModel::new);
-        MODELS.put(Automobility.id("wheel_tractor"), TractorWheelModel::new);
-        MODELS.put(Automobility.id("wheel_carriage"), CarriageWheelModel::new);
-        MODELS.put(Automobility.id("wheel_convertible"), ConvertibleWheelModel::new);
+        MODELS.put(Motobox.id("wheel_standard"), StandardWheelModel::new);
+        MODELS.put(Motobox.id("wheel_off_road"), OffRoadWheelModel::new);
+        MODELS.put(Motobox.id("wheel_steel"), SteelWheelModel::new);
+        MODELS.put(Motobox.id("wheel_tractor"), TractorWheelModel::new);
+        MODELS.put(Motobox.id("wheel_carriage"), CarriageWheelModel::new);
+        MODELS.put(Motobox.id("wheel_convertible"), ConvertibleWheelModel::new);
 
-        MODELS.put(Automobility.id("engine_stone"), StoneEngineModel::new);
-        MODELS.put(Automobility.id("engine_iron"), IronEngineModel::new);
-        MODELS.put(Automobility.id("engine_copper"), CopperEngineModel::new);
-        MODELS.put(Automobility.id("engine_gold"), GoldEngineModel::new);
-        MODELS.put(Automobility.id("engine_diamond"), DiamondEngineModel::new);
-        MODELS.put(Automobility.id("engine_creative"), CreativeEngineModel::new);
+        MODELS.put(Motobox.id("engine_stone"), StoneEngineModel::new);
+        MODELS.put(Motobox.id("engine_iron"), IronEngineModel::new);
+        MODELS.put(Motobox.id("engine_copper"), CopperEngineModel::new);
+        MODELS.put(Motobox.id("engine_gold"), GoldEngineModel::new);
+        MODELS.put(Motobox.id("engine_diamond"), DiamondEngineModel::new);
+        MODELS.put(Motobox.id("engine_creative"), CreativeEngineModel::new);
 
-        MODELS.put(Automobility.id("rearatt_passenger_seat"), PassengerSeatRearAttachmentModel::new);
-        MODELS.put(Automobility.id("rearatt_block"), BlockRearAttachmentModel::new);
-        MODELS.put(Automobility.id("rearatt_grindstone"), GrindstoneRearAttachmentModel::new);
-        MODELS.put(Automobility.id("rearatt_stonecutter"), StonecutterRearAttachmentModel::new);
-        MODELS.put(Automobility.id("rearatt_chest"), ChestRearAttachmentModel::new);
-        MODELS.put(Automobility.id("rearatt_banner_post"), BannerPostRearAttachmentModel::new);
+        MODELS.put(Motobox.id("rearatt_passenger_seat"), PassengerSeatRearAttachmentModel::new);
+        MODELS.put(Motobox.id("rearatt_block"), BlockRearAttachmentModel::new);
+        MODELS.put(Motobox.id("rearatt_grindstone"), GrindstoneRearAttachmentModel::new);
+        MODELS.put(Motobox.id("rearatt_stonecutter"), StonecutterRearAttachmentModel::new);
+        MODELS.put(Motobox.id("rearatt_chest"), ChestRearAttachmentModel::new);
+        MODELS.put(Motobox.id("rearatt_banner_post"), BannerPostRearAttachmentModel::new);
 
-        MODELS.put(Automobility.id("frontatt_mob_controller"), MobControllerFrontAttachmentModel::new);
-        MODELS.put(Automobility.id("frontatt_harvester"), HarvesterFrontAttachmentModel::new);
+        MODELS.put(Motobox.id("frontatt_mob_controller"), MobControllerFrontAttachmentModel::new);
+        MODELS.put(Motobox.id("frontatt_harvester"), HarvesterFrontAttachmentModel::new);
     }
 }

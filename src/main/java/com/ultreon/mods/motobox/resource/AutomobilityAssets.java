@@ -1,6 +1,6 @@
 package com.ultreon.mods.motobox.resource;
 
-import com.ultreon.mods.motobox.Automobility;
+import com.ultreon.mods.motobox.Motobox;
 import com.ultreon.mods.motobox.util.AUtils;
 import net.devtech.arrp.api.RRPCallback;
 import net.devtech.arrp.api.RuntimeResourcePack;
@@ -25,36 +25,36 @@ public enum AutomobilityAssets {;
 
         var dashPanel = JState.variant();
         for (Direction dir : AUtils.HORIZONTAL_DIRS) {
-            dashPanel.put("left=false,right=false,facing="+ dir, JState.model(Automobility.id("block/dash_panel_single")).y((int)dir.asRotation() + 180));
-            dashPanel.put("left=true,right=false,facing="+ dir, JState.model(Automobility.id("block/dash_panel_left")).y((int)dir.asRotation() + 180));
-            dashPanel.put("left=false,right=true,facing="+ dir, JState.model(Automobility.id("block/dash_panel_right")).y((int)dir.asRotation() + 180));
-            dashPanel.put("left=true,right=true,facing="+ dir, JState.model(Automobility.id("block/dash_panel_center")).y((int)dir.asRotation() + 180));
+            dashPanel.put("left=false,right=false,facing="+ dir, JState.model(Motobox.id("block/dash_panel_single")).y((int)dir.asRotation() + 180));
+            dashPanel.put("left=true,right=false,facing="+ dir, JState.model(Motobox.id("block/dash_panel_left")).y((int)dir.asRotation() + 180));
+            dashPanel.put("left=false,right=true,facing="+ dir, JState.model(Motobox.id("block/dash_panel_right")).y((int)dir.asRotation() + 180));
+            dashPanel.put("left=true,right=true,facing="+ dir, JState.model(Motobox.id("block/dash_panel_center")).y((int)dir.asRotation() + 180));
         }
-        PACK.addBlockState(new JState().add(dashPanel), Automobility.id("dash_panel"));
+        PACK.addBlockState(new JState().add(dashPanel), Motobox.id("dash_panel"));
 
         var slopedDashPanel = JState.variant();
         for (Direction dir : AUtils.HORIZONTAL_DIRS) {
-            slopedDashPanel.put("half=bottom,left=false,right=false,facing="+ dir, JState.model(Automobility.id("block/sloped_dash_panel_single_bottom")).y((int)dir.asRotation()));
-            slopedDashPanel.put("half=bottom,left=true,right=false,facing="+ dir, JState.model(Automobility.id("block/sloped_dash_panel_left_bottom")).y((int)dir.asRotation()));
-            slopedDashPanel.put("half=bottom,left=false,right=true,facing="+ dir, JState.model(Automobility.id("block/sloped_dash_panel_right_bottom")).y((int)dir.asRotation()));
-            slopedDashPanel.put("half=bottom,left=true,right=true,facing="+ dir, JState.model(Automobility.id("block/sloped_dash_panel_center_bottom")).y((int)dir.asRotation()));
-            slopedDashPanel.put("half=top,left=false,right=false,facing="+ dir, JState.model(Automobility.id("block/sloped_dash_panel_single_top")).y((int)dir.asRotation()));
-            slopedDashPanel.put("half=top,left=true,right=false,facing="+ dir, JState.model(Automobility.id("block/sloped_dash_panel_left_top")).y((int)dir.asRotation()));
-            slopedDashPanel.put("half=top,left=false,right=true,facing="+ dir, JState.model(Automobility.id("block/sloped_dash_panel_right_top")).y((int)dir.asRotation()));
-            slopedDashPanel.put("half=top,left=true,right=true,facing="+ dir, JState.model(Automobility.id("block/sloped_dash_panel_center_top")).y((int)dir.asRotation()));
+            slopedDashPanel.put("half=bottom,left=false,right=false,facing="+ dir, JState.model(Motobox.id("block/sloped_dash_panel_single_bottom")).y((int)dir.asRotation()));
+            slopedDashPanel.put("half=bottom,left=true,right=false,facing="+ dir, JState.model(Motobox.id("block/sloped_dash_panel_left_bottom")).y((int)dir.asRotation()));
+            slopedDashPanel.put("half=bottom,left=false,right=true,facing="+ dir, JState.model(Motobox.id("block/sloped_dash_panel_right_bottom")).y((int)dir.asRotation()));
+            slopedDashPanel.put("half=bottom,left=true,right=true,facing="+ dir, JState.model(Motobox.id("block/sloped_dash_panel_center_bottom")).y((int)dir.asRotation()));
+            slopedDashPanel.put("half=top,left=false,right=false,facing="+ dir, JState.model(Motobox.id("block/sloped_dash_panel_single_top")).y((int)dir.asRotation()));
+            slopedDashPanel.put("half=top,left=true,right=false,facing="+ dir, JState.model(Motobox.id("block/sloped_dash_panel_left_top")).y((int)dir.asRotation()));
+            slopedDashPanel.put("half=top,left=false,right=true,facing="+ dir, JState.model(Motobox.id("block/sloped_dash_panel_right_top")).y((int)dir.asRotation()));
+            slopedDashPanel.put("half=top,left=true,right=true,facing="+ dir, JState.model(Motobox.id("block/sloped_dash_panel_center_top")).y((int)dir.asRotation()));
         }
-        PACK.addBlockState(new JState().add(slopedDashPanel), Automobility.id("sloped_dash_panel"));
+        PACK.addBlockState(new JState().add(slopedDashPanel), Motobox.id("sloped_dash_panel"));
 
         var steepDashPanel = JState.variant();
         for (Direction dir : AUtils.HORIZONTAL_DIRS) {
-            steepDashPanel.put("left=false,right=false,facing="+ dir, JState.model(Automobility.id("block/steep_sloped_dash_panel_single")).y((int)dir.asRotation()));
-            steepDashPanel.put("left=true,right=false,facing="+ dir, JState.model(Automobility.id("block/steep_sloped_dash_panel_left")).y((int)dir.asRotation()));
-            steepDashPanel.put("left=false,right=true,facing="+ dir, JState.model(Automobility.id("block/steep_sloped_dash_panel_right")).y((int)dir.asRotation()));
-            steepDashPanel.put("left=true,right=true,facing="+ dir, JState.model(Automobility.id("block/steep_sloped_dash_panel_center")).y((int)dir.asRotation()));
+            steepDashPanel.put("left=false,right=false,facing="+ dir, JState.model(Motobox.id("block/steep_sloped_dash_panel_single")).y((int)dir.asRotation()));
+            steepDashPanel.put("left=true,right=false,facing="+ dir, JState.model(Motobox.id("block/steep_sloped_dash_panel_left")).y((int)dir.asRotation()));
+            steepDashPanel.put("left=false,right=true,facing="+ dir, JState.model(Motobox.id("block/steep_sloped_dash_panel_right")).y((int)dir.asRotation()));
+            steepDashPanel.put("left=true,right=true,facing="+ dir, JState.model(Motobox.id("block/steep_sloped_dash_panel_center")).y((int)dir.asRotation()));
         }
-        PACK.addBlockState(new JState().add(steepDashPanel), Automobility.id("steep_sloped_dash_panel"));
+        PACK.addBlockState(new JState().add(steepDashPanel), Motobox.id("steep_sloped_dash_panel"));
 
-        PACK.addBlockState(new JState().add(JState.variant().put("", JState.model(Automobility.id("block/launch_gel")))), Automobility.id("launch_gel"));
+        PACK.addBlockState(new JState().add(JState.variant().put("", JState.model(Motobox.id("block/launch_gel")))), Motobox.id("launch_gel"));
 
         for (var p : PROCESSORS) {
             p.accept(PACK);
@@ -65,39 +65,39 @@ public enum AutomobilityAssets {;
 
     public static void addOffRoad(String name) {
         for (int i = 0; i < 3; i++) {
-            PACK.addModel(new JModel().parent("motobox:block/template_off_road_"+i).textures(JModel.textures().var("off_road", "motobox:block/"+name)), Automobility.id("block/"+name+"_"+i));
+            PACK.addModel(new JModel().parent("motobox:block/template_off_road_"+i).textures(JModel.textures().var("off_road", "motobox:block/"+name)), Motobox.id("block/" + name + "_" + i));
         }
-        PACK.addModel(new JModel().parent("motobox:block/"+name+"_0"), Automobility.id("item/"+name));
+        PACK.addModel(new JModel().parent("motobox:block/"+name+"_0"), Motobox.id("item/" + name));
         PACK.addBlockState(new JState().add(new JVariant()
                 .put("layers=1", JState.model("motobox:block/"+name+"_0"))
                 .put("layers=2", JState.model("motobox:block/"+name+"_1"))
                 .put("layers=3", JState.model("motobox:block/"+name+"_2"))
-        ), Automobility.id(name));
+        ), Motobox.id(name));
     }
 
     public static void addSlope(String name, String texture) {
         {
             var path = "block/"+name;
-            PACK.addModel(new JModel().parent("motobox:block/template_slope_bottom").textures(JModel.textures().var("slope", texture)), Automobility.id(path+"_bottom"));
-            PACK.addModel(new JModel().parent("motobox:block/template_slope_top").textures(JModel.textures().var("slope", texture)), Automobility.id(path+"_top"));
+            PACK.addModel(new JModel().parent("motobox:block/template_slope_bottom").textures(JModel.textures().var("slope", texture)), Motobox.id(path + "_bottom"));
+            PACK.addModel(new JModel().parent("motobox:block/template_slope_top").textures(JModel.textures().var("slope", texture)), Motobox.id(path + "_top"));
             var variants = JState.variant();
             for (Direction dir : AUtils.HORIZONTAL_DIRS) {
-                variants.put("half=bottom,facing="+ dir, JState.model(Automobility.id(path)+"_bottom").y((int)dir.asRotation()));
-                variants.put("half=top,facing="+ dir, JState.model(Automobility.id(path)+"_top").y((int)dir.asRotation()));
+                variants.put("half=bottom,facing="+ dir, JState.model(Motobox.id(path) + "_bottom").y((int)dir.asRotation()));
+                variants.put("half=top,facing="+ dir, JState.model(Motobox.id(path) + "_top").y((int)dir.asRotation()));
             }
-            PACK.addBlockState(new JState().add(variants), Automobility.id(name));
-            PACK.addModel(new JModel().parent("motobox:"+path+"_bottom"), Automobility.id("item/"+name));
+            PACK.addBlockState(new JState().add(variants), Motobox.id(name));
+            PACK.addModel(new JModel().parent("motobox:"+path+"_bottom"), Motobox.id("item/" + name));
         }
         {
             name = "steep_"+name;
             var path = "block/"+name;
-            PACK.addModel(new JModel().parent("motobox:block/template_steep_slope").textures(JModel.textures().var("slope", texture)), Automobility.id(path));
+            PACK.addModel(new JModel().parent("motobox:block/template_steep_slope").textures(JModel.textures().var("slope", texture)), Motobox.id(path));
             var variants = JState.variant();
             for (Direction dir : AUtils.HORIZONTAL_DIRS) {
-                variants.put("facing="+ dir, JState.model(Automobility.id(path)).y((int)dir.asRotation()));
+                variants.put("facing="+ dir, JState.model(Motobox.id(path)).y((int)dir.asRotation()));
             }
-            PACK.addBlockState(new JState().add(variants), Automobility.id(name));
-            PACK.addModel(new JModel().parent("motobox:"+path), Automobility.id("item/"+name));
+            PACK.addBlockState(new JState().add(variants), Motobox.id(name));
+            PACK.addModel(new JModel().parent("motobox:"+path), Motobox.id("item/" + name));
         }
     }
 

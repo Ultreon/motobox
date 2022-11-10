@@ -2,8 +2,8 @@
 
 ### A Minecraft mod adding customizable vehicles.
 
-## Available for Fabric/Quilt
-- Requires **[Fabric API](https://modrinth.com/mod/fabric-api)** (Fabric) or **[QSL](https://modrinth.com/mod/qsl)** (Quilt)
+## Available for Fabric
+- Requires **[Fabric API](https://modrinth.com/mod/fabric-api)** (Fabric)
 
 **Support for Forge or old versions is NOT PLANNED.**
 

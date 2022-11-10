@@ -1,6 +1,6 @@
 package com.ultreon.mods.motobox.screen;
 
-import com.ultreon.mods.motobox.Automobility;
+import com.ultreon.mods.motobox.Motobox;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventory;
@@ -17,7 +17,7 @@ public class SingleSlotScreenHandler extends ScreenHandler {
     }
 
     public SingleSlotScreenHandler(int syncId, PlayerInventory playerInv, Inventory inv) {
-        super(Automobility.SINGLE_SLOT_SCREEN, syncId);
+        super(Motobox.SINGLE_SLOT_SCREEN, syncId);
 
         checkSize(inv, 1);
         this.inventory = inv;

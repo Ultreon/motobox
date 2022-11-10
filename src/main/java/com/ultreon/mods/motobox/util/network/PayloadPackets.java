@@ -1,6 +1,6 @@
 package com.ultreon.mods.motobox.util.network;
 
-import com.ultreon.mods.motobox.Automobility;
+import com.ultreon.mods.motobox.Motobox;
 import com.ultreon.mods.motobox.automobile.AutomobileEngine;
 import com.ultreon.mods.motobox.automobile.AutomobileFrame;
 import com.ultreon.mods.motobox.automobile.AutomobileWheel;
@@ -29,21 +29,21 @@ public enum PayloadPackets {;
         buf.writeBoolean(right);
         buf.writeBoolean(space);
         buf.writeInt(entity.getId());
-        ClientPlayNetworking.send(Automobility.id("sync_automobile_inputs"), buf);
+        ClientPlayNetworking.send(Motobox.id("sync_automobile_inputs"), buf);
     }
 
     @Environment(EnvType.CLIENT)
     public static void requestSyncAutomobileComponentsPacket(AutomobileEntity entity) {
         PacketByteBuf buf = new PacketByteBuf(Unpooled.buffer());
         buf.writeInt(entity.getId());
-        ClientPlayNetworking.send(Automobility.id("request_sync_automobile_components"), buf);
+        ClientPlayNetworking.send(Motobox.id("request_sync_automobile_components"), buf);
     }
 
     public static void sendSyncAutomobileDataPacket(AutomobileEntity entity, ServerPlayerEntity player) {
         PacketByteBuf buf = new PacketByteBuf(Unpooled.buffer());
         buf.writeInt(entity.getId());
         entity.writeSyncToClientData(buf);
-        ServerPlayNetworking.send(player, Automobility.id("sync_automobile_data"), buf);
+        ServerPlayNetworking.send(player, Motobox.id("sync_automobile_data"), buf);
     }
 
     public static void sendSyncAutomobileComponentsPacket(AutomobileEntity entity, ServerPlayerEntity player) {
@@ -52,7 +52,7 @@ public enum PayloadPackets {;
         buf.writeString(entity.getFrame().id().toString());
         buf.writeString(entity.getWheels().id().toString());
         buf.writeString(entity.getEngine().id().toString());
-        ServerPlayNetworking.send(player, Automobility.id("sync_automobile_components"), buf);
+        ServerPlayNetworking.send(player, Motobox.id("sync_automobile_components"), buf);
     }
 
     public static void sendSyncAutomobileAttachmentsPacket(AutomobileEntity entity, ServerPlayerEntity player) {
@@ -60,7 +60,7 @@ public enum PayloadPackets {;
         buf.writeInt(entity.getId());
         buf.writeString(entity.getRearAttachmentType().id().toString());
         buf.writeString(entity.getFrontAttachmentType().id().toString());
-        ServerPlayNetworking.send(player, Automobility.id("sync_automobile_attachments"), buf);
+        ServerPlayNetworking.send(player, Motobox.id("sync_automobile_attachments"), buf);
     }
 
     public static void sendBannerPostAttachmentUpdatePacket(AutomobileEntity entity, NbtCompound banner, ServerPlayerEntity player) {
@@ -70,12 +70,12 @@ public enum PayloadPackets {;
         if (rearAtt instanceof BannerPostRearAttachment) {
             buf.writeInt(entity.getId());
             buf.writeNbt(banner);
-            ServerPlayNetworking.send(player, Automobility.id("update_banner_post"), buf);
+            ServerPlayNetworking.send(player, Motobox.id("update_banner_post"), buf);
         }
     }
 
     public static void init() {
-        ServerPlayNetworking.registerGlobalReceiver(Automobility.id("sync_automobile_inputs"), (server, player, handler, buf, responseSender) -> {
+        ServerPlayNetworking.registerGlobalReceiver(Motobox.id("sync_automobile_inputs"), (server, player, handler, buf, responseSender) -> {
             boolean fwd = buf.readBoolean();
             boolean back = buf.readBoolean();
             boolean left = buf.readBoolean();
@@ -89,7 +89,7 @@ public enum PayloadPackets {;
                 }
             });
         });
-        ServerPlayNetworking.registerGlobalReceiver(Automobility.id("request_sync_automobile_components"), (server, player, handler, buf, responseSender) -> {
+        ServerPlayNetworking.registerGlobalReceiver(Motobox.id("request_sync_automobile_components"), (server, player, handler, buf, responseSender) -> {
             int entityId = buf.readInt();
             server.execute(() -> {
                 if (player.world.getEntityById(entityId) instanceof AutomobileEntity automobile) {
@@ -108,7 +108,7 @@ public enum PayloadPackets {;
 
     @Environment(EnvType.CLIENT)
     public static void initClient() {
-        ClientPlayNetworking.registerGlobalReceiver(Automobility.id("sync_automobile_data"), (client, handler, buf, responseSender) -> {
+        ClientPlayNetworking.registerGlobalReceiver(Motobox.id("sync_automobile_data"), (client, handler, buf, responseSender) -> {
             PacketByteBuf dup = PacketByteBufs.copy(buf);
             int entityId = dup.readInt();
             client.execute(() -> {
@@ -117,7 +117,7 @@ public enum PayloadPackets {;
                 }
             });
         });
-        ClientPlayNetworking.registerGlobalReceiver(Automobility.id("sync_automobile_components"), (client, handler, buf, responseSender) -> {
+        ClientPlayNetworking.registerGlobalReceiver(Motobox.id("sync_automobile_components"), (client, handler, buf, responseSender) -> {
             int entityId = buf.readInt();
             var frame = AutomobileFrame.REGISTRY.getOrDefault(Identifier.tryParse(buf.readString()));
             var wheel = AutomobileWheel.REGISTRY.getOrDefault(Identifier.tryParse(buf.readString()));
@@ -128,7 +128,7 @@ public enum PayloadPackets {;
                 }
             });
         });
-        ClientPlayNetworking.registerGlobalReceiver(Automobility.id("sync_automobile_attachments"), (client, handler, buf, responseSender) -> {
+        ClientPlayNetworking.registerGlobalReceiver(Motobox.id("sync_automobile_attachments"), (client, handler, buf, responseSender) -> {
             int entityId = buf.readInt();
             var rearAtt = RearAttachmentType.REGISTRY.getOrDefault(Identifier.tryParse(buf.readString()));
             var frontAtt = FrontAttachmentType.REGISTRY.getOrDefault(Identifier.tryParse(buf.readString()));
@@ -139,7 +139,7 @@ public enum PayloadPackets {;
                 }
             });
         });
-        ClientPlayNetworking.registerGlobalReceiver(Automobility.id("update_banner_post"), (client, handler, buf, responseSender) -> {
+        ClientPlayNetworking.registerGlobalReceiver(Motobox.id("update_banner_post"), (client, handler, buf, responseSender) -> {
             int entityId = buf.readInt();
             var banner = buf.readNbt();
             client.execute(() -> {

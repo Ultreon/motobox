@@ -1,7 +1,7 @@
 package com.ultreon.mods.motobox.automobile;
 
 import com.ultreon.mods.motobox.render.AutomobilityModels;
-import com.ultreon.mods.motobox.Automobility;
+import com.ultreon.mods.motobox.Motobox;
 import com.ultreon.mods.motobox.util.SimpleMapContentRegistry;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -17,16 +17,16 @@ public record AutomobileFrame(
         float weight,
         FrameModel model
 ) implements AutomobileComponent<AutomobileFrame> {
-    public static final Identifier ID = Automobility.id("frame");
+    public static final Identifier ID = Motobox.id("frame");
     public static final SimpleMapContentRegistry<AutomobileFrame> REGISTRY = new SimpleMapContentRegistry<>();
 
     public static final AutomobileFrame EMPTY = REGISTRY.register(
             new AutomobileFrame(
-                    Automobility.id("empty"),
+                    Motobox.id("empty"),
                     0.25f,
                     new FrameModel(
                             new Identifier("empty"),
-                            Automobility.id("empty"),
+                            Motobox.id("empty"),
                             WheelBase.basic(16, 16),
                             16, 8, 8, 4, 8, 8
                     )
@@ -65,11 +65,11 @@ public record AutomobileFrame(
 
     public static final AutomobileFrame SHOPPING_CART = REGISTRY.register(
             new AutomobileFrame(
-                    Automobility.id("shopping_cart"),
+                    Motobox.id("shopping_cart"),
                     0.25f,
                     new FrameModel(
-                            Automobility.id("textures/entity/automobile/frame/shopping_cart.png"),
-                            Automobility.id("frame_shopping_cart"),
+                            Motobox.id("textures/entity/automobile/frame/shopping_cart.png"),
+                            Motobox.id("frame_shopping_cart"),
                             WheelBase.basic(17, 12.05f),
                             25,
                             11,
@@ -83,11 +83,11 @@ public record AutomobileFrame(
 
     public static final AutomobileFrame C_ARR = REGISTRY.register(
             new AutomobileFrame(
-                    Automobility.id("c_arr"),
+                    Motobox.id("c_arr"),
                     0.85f,
                     new FrameModel(
-                            Automobility.id("textures/entity/automobile/frame/c_arr.png"),
-                            Automobility.id("frame_c_arr"),
+                            Motobox.id("textures/entity/automobile/frame/c_arr.png"),
+                            Motobox.id("frame_c_arr"),
                             WheelBase.basic(44.5f, 16),
                             44f,
                             6f,
@@ -101,11 +101,11 @@ public record AutomobileFrame(
 
     public static final AutomobileFrame PINEAPPLE = REGISTRY.register(
             new AutomobileFrame(
-                    Automobility.id("pineapple"),
+                    Motobox.id("pineapple"),
                     0.75f,
                     new FrameModel(
-                            Automobility.id("textures/entity/automobile/frame/pineapple.png"),
-                            Automobility.id("frame_pineapple"),
+                            Motobox.id("textures/entity/automobile/frame/pineapple.png"),
+                            Motobox.id("frame_pineapple"),
                             WheelBase.basic(10, 18),
                             20,
                             16,
@@ -119,11 +119,11 @@ public record AutomobileFrame(
 
     public static final AutomobileFrame DABABY = REGISTRY.register(
             new AutomobileFrame(
-                    Automobility.id("dababy"),
+                    Motobox.id("dababy"),
                     0.93f,
                     new FrameModel(
-                            Automobility.id("textures/entity/automobile/frame/dababy.png"),
-                            Automobility.id("frame_dababy"),
+                            Motobox.id("textures/entity/automobile/frame/dababy.png"),
+                            Motobox.id("frame_dababy"),
                             WheelBase.basic(40, 8),
                             40,
                             22,
@@ -137,11 +137,11 @@ public record AutomobileFrame(
 
     private static AutomobileFrame standard(String color) {
         return new AutomobileFrame(
-                Automobility.id("standard_"+color),
+                Motobox.id("standard_" + color),
                 0.6f,
                 new FrameModel(
-                        Automobility.id("textures/entity/automobile/frame/standard_"+color+".png"),
-                        Automobility.id("frame_standard"),
+                        Motobox.id("textures/entity/automobile/frame/standard_" + color + ".png"),
+                        Motobox.id("frame_standard"),
                         WheelBase.basic(26, 10),
                         26,
                         5,
@@ -155,11 +155,11 @@ public record AutomobileFrame(
 
     private static AutomobileFrame motorcar(String variant, float weight) {
         return new AutomobileFrame(
-                Automobility.id(variant+"_motorcar"),
+                Motobox.id(variant + "_motorcar"),
                 weight,
                 new FrameModel(
-                        Automobility.id("textures/entity/automobile/frame/"+variant+"_motorcar.png"),
-                        Automobility.id("frame_motorcar"),
+                        Motobox.id("textures/entity/automobile/frame/" + variant + "_motorcar.png"),
+                        Motobox.id("frame_motorcar"),
                         WheelBase.basic(32, 12),
                         28,
                         3,
@@ -173,11 +173,11 @@ public record AutomobileFrame(
 
     private static AutomobileFrame truck() {
         return new AutomobileFrame(
-                Automobility.id("_truck"),
+                Motobox.id("_truck"),
                 0.73f,
                 new FrameModel(
-                        Automobility.id("textures/entity/automobile/frame/truck.png"),
-                        Automobility.id("frame_truck"),
+                        Motobox.id("textures/entity/automobile/frame/truck.png"),
+                        Motobox.id("frame_truck"),
                         WheelBase.offset(42, 22, -2),
                         28,
                         3,
@@ -191,11 +191,11 @@ public record AutomobileFrame(
 
     private static AutomobileFrame tractor(String color) {
         return new AutomobileFrame(
-                Automobility.id(color+"_tractor"),
+                Motobox.id(color + "_tractor"),
                 0.9f,
                 new FrameModel(
-                        Automobility.id("textures/entity/automobile/frame/"+color+"_tractor.png"),
-                        Automobility.id("frame_tractor"),
+                        Motobox.id("textures/entity/automobile/frame/" + color + "_tractor.png"),
+                        Motobox.id("frame_tractor"),
                         new WheelBase(
                                 new WheelBase.WheelPos(-2, -7, 1.8f, 0, WheelBase.WheelEnd.BACK, WheelBase.WheelSide.LEFT),
                                 new WheelBase.WheelPos(-2, 7, 1.8f, 180, WheelBase.WheelEnd.BACK, WheelBase.WheelSide.RIGHT),

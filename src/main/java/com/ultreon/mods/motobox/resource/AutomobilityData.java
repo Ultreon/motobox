@@ -1,6 +1,6 @@
 package com.ultreon.mods.motobox.resource;
 
-import com.ultreon.mods.motobox.Automobility;
+import com.ultreon.mods.motobox.Motobox;
 import net.devtech.arrp.api.RRPCallback;
 import net.devtech.arrp.api.RuntimeResourcePack;
 import net.devtech.arrp.json.tags.JTag;
@@ -23,21 +23,21 @@ public enum AutomobilityData {;
     public static void setup() {
         var steepSlopesTag = new JTag();
         for (var id : STEEP_SLOPE_TAG_CANDIDATES) steepSlopesTag.add(id);
-        PACK.addTag(Automobility.id("blocks/steep_slopes"), steepSlopesTag);
+        PACK.addTag(Motobox.id("blocks/steep_slopes"), steepSlopesTag);
 
         var nonSteepSlopesTag = new JTag();
         for (var id : NON_STEEP_SLOPE_TAG_CANDIDATES) nonSteepSlopesTag.add(id);
-        PACK.addTag(Automobility.id("blocks/non_steep_slopes"), nonSteepSlopesTag);
+        PACK.addTag(Motobox.id("blocks/non_steep_slopes"), nonSteepSlopesTag);
 
         var slopesTag = new JTag();
-        slopesTag.tag(Automobility.id("blocks/steep_slopes"));
-        slopesTag.tag(Automobility.id("blocks/non_steep_slopes"));
-        PACK.addTag(Automobility.id("blocks/slopes"), slopesTag);
+        slopesTag.tag(Motobox.id("blocks/steep_slopes"));
+        slopesTag.tag(Motobox.id("blocks/non_steep_slopes"));
+        PACK.addTag(Motobox.id("blocks/slopes"), slopesTag);
 
         var stickySlopesTag = new JTag();
-        stickySlopesTag.tag(Automobility.id("blocks/slopes"));
+        stickySlopesTag.tag(Motobox.id("blocks/slopes"));
         for (var id : STICKY_SLOPE_TAG_CANDIDATES) stickySlopesTag.add(id);
-        PACK.addTag(Automobility.id("blocks/sticky_slopes"), stickySlopesTag);
+        PACK.addTag(Motobox.id("blocks/sticky_slopes"), stickySlopesTag);
 
         for (var p : PROCESSORS) {
             p.accept(PACK);

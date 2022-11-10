@@ -1,7 +1,7 @@
 package com.ultreon.mods.motobox.screen;
 
 import com.mojang.blaze3d.systems.RenderSystem;
-import com.ultreon.mods.motobox.Automobility;
+import com.ultreon.mods.motobox.Motobox;
 import net.minecraft.client.gui.screen.ingame.HandledScreen;
 import net.minecraft.client.gui.screen.ingame.ScreenHandlerProvider;
 import net.minecraft.client.render.GameRenderer;
@@ -11,7 +11,7 @@ import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 
 public class SingleSlotScreen extends HandledScreen<SingleSlotScreenHandler> implements ScreenHandlerProvider<SingleSlotScreenHandler> {
-    private static final Identifier TEXTURE = Automobility.id("textures/gui/container/single_slot.png");
+    private static final Identifier TEXTURE = Motobox.id("textures/gui/container/single_slot.png");
 
     public SingleSlotScreen(SingleSlotScreenHandler handler, PlayerInventory inventory, Text title) {
         super(handler, inventory, title);

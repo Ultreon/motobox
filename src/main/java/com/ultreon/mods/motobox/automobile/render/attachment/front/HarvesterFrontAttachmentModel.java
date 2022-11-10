@@ -1,6 +1,6 @@
 package com.ultreon.mods.motobox.automobile.render.attachment.front;
 
-import com.ultreon.mods.motobox.Automobility;
+import com.ultreon.mods.motobox.Motobox;
 import com.ultreon.mods.motobox.automobile.attachment.front.FrontAttachment;
 import net.minecraft.client.model.ModelPart;
 import net.minecraft.client.render.RenderLayer;
@@ -9,7 +9,7 @@ import net.minecraft.client.render.entity.model.EntityModelLayer;
 import org.jetbrains.annotations.Nullable;
 
 public class HarvesterFrontAttachmentModel extends FrontAttachmentRenderModel {
-    public static final EntityModelLayer MODEL_LAYER = new EntityModelLayer(Automobility.id("automobile/front_attachment/harvester"), "main");
+    public static final EntityModelLayer MODEL_LAYER = new EntityModelLayer(Motobox.id("automobile/front_attachment/harvester"), "main");
 
     private final @Nullable ModelPart roller;
 

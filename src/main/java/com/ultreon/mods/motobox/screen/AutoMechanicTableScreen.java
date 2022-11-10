@@ -1,7 +1,7 @@
 package com.ultreon.mods.motobox.screen;
 
 import com.mojang.blaze3d.systems.RenderSystem;
-import com.ultreon.mods.motobox.Automobility;
+import com.ultreon.mods.motobox.Motobox;
 import com.ultreon.mods.motobox.recipe.AutoMechanicTableRecipe;
 import net.minecraft.client.gui.DrawableHelper;
 import net.minecraft.client.gui.screen.ingame.HandledScreen;
@@ -26,7 +26,7 @@ import java.util.List;
 import java.util.Map;
 
 public class AutoMechanicTableScreen extends HandledScreen<AutoMechanicTableScreenHandler> {
-    private static final Identifier TEXTURE = Automobility.id("textures/gui/container/auto_mechanic_table.png");
+    private static final Identifier TEXTURE = Motobox.id("textures/gui/container/auto_mechanic_table.png");
 
     private static final int RECIPE_BUTTON_SIZE = 17;
     private static final int RECIPE_PANEL_WIDTH = 85;
@@ -79,9 +79,9 @@ public class AutoMechanicTableScreen extends HandledScreen<AutoMechanicTableScre
 
     private static List<Identifier> createDefaultCategories() {
         var list = new ArrayList<Identifier>();
-        list.add(Automobility.id("frames"));
-        list.add(Automobility.id("engines"));
-        list.add(Automobility.id("wheels"));
+        list.add(Motobox.id("frames"));
+        list.add(Motobox.id("engines"));
+        list.add(Motobox.id("wheels"));
 
         return list;
     }

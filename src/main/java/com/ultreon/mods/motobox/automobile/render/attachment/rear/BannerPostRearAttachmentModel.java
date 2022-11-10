@@ -1,7 +1,7 @@
 package com.ultreon.mods.motobox.automobile.render.attachment.rear;
 
 import com.mojang.datafixers.util.Pair;
-import com.ultreon.mods.motobox.Automobility;
+import com.ultreon.mods.motobox.Motobox;
 import com.ultreon.mods.motobox.automobile.attachment.rear.BannerPostRearAttachment;
 import com.ultreon.mods.motobox.automobile.attachment.rear.RearAttachment;
 import net.minecraft.block.entity.BannerPattern;
@@ -21,7 +21,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 
 public class BannerPostRearAttachmentModel extends RearAttachmentRenderModel {
-    public static final EntityModelLayer MODEL_LAYER = new EntityModelLayer(Automobility.id("automobile/rear_attachment/banner_post"), "main");
+    public static final EntityModelLayer MODEL_LAYER = new EntityModelLayer(Motobox.id("automobile/rear_attachment/banner_post"), "main");
 
     private final ModelPart fakePole;
     private final ModelPart pole;

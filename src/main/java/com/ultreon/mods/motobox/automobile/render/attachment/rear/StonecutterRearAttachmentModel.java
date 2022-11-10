@@ -1,6 +1,6 @@
 package com.ultreon.mods.motobox.automobile.render.attachment.rear;
 
-import com.ultreon.mods.motobox.Automobility;
+import com.ultreon.mods.motobox.Motobox;
 import com.ultreon.mods.motobox.automobile.attachment.rear.RearAttachment;
 import net.minecraft.client.model.ModelPart;
 import net.minecraft.client.render.RenderLayer;
@@ -9,7 +9,7 @@ import net.minecraft.client.render.entity.model.EntityModelLayer;
 import org.jetbrains.annotations.Nullable;
 
 public class StonecutterRearAttachmentModel extends RearAttachmentRenderModel {
-    public static final EntityModelLayer MODEL_LAYER = new EntityModelLayer(Automobility.id("automobile/rear_attachment/stonecutter"), "main");
+    public static final EntityModelLayer MODEL_LAYER = new EntityModelLayer(Motobox.id("automobile/rear_attachment/stonecutter"), "main");
 
     private final ModelPart blade;
 

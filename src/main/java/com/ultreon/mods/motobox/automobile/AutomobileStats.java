@@ -1,12 +1,12 @@
 package com.ultreon.mods.motobox.automobile;
 
-import com.ultreon.mods.motobox.Automobility;
+import com.ultreon.mods.motobox.Motobox;
 import net.minecraft.util.Identifier;
 
 import java.util.function.Consumer;
 
 public class AutomobileStats implements StatContainer<AutomobileStats> {
-    public static final Identifier ID = Automobility.id("automobile");
+    public static final Identifier ID = Motobox.id("automobile");
     public static final DisplayStat<AutomobileStats> STAT_ACCELERATION = new DisplayStat<>("acceleration", AutomobileStats::getAcceleration);
     public static final DisplayStat<AutomobileStats> STAT_COMFORTABLE_SPEED = new DisplayStat<>("comfortable_speed", stats -> stats.getComfortableSpeed() * 20);
     public static final DisplayStat<AutomobileStats> STAT_HANDLING = new DisplayStat<>("handling", AutomobileStats::getHandling);

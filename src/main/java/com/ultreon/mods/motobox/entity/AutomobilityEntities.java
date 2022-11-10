@@ -2,7 +2,7 @@ package com.ultreon.mods.motobox.entity;
 
 import com.ultreon.mods.motobox.automobile.render.frame.*;
 import com.ultreon.mods.motobox.entity.render.AutomobileEntityRenderer;
-import com.ultreon.mods.motobox.Automobility;
+import com.ultreon.mods.motobox.Motobox;
 import com.ultreon.mods.motobox.automobile.render.ExhaustFumesModel;
 import com.ultreon.mods.motobox.automobile.render.SkidEffectModel;
 import com.ultreon.mods.motobox.automobile.render.attachment.front.HarvesterFrontAttachmentModel;
@@ -39,11 +39,11 @@ import net.minecraft.util.registry.Registry;
 public enum AutomobilityEntities {;
     public static final EntityType<AutomobileEntity> AUTOMOBILE = Registry.register(
             Registry.ENTITY_TYPE,
-            Automobility.id("automobile"),
+            Motobox.id("automobile"),
             FabricEntityTypeBuilder.<AutomobileEntity>create(SpawnGroup.MISC, AutomobileEntity::new).dimensions(new EntityDimensions(1f, 0.66f, true)).trackedUpdateRate(3).trackRangeChunks(10).build()
     );
 
-    public static final TagKey<EntityType<?>> DASH_PANEL_BOOSTABLES = TagKey.of(Registry.ENTITY_TYPE_KEY, Automobility.id("dash_panel_boostables"));
+    public static final TagKey<EntityType<?>> DASH_PANEL_BOOSTABLES = TagKey.of(Registry.ENTITY_TYPE_KEY, Motobox.id("dash_panel_boostables"));
 
     public static final DamageSource AUTOMOBILE_DAMAGE_SOURCE = new AutomobileDamageSource("automobile");
 

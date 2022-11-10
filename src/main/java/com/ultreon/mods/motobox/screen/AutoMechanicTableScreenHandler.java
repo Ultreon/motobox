@@ -1,6 +1,6 @@
 package com.ultreon.mods.motobox.screen;
 
-import com.ultreon.mods.motobox.Automobility;
+import com.ultreon.mods.motobox.Motobox;
 import com.ultreon.mods.motobox.block.AutomobilityBlocks;
 import com.ultreon.mods.motobox.recipe.AutoMechanicTableRecipe;
 import net.minecraft.entity.player.PlayerEntity;
@@ -38,7 +38,7 @@ public class AutoMechanicTableScreenHandler extends ScreenHandler {
     }
 
     public AutoMechanicTableScreenHandler(int syncId, PlayerInventory playerInv, ScreenHandlerContext ctx) {
-        super(Automobility.AUTO_MECHANIC_SCREEN, syncId);
+        super(Motobox.AUTO_MECHANIC_SCREEN, syncId);
         this.world = playerInv.player.getWorld();
         this.context = ctx;
         this.inputInv = new SimpleInventory(9) {

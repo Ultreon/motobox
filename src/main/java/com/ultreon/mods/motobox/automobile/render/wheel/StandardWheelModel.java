@@ -1,6 +1,6 @@
 package com.ultreon.mods.motobox.automobile.render.wheel;
 
-import com.ultreon.mods.motobox.Automobility;
+import com.ultreon.mods.motobox.Motobox;
 import com.ultreon.mods.motobox.automobile.render.BaseModel;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.entity.EntityRendererFactory;
@@ -9,7 +9,7 @@ import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.math.Vec3f;
 
 public class StandardWheelModel extends BaseModel {
-    public static final EntityModelLayer MODEL_LAYER = new EntityModelLayer(Automobility.id("automobile/wheel/standard"), "main");
+    public static final EntityModelLayer MODEL_LAYER = new EntityModelLayer(Motobox.id("automobile/wheel/standard"), "main");
 
     public StandardWheelModel(EntityRendererFactory.Context ctx) {
         super(RenderLayer::getEntityCutout, ctx, MODEL_LAYER);

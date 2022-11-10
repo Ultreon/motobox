@@ -1,6 +1,6 @@
 package com.ultreon.mods.motobox.util;
 
-import com.ultreon.mods.motobox.Automobility;
+import com.ultreon.mods.motobox.Motobox;
 import com.ultreon.mods.motobox.automobile.AutomobileEngine;
 import com.ultreon.mods.motobox.automobile.AutomobileFrame;
 import com.ultreon.mods.motobox.automobile.AutomobilePrefab;
@@ -205,6 +205,6 @@ public enum AUtils {;
     }
 
     public static ItemStack createPrefabsIcon() {
-        return new AutomobilePrefab(Automobility.id("standard_light_blue"), AutomobileFrame.STANDARD_LIGHT_BLUE, AutomobileWheel.STANDARD, AutomobileEngine.IRON).toStack();
+        return new AutomobilePrefab(Motobox.id("standard_light_blue"), AutomobileFrame.STANDARD_LIGHT_BLUE, AutomobileWheel.STANDARD, AutomobileEngine.IRON).toStack();
     }
 }

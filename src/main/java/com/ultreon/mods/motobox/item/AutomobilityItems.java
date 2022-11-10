@@ -1,6 +1,6 @@
 package com.ultreon.mods.motobox.item;
 
-import com.ultreon.mods.motobox.Automobility;
+import com.ultreon.mods.motobox.Motobox;
 import com.ultreon.mods.motobox.automobile.*;
 import com.ultreon.mods.motobox.automobile.attachment.FrontAttachmentType;
 import com.ultreon.mods.motobox.automobile.attachment.RearAttachmentType;
@@ -25,45 +25,45 @@ import java.util.Map;
 import java.util.function.Function;
 
 public enum AutomobilityItems {;
-    public static final Item CROWBAR = register("crowbar", new TooltipItem(Text.translatable("tooltip.item.motobox.crowbar").formatted(Formatting.BLUE), new Item.Settings().maxCount(1).group(Automobility.GROUP)));
-    public static final Item AUTOMOBILE = register("automobile", new AutomobileItem(new Item.Settings().maxCount(1).group(Automobility.PREFABS)));
-    public static final AutomobileFrameItem AUTOMOBILE_FRAME = register("automobile_frame", new AutomobileFrameItem(new Item.Settings().maxCount(16).group(Automobility.GROUP)));
-    public static final AutomobileWheelItem AUTOMOBILE_WHEEL = register("automobile_wheel", new AutomobileWheelItem(new Item.Settings().group(Automobility.GROUP)));
-    public static final AutomobileEngineItem AUTOMOBILE_ENGINE = register("automobile_engine", new AutomobileEngineItem(new Item.Settings().maxCount(16).group(Automobility.GROUP)));
-    public static final FrontAttachmentItem FRONT_ATTACHMENT = register("front_attachment", new FrontAttachmentItem(new Item.Settings().maxCount(1).group(Automobility.GROUP)));
-    public static final RearAttachmentItem REAR_ATTACHMENT = register("rear_attachment", new RearAttachmentItem(new Item.Settings().maxCount(1).group(Automobility.GROUP)));
+    public static final Item CROWBAR = register("crowbar", new TooltipItem(Text.translatable("tooltip.item.motobox.crowbar").formatted(Formatting.BLUE), new Item.Settings().maxCount(1).group(Motobox.GROUP)));
+    public static final Item AUTOMOBILE = register("automobile", new AutomobileItem(new Item.Settings().maxCount(1).group(Motobox.PREFABS)));
+    public static final AutomobileFrameItem AUTOMOBILE_FRAME = register("automobile_frame", new AutomobileFrameItem(new Item.Settings().maxCount(16).group(Motobox.GROUP)));
+    public static final AutomobileWheelItem AUTOMOBILE_WHEEL = register("automobile_wheel", new AutomobileWheelItem(new Item.Settings().group(Motobox.GROUP)));
+    public static final AutomobileEngineItem AUTOMOBILE_ENGINE = register("automobile_engine", new AutomobileEngineItem(new Item.Settings().maxCount(16).group(Motobox.GROUP)));
+    public static final FrontAttachmentItem FRONT_ATTACHMENT = register("front_attachment", new FrontAttachmentItem(new Item.Settings().maxCount(1).group(Motobox.GROUP)));
+    public static final RearAttachmentItem REAR_ATTACHMENT = register("rear_attachment", new RearAttachmentItem(new Item.Settings().maxCount(1).group(Motobox.GROUP)));
 
     public static void init() {
         AutomobileItem.addPrefabs(
-                new AutomobilePrefab(Automobility.id("wooden_motorcar"), AutomobileFrame.WOODEN_MOTORCAR, AutomobileWheel.CARRIAGE, AutomobileEngine.STONE),
-                new AutomobilePrefab(Automobility.id("copper_motorcar"), AutomobileFrame.COPPER_MOTORCAR, AutomobileWheel.PLATED, AutomobileEngine.COPPER),
-                new AutomobilePrefab(Automobility.id("steel_motorcar"), AutomobileFrame.STEEL_MOTORCAR, AutomobileWheel.STREET, AutomobileEngine.IRON),
-                new AutomobilePrefab(Automobility.id("golden_motorcar"), AutomobileFrame.GOLDEN_MOTORCAR, AutomobileWheel.GILDED, AutomobileEngine.GOLD),
-                new AutomobilePrefab(Automobility.id("bejeweled_motorcar"), AutomobileFrame.BEJEWELED_MOTORCAR, AutomobileWheel.BEJEWELED, AutomobileEngine.DIAMOND),
-                new AutomobilePrefab(Automobility.id("truck"), AutomobileFrame.TRUCK, AutomobileWheel.OFF_ROAD, AutomobileEngine.IRON),
-                new AutomobilePrefab(Automobility.id("standard_white"), AutomobileFrame.STANDARD_WHITE, AutomobileWheel.STANDARD, AutomobileEngine.IRON),
-                new AutomobilePrefab(Automobility.id("standard_orange"), AutomobileFrame.STANDARD_ORANGE, AutomobileWheel.STANDARD, AutomobileEngine.IRON),
-                new AutomobilePrefab(Automobility.id("standard_magenta"), AutomobileFrame.STANDARD_MAGENTA, AutomobileWheel.STANDARD, AutomobileEngine.IRON),
-                new AutomobilePrefab(Automobility.id("standard_light_blue"), AutomobileFrame.STANDARD_LIGHT_BLUE, AutomobileWheel.STANDARD, AutomobileEngine.IRON),
-                new AutomobilePrefab(Automobility.id("standard_yellow"), AutomobileFrame.STANDARD_YELLOW, AutomobileWheel.STANDARD, AutomobileEngine.IRON),
-                new AutomobilePrefab(Automobility.id("standard_lime"), AutomobileFrame.STANDARD_LIME, AutomobileWheel.STANDARD, AutomobileEngine.IRON),
-                new AutomobilePrefab(Automobility.id("standard_pink"), AutomobileFrame.STANDARD_PINK, AutomobileWheel.STANDARD, AutomobileEngine.IRON),
-                new AutomobilePrefab(Automobility.id("standard_gray"), AutomobileFrame.STANDARD_GRAY, AutomobileWheel.STANDARD, AutomobileEngine.IRON),
-                new AutomobilePrefab(Automobility.id("standard_light_gray"), AutomobileFrame.STANDARD_LIGHT_GRAY, AutomobileWheel.STANDARD, AutomobileEngine.IRON),
-                new AutomobilePrefab(Automobility.id("standard_cyan"), AutomobileFrame.STANDARD_CYAN, AutomobileWheel.STANDARD, AutomobileEngine.IRON),
-                new AutomobilePrefab(Automobility.id("standard_purple"), AutomobileFrame.STANDARD_PURPLE, AutomobileWheel.STANDARD, AutomobileEngine.IRON),
-                new AutomobilePrefab(Automobility.id("standard_blue"), AutomobileFrame.STANDARD_BLUE, AutomobileWheel.STANDARD, AutomobileEngine.IRON),
-                new AutomobilePrefab(Automobility.id("standard_brown"), AutomobileFrame.STANDARD_BROWN, AutomobileWheel.STANDARD, AutomobileEngine.IRON),
-                new AutomobilePrefab(Automobility.id("standard_green"), AutomobileFrame.STANDARD_GREEN, AutomobileWheel.STANDARD, AutomobileEngine.IRON),
-                new AutomobilePrefab(Automobility.id("standard_red"), AutomobileFrame.STANDARD_RED, AutomobileWheel.STANDARD, AutomobileEngine.IRON),
-                new AutomobilePrefab(Automobility.id("standard_black"), AutomobileFrame.STANDARD_BLACK, AutomobileWheel.STANDARD, AutomobileEngine.IRON),
-                new AutomobilePrefab(Automobility.id("red_tractor"), AutomobileFrame.RED_TRACTOR, AutomobileWheel.TRACTOR, AutomobileEngine.COPPER),
-                new AutomobilePrefab(Automobility.id("yellow_tractor"), AutomobileFrame.YELLOW_TRACTOR, AutomobileWheel.TRACTOR, AutomobileEngine.COPPER),
-                new AutomobilePrefab(Automobility.id("green_tractor"), AutomobileFrame.GREEN_TRACTOR, AutomobileWheel.TRACTOR, AutomobileEngine.COPPER),
-                new AutomobilePrefab(Automobility.id("blue_tractor"), AutomobileFrame.BLUE_TRACTOR, AutomobileWheel.TRACTOR, AutomobileEngine.COPPER),
-                new AutomobilePrefab(Automobility.id("shopping_cart"), AutomobileFrame.SHOPPING_CART, AutomobileWheel.STEEL, AutomobileEngine.STONE),
-                new AutomobilePrefab(Automobility.id("c_arr"), AutomobileFrame.C_ARR, AutomobileWheel.OFF_ROAD, AutomobileEngine.DIAMOND),
-                new AutomobilePrefab(Automobility.id("pineapple"), AutomobileFrame.PINEAPPLE, AutomobileWheel.TRACTOR, AutomobileEngine.GOLD)
+                new AutomobilePrefab(Motobox.id("wooden_motorcar"), AutomobileFrame.WOODEN_MOTORCAR, AutomobileWheel.CARRIAGE, AutomobileEngine.STONE),
+                new AutomobilePrefab(Motobox.id("copper_motorcar"), AutomobileFrame.COPPER_MOTORCAR, AutomobileWheel.PLATED, AutomobileEngine.COPPER),
+                new AutomobilePrefab(Motobox.id("steel_motorcar"), AutomobileFrame.STEEL_MOTORCAR, AutomobileWheel.STREET, AutomobileEngine.IRON),
+                new AutomobilePrefab(Motobox.id("golden_motorcar"), AutomobileFrame.GOLDEN_MOTORCAR, AutomobileWheel.GILDED, AutomobileEngine.GOLD),
+                new AutomobilePrefab(Motobox.id("bejeweled_motorcar"), AutomobileFrame.BEJEWELED_MOTORCAR, AutomobileWheel.BEJEWELED, AutomobileEngine.DIAMOND),
+                new AutomobilePrefab(Motobox.id("truck"), AutomobileFrame.TRUCK, AutomobileWheel.OFF_ROAD, AutomobileEngine.IRON),
+                new AutomobilePrefab(Motobox.id("standard_white"), AutomobileFrame.STANDARD_WHITE, AutomobileWheel.STANDARD, AutomobileEngine.IRON),
+                new AutomobilePrefab(Motobox.id("standard_orange"), AutomobileFrame.STANDARD_ORANGE, AutomobileWheel.STANDARD, AutomobileEngine.IRON),
+                new AutomobilePrefab(Motobox.id("standard_magenta"), AutomobileFrame.STANDARD_MAGENTA, AutomobileWheel.STANDARD, AutomobileEngine.IRON),
+                new AutomobilePrefab(Motobox.id("standard_light_blue"), AutomobileFrame.STANDARD_LIGHT_BLUE, AutomobileWheel.STANDARD, AutomobileEngine.IRON),
+                new AutomobilePrefab(Motobox.id("standard_yellow"), AutomobileFrame.STANDARD_YELLOW, AutomobileWheel.STANDARD, AutomobileEngine.IRON),
+                new AutomobilePrefab(Motobox.id("standard_lime"), AutomobileFrame.STANDARD_LIME, AutomobileWheel.STANDARD, AutomobileEngine.IRON),
+                new AutomobilePrefab(Motobox.id("standard_pink"), AutomobileFrame.STANDARD_PINK, AutomobileWheel.STANDARD, AutomobileEngine.IRON),
+                new AutomobilePrefab(Motobox.id("standard_gray"), AutomobileFrame.STANDARD_GRAY, AutomobileWheel.STANDARD, AutomobileEngine.IRON),
+                new AutomobilePrefab(Motobox.id("standard_light_gray"), AutomobileFrame.STANDARD_LIGHT_GRAY, AutomobileWheel.STANDARD, AutomobileEngine.IRON),
+                new AutomobilePrefab(Motobox.id("standard_cyan"), AutomobileFrame.STANDARD_CYAN, AutomobileWheel.STANDARD, AutomobileEngine.IRON),
+                new AutomobilePrefab(Motobox.id("standard_purple"), AutomobileFrame.STANDARD_PURPLE, AutomobileWheel.STANDARD, AutomobileEngine.IRON),
+                new AutomobilePrefab(Motobox.id("standard_blue"), AutomobileFrame.STANDARD_BLUE, AutomobileWheel.STANDARD, AutomobileEngine.IRON),
+                new AutomobilePrefab(Motobox.id("standard_brown"), AutomobileFrame.STANDARD_BROWN, AutomobileWheel.STANDARD, AutomobileEngine.IRON),
+                new AutomobilePrefab(Motobox.id("standard_green"), AutomobileFrame.STANDARD_GREEN, AutomobileWheel.STANDARD, AutomobileEngine.IRON),
+                new AutomobilePrefab(Motobox.id("standard_red"), AutomobileFrame.STANDARD_RED, AutomobileWheel.STANDARD, AutomobileEngine.IRON),
+                new AutomobilePrefab(Motobox.id("standard_black"), AutomobileFrame.STANDARD_BLACK, AutomobileWheel.STANDARD, AutomobileEngine.IRON),
+                new AutomobilePrefab(Motobox.id("red_tractor"), AutomobileFrame.RED_TRACTOR, AutomobileWheel.TRACTOR, AutomobileEngine.COPPER),
+                new AutomobilePrefab(Motobox.id("yellow_tractor"), AutomobileFrame.YELLOW_TRACTOR, AutomobileWheel.TRACTOR, AutomobileEngine.COPPER),
+                new AutomobilePrefab(Motobox.id("green_tractor"), AutomobileFrame.GREEN_TRACTOR, AutomobileWheel.TRACTOR, AutomobileEngine.COPPER),
+                new AutomobilePrefab(Motobox.id("blue_tractor"), AutomobileFrame.BLUE_TRACTOR, AutomobileWheel.TRACTOR, AutomobileEngine.COPPER),
+                new AutomobilePrefab(Motobox.id("shopping_cart"), AutomobileFrame.SHOPPING_CART, AutomobileWheel.STEEL, AutomobileEngine.STONE),
+                new AutomobilePrefab(Motobox.id("c_arr"), AutomobileFrame.C_ARR, AutomobileWheel.OFF_ROAD, AutomobileEngine.DIAMOND),
+                new AutomobilePrefab(Motobox.id("pineapple"), AutomobileFrame.PINEAPPLE, AutomobileWheel.TRACTOR, AutomobileEngine.GOLD)
         );
     }
 
@@ -128,6 +128,6 @@ public enum AutomobilityItems {;
     }
 
     public static <T extends Item> T register(String name, T item) {
-        return Registry.register(Registry.ITEM, Automobility.id(name), item);
+        return Registry.register(Registry.ITEM, Motobox.id(name), item);
     }
 }

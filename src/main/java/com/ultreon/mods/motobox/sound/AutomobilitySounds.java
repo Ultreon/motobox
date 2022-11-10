@@ -1,6 +1,6 @@
 package com.ultreon.mods.motobox.sound;
 
-import com.ultreon.mods.motobox.Automobility;
+import com.ultreon.mods.motobox.Motobox;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.util.registry.Registry;
 
@@ -17,7 +17,7 @@ public class AutomobilitySounds {
     public static final SoundEvent CREATIVE_ENGINE = register("entity.automobile.creative_engine");
 
     private static SoundEvent register(String path) {
-        var id = Automobility.id(path);
+        var id = Motobox.id(path);
         return Registry.register(Registry.SOUND_EVENT, id, new SoundEvent(id));
     }
 
