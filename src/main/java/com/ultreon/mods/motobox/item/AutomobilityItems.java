@@ -41,6 +41,7 @@ public enum AutomobilityItems {;
                 new AutomobilePrefab(Automobility.id("golden_motorcar"), AutomobileFrame.GOLDEN_MOTORCAR, AutomobileWheel.GILDED, AutomobileEngine.GOLD),
                 new AutomobilePrefab(Automobility.id("bejeweled_motorcar"), AutomobileFrame.BEJEWELED_MOTORCAR, AutomobileWheel.BEJEWELED, AutomobileEngine.DIAMOND),
                 new AutomobilePrefab(Automobility.id("truck"), AutomobileFrame.TRUCK, AutomobileWheel.OFF_ROAD, AutomobileEngine.IRON),
+                new AutomobilePrefab(Automobility.id("motorbike"), AutomobileFrame.MOTORBIKE, AutomobileWheel.STREET, AutomobileEngine.COPPER),
                 new AutomobilePrefab(Automobility.id("standard_white"), AutomobileFrame.STANDARD_WHITE, AutomobileWheel.STANDARD, AutomobileEngine.IRON),
                 new AutomobilePrefab(Automobility.id("standard_orange"), AutomobileFrame.STANDARD_ORANGE, AutomobileWheel.STANDARD, AutomobileEngine.IRON),
                 new AutomobilePrefab(Automobility.id("standard_magenta"), AutomobileFrame.STANDARD_MAGENTA, AutomobileWheel.STANDARD, AutomobileEngine.IRON),

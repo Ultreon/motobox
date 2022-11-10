@@ -29,7 +29,11 @@ public class WheelBase {
         return new OffsetWheelBase(separationLong, separationWide, offset);
     }
 
-    public static WheelBase bicycle(float separationLong, float separationWide) {
-        return new BicycleWheelBase(separationLong, separationWide);
+    public static WheelBase bicycle(float separationLong) {
+        return new BicycleWheelBase(separationLong);
+    }
+
+    public static WheelBase bicycleOffset(float separationLong, float offset) {
+        return new OffsetBicycleWheelBase(separationLong, offset);
     }
 }

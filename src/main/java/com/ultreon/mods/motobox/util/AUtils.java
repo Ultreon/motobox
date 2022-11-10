@@ -21,6 +21,8 @@ import net.minecraft.util.math.random.Random;
 
 import java.text.DecimalFormat;
 
+// Everyday Chicken: E Edition
+// #qboimemes
 public enum AUtils {;
     /**
      * A format for decimal values displaying the tenths

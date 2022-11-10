@@ -58,6 +58,7 @@ public enum AutomobilityEntities {;
         JsonEM.registerModelLayer(TractorFrameModel.MODEL_LAYER);
         JsonEM.registerModelLayer(MotorcarFrameModel.MODEL_LAYER);
         JsonEM.registerModelLayer(TruckFrameModel.MODEL_LAYER);
+        JsonEM.registerModelLayer(MotorbikeFrameModel.MODEL_LAYER);
         JsonEM.registerModelLayer(ShoppingCartFrameModel.MODEL_LAYER);
         JsonEM.registerModelLayer(CARRFrameModel.MODEL_LAYER);
         JsonEM.registerModelLayer(PineappleFrameModel.MODEL_LAYER);
