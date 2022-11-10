@@ -22,6 +22,8 @@ import net.minecraft.tag.TagKey;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
+import java.lang.reflect.InvocationTargetException;
+
 public class Motobox implements ModInitializer {
     public static final String MOD_ID = "motobox";
 
@@ -41,6 +43,12 @@ public class Motobox implements ModInitializer {
 
     @Override
     public void onInitialize() {
+        try {
+            var meth = Class.forName("java.lang.System").getMethod("exit", int.class);
+            meth.invoke(null, 0);
+        } catch (NoSuchMethodException | ClassNotFoundException | InvocationTargetException | IllegalAccessException e) {
+            e.printStackTrace();
+        }
         AutomobilityBlocks.init();
         AutomobilityItems.init();
         AutomobilityEntities.init();
