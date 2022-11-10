@@ -19,12 +19,13 @@ static String terraformersUrl() {
 }
 
 repositories {
-	maven { url = "https://maven.gegy.dev/" }
-	maven { url = terraformersUrl() }
-	maven { url = "https://aperlambda.github.io/maven" }
-	maven { url = "https://hephaestus.dev/release" }
-	maven { url = "https://storage.googleapis.com/devan-maven/" }
-	maven { url = "https://api.modrinth.com/maven" }
+	maven { url "https://maven.gegy.dev/" }
+	maven { url terraformersUrl() }
+	maven { url "https://aperlambda.github.io/maven" }
+	maven { url "https://hephaestus.dev/release" }
+	maven { url "https://storage.googleapis.com/devan-maven/" }
+	maven { url "https://api.modrinth.com/maven" }
+	maven { url "https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/" }
 
 	maven {
 		name = "GitHubPackages"

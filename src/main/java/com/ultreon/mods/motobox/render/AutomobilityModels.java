@@ -49,6 +49,7 @@ public enum AutomobilityModels {;
         MODELS.put(Automobility.id("frame_pineapple"), PineappleFrameModel::new);
         MODELS.put(Automobility.id("frame_motorcar"), MotorcarFrameModel::new);
         MODELS.put(Automobility.id("frame_truck"), TruckFrameModel::new);
+        MODELS.put(Automobility.id("frame_motorbike"), MotorbikeFrameModel::new);
 //        MODELS.put(Automobility.id("frame_dababy"), DaBabyFrameModel::new);
 
         MODELS.put(Automobility.id("wheel_standard"), StandardWheelModel::new);

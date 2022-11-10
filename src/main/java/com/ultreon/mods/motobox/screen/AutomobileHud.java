@@ -46,7 +46,11 @@ public enum AutomobileHud {;
         if (auto.getTurboCharge() > AutomobileEntity.SMALL_TURBO_TIME) color = 0xFFEA4A;
         if (auto.getTurboCharge() > AutomobileEntity.MEDIUM_TURBO_TIME) color = 0x7DE9FF;
         if (auto.getTurboCharge() > AutomobileEntity.LARGE_TURBO_TIME) color = 0x906EFF;
-        DrawableHelper.drawTextWithShadow(matrices, MinecraftClient.getInstance().textRenderer, Text.literal(AUtils.DEC_TWO_PLACES.format(speed) +" m/s"), 20, 20, color);
+        DrawableHelper.drawTextWithShadow(matrices, MinecraftClient.getInstance().textRenderer, Text.literal(AUtils.DEC_TWO_PLACES.format(convert(speed)) + " km/h"), 20, 20, color);
+    }
+
+    private static float convert(float blockPerSecond) {
+        return (float) (blockPerSecond * 3.6);
     }
 
     private static void renderControlHints(MatrixStack matrices, float alpha) {

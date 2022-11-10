@@ -40,6 +40,7 @@ public record AutomobileFrame(
     public static final AutomobileFrame BEJEWELED_MOTORCAR = REGISTRY.register(motorcar("bejeweled", 0.555f));
 
     public static final AutomobileFrame TRUCK = REGISTRY.register(truck());
+    public static final AutomobileFrame MOTORBIKE = REGISTRY.register(motorbike());
 
     public static final AutomobileFrame STANDARD_WHITE = REGISTRY.register(standard("white"));
     public static final AutomobileFrame STANDARD_ORANGE = REGISTRY.register(standard("orange"));
@@ -173,17 +174,40 @@ public record AutomobileFrame(
 
     private static AutomobileFrame truck() {
         return new AutomobileFrame(
-                Automobility.id("_truck"),
+                Automobility.id("truck"),
                 0.73f,
                 new FrameModel(
                         Automobility.id("textures/entity/automobile/frame/truck.png"),
                         Automobility.id("frame_truck"),
-                        WheelBase.offset(42, 22, -2),
+                        new WheelBase(
+                                new WheelBase.WheelPos(-20, -12, 0.7f, 0, WheelBase.WheelEnd.BACK, WheelBase.WheelSide.LEFT),
+                                new WheelBase.WheelPos(-20, 12, 0.7f, 180, WheelBase.WheelEnd.BACK, WheelBase.WheelSide.RIGHT),
+                                new WheelBase.WheelPos(22, -12, 0.7f, 0, WheelBase.WheelEnd.FRONT, WheelBase.WheelSide.LEFT),
+                                new WheelBase.WheelPos(22, 12, 0.7f, 180, WheelBase.WheelEnd.FRONT, WheelBase.WheelSide.RIGHT)
+                        ),
                         28,
-                        3,
+                        3.5f,
+                        -18,
+                        2,
+                        34,
+                        22
+                )
+        );
+    }
+
+    private static AutomobileFrame motorbike() {
+        return new AutomobileFrame(
+                Automobility.id("motorbike"),
+                0.73f,
+                new FrameModel(
+                        Automobility.id("textures/entity/automobile/frame/motorbike.png"),
+                        Automobility.id("frame_motorbike"),
+                        WheelBase.bicycleOffset(34, 0),
+                        28,
+                        3.5f,
                         18,
                         2,
-                        23,
+                        22,
                         22
                 )
         );
