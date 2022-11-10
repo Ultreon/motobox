@@ -26,14 +26,19 @@ repositories {
 	maven { url = "https://storage.googleapis.com/devan-maven/" }
 	maven { url = "https://api.modrinth.com/maven" }
 
-	maven {
-		name = "GitHubPackages"
-		url = uri("https://maven.pkg.github.com/Ultreon/myron-updated")
-		credentials {
-			username = rootProject.hasProperty("gpr.user") ? rootProject.property("gpr.user") : System.getenv("USERNAME")
-			password = rootProject.hasProperty("gpr.key") ? rootProject.property("gpr.key") : System.getenv("TOKEN")
-		}
+	flatDir {
+		dir "libs"
 	}
+
+//	maven {
+//		name = "GitHubPackages"
+//		url = uri("https://maven.pkg.github.com/Ultreon/myron-updated")
+//		credentials {
+//			username = rootProject.hasProperty("gpr.user") ? rootProject.property("gpr.user") : System.getenv("USERNAME")
+//			password = rootProject.hasProperty("gpr.key") ? rootProject.property("gpr.key") : System.getenv("TOKEN")
+//		}
+//	}
+
 }
 
 dependencies {
@@ -54,9 +59,11 @@ dependencies {
 		exclude group: 'com.google.guava'
 	}
 
-	// OBJ loader
-	modImplementation "com.ultreon.mods:myron-updated:${project.myron_version}"
-	include "com.ultreon.mods:myron-updated:${project.myron_version}"
+//	// OBJ loader
+//	modImplementation "com.ultreon.mods:myron-updated:${project.myron_version}"
+//	include "com.ultreon.mods:myron-updated:${project.myron_version}"
+
+	modImplementation(include("fgwergsf.ehdtkfd:myron"))
 
 	// Json't
 	modImplementation "net.devtech:arrp:${project.arrp_version}"
