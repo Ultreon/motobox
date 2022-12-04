@@ -1,6 +1,6 @@
 package com.ultreon.mods.motobox.mixin;
 
-import com.ultreon.mods.motobox.entity.AutomobileEntity;
+import com.ultreon.mods.motobox.entity.VehicleEntity;
 import net.minecraft.network.packet.c2s.play.ClientCommandC2SPacket;
 import net.minecraft.server.network.ServerPlayNetworkHandler;
 import net.minecraft.server.network.ServerPlayerEntity;
@@ -15,11 +15,11 @@ public class ServerPlayNetworkHandlerMixin {
     @Shadow public ServerPlayerEntity player;
 
     @Inject(method = "onClientCommand", at = @At(value = "INVOKE", target = "Lnet/minecraft/server/network/ServerPlayerEntity;updateLastActionTime()V", shift = At.Shift.AFTER), cancellable = true)
-    private void automobility$openAutomobileInventory(ClientCommandC2SPacket packet, CallbackInfo ci) {
+    private void motobox$openVehicleInventory(ClientCommandC2SPacket packet, CallbackInfo ci) {
         var vehicle = this.player.getVehicle();
-        if (packet.getMode() == ClientCommandC2SPacket.Mode.OPEN_INVENTORY && vehicle instanceof AutomobileEntity automobile) {
-            if (automobile.hasInventory()) {
-                automobile.openInventory(this.player);
+        if (packet.getMode() == ClientCommandC2SPacket.Mode.OPEN_INVENTORY && vehicle instanceof VehicleEntity vehicleEntity) {
+            if (vehicleEntity.hasInventory()) {
+                vehicleEntity.openInventory(this.player);
                 ci.cancel();
             }
         }

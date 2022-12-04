@@ -8,7 +8,7 @@
         {"tag": "minecraft:planks"}
     ],
     "result": {
-        "item": "motobox:automobile_wheel",
-        "component": "motobox:carriage"
+      "item": "motobox:vehicle_wheel",
+      "component": "motobox:carriage"
     }
 }

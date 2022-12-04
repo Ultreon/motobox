@@ -1,7 +1,7 @@
 package com.ultreon.mods.motobox.mixin;
 
-import com.ultreon.mods.motobox.automobile.attachment.rear.BaseChestRearAttachment;
 import com.ultreon.mods.motobox.util.duck.EnderChestInventoryDuck;
+import com.ultreon.mods.motobox.vehicle.attachment.rear.BaseChestRearAttachment;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.EnderChestInventory;
 import org.jetbrains.annotations.Nullable;
@@ -13,32 +13,32 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(EnderChestInventory.class)
 public class EnderChestInventoryMixin implements EnderChestInventoryDuck {
-    private @Nullable BaseChestRearAttachment automobility$activeAttachment = null;
+    private @Nullable BaseChestRearAttachment motobox$activeAttachment = null;
 
     @Override
-    public void automobility$setActiveAttachment(BaseChestRearAttachment attachment) {
-        this.automobility$activeAttachment = attachment;
+    public void motobox$setActiveAttachment(BaseChestRearAttachment attachment) {
+        this.motobox$activeAttachment = attachment;
     }
 
     @Inject(method = "canPlayerUse", at = @At("HEAD"), cancellable = true)
-    private void automobility$allowPlayerUseWithAttachment(PlayerEntity player, CallbackInfoReturnable<Boolean> cir) {
-        if (this.automobility$activeAttachment != null) {
+    private void motobox$allowPlayerUseWithAttachment(PlayerEntity player, CallbackInfoReturnable<Boolean> cir) {
+        if (this.motobox$activeAttachment != null) {
             cir.setReturnValue(true);
         }
     }
 
     @Inject(method = "onOpen", at = @At("TAIL"))
-    private void automobility$openActiveAttachment(PlayerEntity player, CallbackInfo ci) {
-        if (this.automobility$activeAttachment != null) {
-            this.automobility$activeAttachment.open(player);
+    private void motobox$openActiveAttachment(PlayerEntity player, CallbackInfo ci) {
+        if (this.motobox$activeAttachment != null) {
+            this.motobox$activeAttachment.open(player);
         }
     }
 
     @Inject(method = "onClose", at = @At("TAIL"))
-    private void automobility$closeActiveAttachment(PlayerEntity player, CallbackInfo ci) {
-        if (this.automobility$activeAttachment != null) {
-            this.automobility$activeAttachment.close(player);
+    private void motobox$closeActiveAttachment(PlayerEntity player, CallbackInfo ci) {
+        if (this.motobox$activeAttachment != null) {
+            this.motobox$activeAttachment.close(player);
         }
-        this.automobility$activeAttachment = null;
+        this.motobox$activeAttachment = null;
     }
 }

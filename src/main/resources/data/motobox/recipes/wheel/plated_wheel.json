@@ -8,7 +8,7 @@
         {"tag": "minecraft:logs"}
     ],
     "result": {
-        "item": "motobox:automobile_wheel",
-        "component": "motobox:plated"
+      "item": "motobox:vehicle_wheel",
+      "component": "motobox:plated"
     }
 }

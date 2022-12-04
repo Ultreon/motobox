@@ -1,21 +1,30 @@
-# Original Mod [[Automobility]](https://github.com/FoundationGames/Automobility)
+# Forked from [[Automobility]](https://github.com/FoundationGames/Automobility)
 
-![Automobility](./md/banner.png)
+# This project is made as a commission for someone.
+
+*Note that the text about the fork isn't at the title anymore. That's because I restored it from a backup.*
+
+![Motobox](./md/banner.png)
 
 ### A Minecraft mod adding customizable vehicles.
 
 ## Available for Fabric/Quilt
-- Requires **[Fabric API](https://modrinth.com/mod/fabric-api)** (Fabric) or **[QSL](https://modrinth.com/mod/qsl)** (Quilt)
+
+- Requires **[Fabric API](https://modrinth.com/mod/fabric-api)** (Fabric) or **[QSL](https://modrinth.com/mod/qsl)** (
+  Quilt)
 
 **Support for Forge or old versions is NOT PLANNED.**
 
 ## Getting Started
-- **Recipes:** Crafting recipes can be viewed using [**EMI**](https://www.curseforge.com/minecraft/mc-mods/emi).
-- **Automobile Parts:** Craft an Auto Mechanic Table. Use the GUI to craft the frame, engine, and wheels for your automobile. You can optionally craft an attachment.
-- **Building your Automobile:** Craft an Automobile Assembler, as well as a Crowbar. Place parts on the assembler until the vehicle is complete. Use a crowbar to destroy the vehicle. After building, add your attachments.
 
-![Automobile Construction](./md/construction.png)
-![Automobile Types](./md/parking.png)
+- **Recipes:** Crafting recipes can be viewed using [**EMI**](https://www.curseforge.com/minecraft/mc-mods/emi).
+- **Vehicle Parts:** Craft an Auto Mechanic Table. Use the GUI to craft the frame, engine, and wheels for your
+  automobile. You can optionally craft an attachment.
+- **Building your Vehicle:** Craft an Vehicle Assembler, as well as a Crowbar. Place parts on the assembler until the
+  vehicle is complete. Use a crowbar to destroy the vehicle. After building, add your attachments.
+
+![Vehicle Construction](./md/construction.png)
+![Vehicle Types](./md/parking.png)
 
 ## Driving
 - W - Accelerate

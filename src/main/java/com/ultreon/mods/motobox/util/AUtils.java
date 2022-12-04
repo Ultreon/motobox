@@ -1,12 +1,12 @@
 package com.ultreon.mods.motobox.util;
 
-import com.ultreon.mods.motobox.Automobility;
-import com.ultreon.mods.motobox.automobile.AutomobileEngine;
-import com.ultreon.mods.motobox.automobile.AutomobileFrame;
-import com.ultreon.mods.motobox.automobile.AutomobilePrefab;
-import com.ultreon.mods.motobox.automobile.AutomobileWheel;
-import com.ultreon.mods.motobox.block.AutomobilityBlocks;
-import com.ultreon.mods.motobox.item.AutomobilityItems;
+import com.ultreon.mods.motobox.Motobox;
+import com.ultreon.mods.motobox.vehicle.VehicleEngine;
+import com.ultreon.mods.motobox.vehicle.VehicleFrame;
+import com.ultreon.mods.motobox.vehicle.VehiclePrefab;
+import com.ultreon.mods.motobox.vehicle.VehicleWheel;
+import com.ultreon.mods.motobox.block.MotoboxBlocks;
+import com.ultreon.mods.motobox.item.MotoboxItems;
 import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.client.render.model.BakedModel;
 import net.minecraft.client.render.model.BakedQuad;
@@ -39,7 +39,7 @@ public enum AUtils {;
 
     /**
      * Flag to allow entities to step up blocks without being on the ground
-     * (necessary for automobiles, which update movement coarsely and might
+     * (necessary for vehicles, which update movement coarsely and might
      * confuse the server moving quickly through holes)
      */
     public static boolean IGNORE_ENTITY_GROUND_CHECK_STEPPING = false;
@@ -199,14 +199,14 @@ public enum AUtils {;
     }
 
     public static ItemStack createGroupIcon() {
-        return new ItemStack(AutomobilityItems.CROWBAR);
+        return new ItemStack(MotoboxItems.CROWBAR);
     }
 
     public static ItemStack createCourseElementsIcon() {
-        return new ItemStack(AutomobilityBlocks.SLOPED_DASH_PANEL);
+        return new ItemStack(MotoboxBlocks.SLOPED_DASH_PANEL);
     }
 
     public static ItemStack createPrefabsIcon() {
-        return new AutomobilePrefab(Automobility.id("standard_light_blue"), AutomobileFrame.STANDARD_LIGHT_BLUE, AutomobileWheel.STANDARD, AutomobileEngine.IRON).toStack();
+        return new VehiclePrefab(Motobox.id("standard_light_blue"), VehicleFrame.TRUCK, VehicleWheel.STANDARD, VehicleEngine.IRON).toStack();
     }
 }

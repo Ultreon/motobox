@@ -10,7 +10,7 @@
         {"item": "minecraft:diamond"}
     ],
     "result": {
-        "item": "motobox:automobile_engine",
-        "component": "motobox:diamond"
+      "item": "motobox:vehicle_engine",
+      "component": "motobox:diamond"
     }
 }

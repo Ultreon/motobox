@@ -11,7 +11,7 @@
         {"item": "minecraft:iron_ingot"}
     ],
     "result": {
-        "item": "motobox:automobile_frame",
-        "component": "motobox:standard_yellow"
+      "item": "motobox:vehicle_frame",
+      "component": "motobox:standard_yellow"
     }
 }

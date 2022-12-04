@@ -8,8 +8,8 @@
         {"item": "minecraft:black_wool"}
     ],
     "result": {
-        "item": "motobox:automobile_wheel",
-        "count": 2,
-        "component": "motobox:off_road"
+      "item": "motobox:vehicle_wheel",
+      "count": 2,
+      "component": "motobox:off_road"
     }
 }

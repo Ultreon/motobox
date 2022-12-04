@@ -1,7 +1,7 @@
 package com.ultreon.mods.motobox.screen;
 
-import com.ultreon.mods.motobox.Automobility;
-import com.ultreon.mods.motobox.block.AutomobilityBlocks;
+import com.ultreon.mods.motobox.Motobox;
+import com.ultreon.mods.motobox.block.MotoboxBlocks;
 import com.ultreon.mods.motobox.recipe.AutoMechanicTableRecipe;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
@@ -38,7 +38,7 @@ public class AutoMechanicTableScreenHandler extends ScreenHandler {
     }
 
     public AutoMechanicTableScreenHandler(int syncId, PlayerInventory playerInv, ScreenHandlerContext ctx) {
-        super(Automobility.AUTO_MECHANIC_SCREEN, syncId);
+        super(Motobox.AUTO_MECHANIC_SCREEN, syncId);
         this.world = playerInv.player.getWorld();
         this.context = ctx;
         this.inputInv = new SimpleInventory(9) {
@@ -124,7 +124,7 @@ public class AutoMechanicTableScreenHandler extends ScreenHandler {
 
     @Override
     public boolean canUse(PlayerEntity player) {
-        return canUse(this.context, player, AutomobilityBlocks.AUTO_MECHANIC_TABLE);
+        return canUse(this.context, player, MotoboxBlocks.AUTO_MECHANIC_TABLE);
     }
 
     @Override

@@ -2,7 +2,7 @@ package com.ultreon.mods.motobox.recipe;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonSyntaxException;
-import com.ultreon.mods.motobox.item.AutomobileComponentItem;
+import com.ultreon.mods.motobox.item.VehicleComponentItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.recipe.Ingredient;
@@ -20,7 +20,7 @@ public class AutoMechanicTableRecipeSerializer implements RecipeSerializer<AutoM
         int count = obj.has("count") ? obj.get("count").getAsInt() : 1;
         var stack = Registry.ITEM.getOrEmpty(id).map(i -> new ItemStack(i, count)).orElse(ItemStack.EMPTY);
 
-        if (obj.has("component") && stack.getItem() instanceof AutomobileComponentItem<?> item) {
+        if (obj.has("component") && stack.getItem() instanceof VehicleComponentItem<?> item) {
             var component = Identifier.tryParse(obj.get("component").getAsString());
             if (component != null) {
                 item.setComponent(stack, component);

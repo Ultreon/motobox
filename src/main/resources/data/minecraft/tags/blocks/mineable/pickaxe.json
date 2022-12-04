@@ -2,6 +2,6 @@
   "replace": false,
   "values": [
     "motobox:auto_mechanic_table",
-    "motobox:automobile_assembler"
+    "motobox:vehicle_assembler"
   ]
 }

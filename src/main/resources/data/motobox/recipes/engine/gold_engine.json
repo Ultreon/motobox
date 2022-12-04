@@ -10,7 +10,7 @@
         {"item": "minecraft:iron_ingot"}
     ],
     "result": {
-        "item": "motobox:automobile_engine",
-        "component": "motobox:gold"
+      "item": "motobox:vehicle_engine",
+      "component": "motobox:gold"
     }
 }

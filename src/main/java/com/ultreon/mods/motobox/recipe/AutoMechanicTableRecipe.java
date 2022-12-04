@@ -1,6 +1,6 @@
 package com.ultreon.mods.motobox.recipe;
 
-import com.ultreon.mods.motobox.Automobility;
+import com.ultreon.mods.motobox.Motobox;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.inventory.SimpleInventory;
 import net.minecraft.item.ItemStack;
@@ -18,8 +18,9 @@ import java.util.function.Consumer;
 import java.util.stream.Collectors;
 
 public class AutoMechanicTableRecipe implements Recipe<SimpleInventory>, Comparable<AutoMechanicTableRecipe> {
-    public static final Identifier ID = Automobility.id("auto_mechanic_table");
-    public static final RecipeType<AutoMechanicTableRecipe> TYPE = new RecipeType<>() {};
+    public static final Identifier ID = Motobox.id("auto_mechanic_table");
+    public static final RecipeType<AutoMechanicTableRecipe> TYPE = new RecipeType<>() {
+    };
     private final Identifier id;
 
     protected final Identifier category;

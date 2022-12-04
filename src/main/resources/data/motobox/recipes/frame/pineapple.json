@@ -8,7 +8,7 @@
         {"tag": "minecraft:flowers"}
     ],
     "result": {
-        "item": "motobox:automobile_frame",
-        "component": "motobox:pineapple"
+      "item": "motobox:vehicle_frame",
+      "component": "motobox:pineapple"
     }
 }

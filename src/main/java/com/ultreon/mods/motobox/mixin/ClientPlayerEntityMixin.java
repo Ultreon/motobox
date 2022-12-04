@@ -1,6 +1,6 @@
 package com.ultreon.mods.motobox.mixin;
 
-import com.ultreon.mods.motobox.entity.AutomobileEntity;
+import com.ultreon.mods.motobox.entity.VehicleEntity;
 import com.ultreon.mods.motobox.util.midnightcontrols.ControllerUtils;
 import net.minecraft.client.input.Input;
 import net.minecraft.client.network.ClientPlayerEntity;
@@ -16,9 +16,9 @@ public class ClientPlayerEntityMixin {
     public Input input;
 
     @Inject(method = "tickRiding", at = @At("TAIL"))
-    public void automobility$setAutomobileInputs(CallbackInfo ci) {
-        ClientPlayerEntity self = (ClientPlayerEntity)(Object)this;
-        if (self.getVehicle() instanceof AutomobileEntity vehicle) {
+    public void motobox$setVehicleInputs(CallbackInfo ci) {
+        ClientPlayerEntity self = (ClientPlayerEntity) (Object) this;
+        if (self.getVehicle() instanceof VehicleEntity vehicle) {
             if (ControllerUtils.inControllerMode()) {
                 vehicle.provideClientInput(
                         ControllerUtils.accelerating(),

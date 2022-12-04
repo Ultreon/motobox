@@ -13,7 +13,7 @@ public class ModelElementDeserializerMixin {
              i am inevitable
      */
     @Inject(method = "deserializeRotationAngle(Lcom/google/gson/JsonObject;)F", at = @At("HEAD"), cancellable = true)
-    private void automobility$letAtanOfZeroPointFiveBeAValidBlockModelCuboidRotationAngle(JsonObject object, CallbackInfoReturnable<Float> cir) {
+    private void motobox$letAtanOfZeroPointFiveBeAValidBlockModelCuboidRotationAngle(JsonObject object, CallbackInfoReturnable<Float> cir) {
         float f = JsonHelper.getFloat(object, "angle");
         if (f >= 26.5 && f <= 26.6) cir.setReturnValue(f);
     }

@@ -1,6 +1,6 @@
 package com.ultreon.mods.motobox.block;
 
-import com.ultreon.mods.motobox.entity.AutomobileEntity;
+import com.ultreon.mods.motobox.entity.VehicleEntity;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.ShapeContext;
@@ -27,8 +27,8 @@ public class LaunchGelBlock extends Block {
     public void onEntityCollision(BlockState state, World world, BlockPos pos, Entity entity) {
         super.onEntityCollision(state, world, pos, entity);
 
-        if (entity instanceof AutomobileEntity automobile && automobile.automobileOnGround()) {
-            automobile.boost(0.14f, 7);
+        if (entity instanceof VehicleEntity vehicle && vehicle.vehicleOnGround()) {
+            vehicle.boost(0.14f, 7);
         }
     }
 

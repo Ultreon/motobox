@@ -12,7 +12,7 @@
         {"item": "minecraft:copper_ingot"}
     ],
     "result": {
-        "item": "motobox:automobile_frame",
-        "component": "motobox:copper_motorcar"
+      "item": "motobox:vehicle_frame",
+      "component": "motobox:copper_motorcar"
     }
 }

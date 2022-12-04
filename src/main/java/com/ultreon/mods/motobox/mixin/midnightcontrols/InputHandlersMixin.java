@@ -1,7 +1,7 @@
 package com.ultreon.mods.motobox.mixin.midnightcontrols;
 
-import com.ultreon.mods.motobox.entity.AutomobileEntity;
-import com.ultreon.mods.motobox.util.midnightcontrols.AutomobilityMidnightControls;
+import com.ultreon.mods.motobox.entity.VehicleEntity;
+import com.ultreon.mods.motobox.util.midnightcontrols.MotoboxMidnightControls;
 import eu.midnightdust.midnightcontrols.client.controller.ButtonBinding;
 import eu.midnightdust.midnightcontrols.client.controller.InputHandlers;
 import net.minecraft.client.MinecraftClient;
@@ -18,10 +18,10 @@ import java.util.Arrays;
 @Mixin(value = InputHandlers.class, remap = false)
 public class InputHandlersMixin {
     @Inject(method = "inGame", at = @At("HEAD"), cancellable = true)
-    private static void automobility$makeAutomobileInputsWork(@NotNull MinecraftClient client, @NotNull ButtonBinding binding, CallbackInfoReturnable<Boolean> cir) {
+    private static void motobox$makeVehicleInputsWork(@NotNull MinecraftClient client, @NotNull ButtonBinding binding, CallbackInfoReturnable<Boolean> cir) {
         var player = client.player;
-        if (!(player == null || !(player.getVehicle() instanceof AutomobileEntity))) {
-            for (ButtonBinding ab : AutomobilityMidnightControls.AUTOMOBILITY_BINDINGS) {
+        if (!(player == null || !(player.getVehicle() instanceof VehicleEntity))) {
+            for (ButtonBinding ab : MotoboxMidnightControls.AUTOMOBILITY_BINDINGS) {
                 if (Arrays.equals(ab.getButton(), binding.getButton())) cir.setReturnValue(false);
             }
         }

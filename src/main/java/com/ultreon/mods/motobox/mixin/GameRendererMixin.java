@@ -1,6 +1,6 @@
 package com.ultreon.mods.motobox.mixin;
 
-import com.ultreon.mods.motobox.entity.AutomobileEntity;
+import com.ultreon.mods.motobox.entity.VehicleEntity;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.Camera;
 import net.minecraft.client.render.GameRenderer;
@@ -19,14 +19,14 @@ public class GameRendererMixin {
     private float tickDelta = 0f;
 
     @Inject(method = "getFov", at = @At("HEAD"))
-    private void automobility$cacheGetFovArgs(Camera camera, float tickDelta, boolean changingFov, CallbackInfoReturnable<Double> cir) {
+    private void motobox$cacheGetFovArgs(Camera camera, float tickDelta, boolean changingFov, CallbackInfoReturnable<Double> cir) {
         this.tickDelta = tickDelta;
     }
 
     @ModifyVariable(method = "getFov", at = @At(value = "RETURN", ordinal = 1, shift = At.Shift.BEFORE), index = 4)
-    private double automobility$applyBoostFovEffect(double old) {
+    private double motobox$applyBoostFovEffect(double old) {
         var player = client.player;
-        if (player.getVehicle() instanceof AutomobileEntity auto) {
+        if (player.getVehicle() instanceof VehicleEntity auto) {
             return old + ((auto.getBoostSpeed(tickDelta) * 18) * client.options.getFovEffectScale().getValue());
         }
         return old;

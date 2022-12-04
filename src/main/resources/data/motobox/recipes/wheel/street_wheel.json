@@ -8,7 +8,7 @@
         {"item": "minecraft:cobbled_deepslate"}
     ],
     "result": {
-        "item": "motobox:automobile_wheel",
-        "component": "motobox:street"
+      "item": "motobox:vehicle_wheel",
+      "component": "motobox:street"
     }
 }

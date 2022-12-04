@@ -10,7 +10,7 @@
         {"item": "minecraft:iron_bars"}
     ],
     "result": {
-        "item": "motobox:automobile_frame",
-        "component": "motobox:blue_tractor"
+      "item": "motobox:vehicle_frame",
+      "component": "motobox:blue_tractor"
     }
 }

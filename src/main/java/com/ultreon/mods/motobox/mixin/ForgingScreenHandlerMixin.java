@@ -1,6 +1,6 @@
 package com.ultreon.mods.motobox.mixin;
 
-import com.ultreon.mods.motobox.screen.AutomobileScreenHandlerContext;
+import com.ultreon.mods.motobox.screen.VehicleScreenHandlerContext;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.screen.ForgingScreenHandler;
@@ -21,8 +21,8 @@ public abstract class ForgingScreenHandlerMixin {
     @Inject(
             method = "canUse(Lnet/minecraft/entity/player/PlayerEntity;)Z",
             at = @At("HEAD"), cancellable = true)
-    private void automobility$allowForgingScreenAutomobileSpoof(PlayerEntity player, CallbackInfoReturnable<Boolean> cir) {
-        if (this.context instanceof AutomobileScreenHandlerContext ctx) {
+    private void motobox$allowForgingScreenVehicleSpoof(PlayerEntity player, CallbackInfoReturnable<Boolean> cir) {
+        if (this.context instanceof VehicleScreenHandlerContext ctx) {
             boolean isClose = ctx.get((world, pos) -> (player.getBlockPos().getSquaredDistance(pos) < 64), true);
             if (isClose && this.canUse(ctx.getAttachmentBlockState())) {
                 cir.setReturnValue(true);

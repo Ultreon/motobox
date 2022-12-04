@@ -7,8 +7,8 @@
         {"item": "minecraft:iron_ingot"}
     ],
     "result": {
-        "item": "motobox:automobile_wheel",
-        "count": 2,
-        "component": "motobox:steel"
+      "item": "motobox:vehicle_wheel",
+      "count": 2,
+      "component": "motobox:steel"
     }
 }

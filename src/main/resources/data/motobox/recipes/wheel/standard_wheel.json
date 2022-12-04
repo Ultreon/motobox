@@ -7,7 +7,7 @@
         {"item": "minecraft:iron_nugget"}
     ],
     "result": {
-        "item": "motobox:automobile_wheel",
-        "component": "motobox:standard"
+      "item": "motobox:vehicle_wheel",
+      "component": "motobox:standard"
     }
 }

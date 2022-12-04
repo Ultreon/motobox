@@ -10,7 +10,7 @@
         {"tag": "minecraft:logs"}
     ],
     "result": {
-        "item": "motobox:automobile_engine",
-        "component": "motobox:stone"
+      "item": "motobox:vehicle_engine",
+      "component": "motobox:stone"
     }
 }

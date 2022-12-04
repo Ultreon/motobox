@@ -15,7 +15,7 @@ public class ClientPlayerInteractionManagerMixin {
     @Shadow @Final private MinecraftClient client;
 
     @Inject(method = "hasRidingInventory", at = @At("HEAD"), cancellable = true)
-    private void automobility$allowCustomRidingInventories(CallbackInfoReturnable<Boolean> cir) {
+    private void motobox$allowCustomRidingInventories(CallbackInfoReturnable<Boolean> cir) {
         if (this.client.player != null && this.client.player.getVehicle() instanceof EntityWithInventory invEntity && invEntity.hasInventory()) {
             cir.setReturnValue(true);
         }

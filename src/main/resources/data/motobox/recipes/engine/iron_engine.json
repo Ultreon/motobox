@@ -10,7 +10,7 @@
         {"tag": "minecraft:stone_crafting_materials"}
     ],
     "result": {
-        "item": "motobox:automobile_engine",
-        "component": "motobox:iron"
+      "item": "motobox:vehicle_engine",
+      "component": "motobox:iron"
     }
 }

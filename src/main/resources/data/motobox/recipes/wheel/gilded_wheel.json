@@ -8,7 +8,7 @@
         {"item": "minecraft:nether_brick"}
     ],
     "result": {
-        "item": "motobox:automobile_wheel",
-        "component": "motobox:gilded"
+      "item": "motobox:vehicle_wheel",
+      "component": "motobox:gilded"
     }
 }

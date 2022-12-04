@@ -1,7 +1,7 @@
 package com.ultreon.mods.motobox.block;
 
-import com.ultreon.mods.motobox.entity.AutomobileEntity;
-import com.ultreon.mods.motobox.entity.AutomobilityEntities;
+import com.ultreon.mods.motobox.entity.MotoboxEntities;
+import com.ultreon.mods.motobox.entity.VehicleEntity;
 import net.minecraft.block.*;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
@@ -78,9 +78,9 @@ public class DashPanelBlock extends HorizontalFacingBlock implements Waterloggab
     }
 
     public static void onCollideWithDashPanel(Entity entity) {
-        if (entity instanceof AutomobileEntity auto) {
+        if (entity instanceof VehicleEntity auto) {
             auto.boost(0.45f, 50);
-        } else if (entity.getType().isIn(AutomobilityEntities.DASH_PANEL_BOOSTABLES)) {
+        } else if (entity.getType().isIn(MotoboxEntities.DASH_PANEL_BOOSTABLES)) {
             if (entity instanceof LivingEntity living) {
                 living.addStatusEffect(new StatusEffectInstance(StatusEffects.SPEED, 50, 20, true, false, false));
             }

@@ -15,7 +15,7 @@ import java.util.Map;
 @Mixin(EntityRenderers.class)
 public class EntityRenderersMixin {
     @Inject(method = "reloadEntityRenderers", at = @At("HEAD"))
-    private static void automobility$reloadContextListeners(EntityRendererFactory.Context ctx, CallbackInfoReturnable<Map<EntityType<?>, EntityRenderer<?>>> cir) {
+    private static void motobox$reloadContextListeners(EntityRendererFactory.Context ctx, CallbackInfoReturnable<Map<EntityType<?>, EntityRenderer<?>>> cir) {
         EntityRenderHelper.reload(ctx);
     }
 }
