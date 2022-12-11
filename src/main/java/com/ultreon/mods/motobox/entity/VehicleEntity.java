@@ -502,6 +502,9 @@ public class VehicleEntity extends Entity implements RenderableVehicle, EntityWi
     }
 
     public boolean hasSpaceForPassengers() {
+        if (frame.id().equals(id("truck"))) {
+            return (this.rearAttachment.isRideable()) ? (this.getPassengerList().size() < 4) : (this.getPassengerList().size() < 3);
+        }
         return (this.rearAttachment.isRideable()) ? (this.getPassengerList().size() < 2) : (!this.hasPassengers());
     }
 
