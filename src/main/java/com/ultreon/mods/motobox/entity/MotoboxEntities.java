@@ -9,6 +9,7 @@ import com.ultreon.mods.motobox.vehicle.render.attachment.front.MobControllerFro
 import com.ultreon.mods.motobox.vehicle.render.attachment.rear.*;
 import com.ultreon.mods.motobox.vehicle.render.engine.*;
 import com.ultreon.mods.motobox.vehicle.render.frame.MotorbikeFrameModel;
+import com.ultreon.mods.motobox.vehicle.render.frame.RustyCarFrameModel;
 import com.ultreon.mods.motobox.vehicle.render.frame.TruckFrameModel;
 import com.ultreon.mods.motobox.vehicle.render.wheel.*;
 import io.github.foundationgames.jsonem.JsonEM;
@@ -45,7 +46,10 @@ public enum MotoboxEntities {
 
         EntityModelLayerRegistry.registerModelLayer(TruckFrameModel.MODEL_LAYER, TruckFrameModel::createBodyLayer);
         EntityModelLayerRegistry.registerModelLayer(MotorbikeFrameModel.MODEL_LAYER, MotorbikeFrameModel::createBodyLayer);
+        EntityModelLayerRegistry.registerModelLayer(RustyCarFrameModel.MODEL_LAYER, RustyCarFrameModel::createBodyLayer);
         EntityModelLayerRegistry.registerModelLayer(TrailerRearAttachmentRenderModel.MODEL_LAYER, TrailerRearAttachmentRenderModel::createBodyLayer);
+
+        EntityModelLayerRegistry.registerModelLayer(TruckEngineModel.MODEL_LAYER, TruckEngineModel::getTexturedModelData);
 
         JsonEM.registerModelLayer(StandardWheelModel.MODEL_LAYER);
         JsonEM.registerModelLayer(OffRoadWheelModel.MODEL_LAYER);

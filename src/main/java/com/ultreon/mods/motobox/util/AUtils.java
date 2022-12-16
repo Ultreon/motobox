@@ -207,6 +207,6 @@ public enum AUtils {;
     }
 
     public static ItemStack createPrefabsIcon() {
-        return new VehiclePrefab(Motobox.id("standard_light_blue"), VehicleFrame.TRUCK, VehicleWheel.STANDARD, VehicleEngine.IRON).toStack();
+        return new VehiclePrefab(Motobox.id("truck"), VehicleFrame.TRUCK, VehicleWheel.STANDARD, VehicleEngine.TRUCK_ENGINE).toStack();
     }
 }

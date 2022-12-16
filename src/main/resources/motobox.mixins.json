@@ -11,6 +11,7 @@
     "ServerPlayNetworkHandlerMixin"
   ],
   "client": [
+    "CameraMixin",
     "ClientPlayerEntityMixin",
     "ClientPlayerInteractionManagerMixin",
     "EntityRenderersMixin",

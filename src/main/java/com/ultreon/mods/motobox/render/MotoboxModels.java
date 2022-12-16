@@ -7,6 +7,7 @@ import com.ultreon.mods.motobox.vehicle.render.attachment.front.MobControllerFro
 import com.ultreon.mods.motobox.vehicle.render.attachment.rear.*;
 import com.ultreon.mods.motobox.vehicle.render.engine.*;
 import com.ultreon.mods.motobox.vehicle.render.frame.MotorbikeFrameModel;
+import com.ultreon.mods.motobox.vehicle.render.frame.RustyCarFrameModel;
 import com.ultreon.mods.motobox.vehicle.render.frame.TruckFrameModel;
 import com.ultreon.mods.motobox.vehicle.render.wheel.*;
 import net.fabricmc.api.EnvType;
@@ -30,6 +31,7 @@ public enum MotoboxModels {
 
         MODELS.put(Motobox.id("frame_truck"), TruckFrameModel::new);
         MODELS.put(Motobox.id("frame_motorbike"), MotorbikeFrameModel::new);
+        MODELS.put(Motobox.id("frame_rusty_car"), RustyCarFrameModel::new);
 
         MODELS.put(Motobox.id("wheel_standard"), StandardWheelModel::new);
         MODELS.put(Motobox.id("wheel_off_road"), OffRoadWheelModel::new);
@@ -38,12 +40,9 @@ public enum MotoboxModels {
         MODELS.put(Motobox.id("wheel_carriage"), CarriageWheelModel::new);
         MODELS.put(Motobox.id("wheel_convertible"), ConvertibleWheelModel::new);
 
-        MODELS.put(Motobox.id("engine_stone"), StoneEngineModel::new);
-        MODELS.put(Motobox.id("engine_iron"), IronEngineModel::new);
-        MODELS.put(Motobox.id("engine_copper"), CopperEngineModel::new);
-        MODELS.put(Motobox.id("engine_gold"), GoldEngineModel::new);
-        MODELS.put(Motobox.id("engine_diamond"), DiamondEngineModel::new);
-        MODELS.put(Motobox.id("engine_creative"), CreativeEngineModel::new);
+        MODELS.put(Motobox.id("truck_engine"), TruckEngineModel::new);
+        MODELS.put(Motobox.id("motorbike_engine"), TruckEngineModel::new);
+        MODELS.put(Motobox.id("rusty_car_engine"), TruckEngineModel::new);
 
         MODELS.put(Motobox.id("rearatt_passenger_seat"), PassengerSeatRearAttachmentModel::new);
         MODELS.put(Motobox.id("rearatt_block"), BlockRearAttachmentModel::new);

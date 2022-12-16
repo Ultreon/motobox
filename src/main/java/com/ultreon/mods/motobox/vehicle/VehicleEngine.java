@@ -32,67 +32,29 @@ public record VehicleEngine(
             )
     );
 
-    public static final VehicleEngine STONE = REGISTRY.register(
-            new VehicleEngine(Motobox.id("stone"), 0.3f, 0.58f,
-                    MotoboxSounds.STONE_ENGINE,
-                    new EngineModel(
-                            Motobox.id("textures/entity/vehicle/engine/stone.png"), Motobox.id("engine_stone"),
-                            new VehicleEngine.ExhaustPos(0, 7f, -8.3f, 50, 0)
-                    )
-            )
-    );
-
-    public static final VehicleEngine IRON = REGISTRY.register(
-            new VehicleEngine(Motobox.id("iron"), 0.5f, 0.75f,
+    public static final VehicleEngine TRUCK_ENGINE = REGISTRY.register(
+            new VehicleEngine(Motobox.id("truck_engine"), 0.4f, 0.7f,
                     MotoboxSounds.IRON_ENGINE,
                     new EngineModel(
-                            Motobox.id("textures/entity/vehicle/engine/iron.png"), Motobox.id("engine_iron"),
-                            new VehicleEngine.ExhaustPos(-3.5f, 5.4f, -8, 26, 0),
-                            new VehicleEngine.ExhaustPos(3.5f, 5.4f, -8, 26, 0)
+                            Motobox.id("textures/entity/vehicle/engine/truck_engine.png"), Motobox.id("truck_engine")
                     )
             )
     );
 
-    public static final VehicleEngine COPPER = REGISTRY.register(
-            new VehicleEngine(Motobox.id("copper"), 0.375f, 0.68f,
+    public static final VehicleEngine MOTORBIKE_ENGINE = REGISTRY.register(
+            new VehicleEngine(Motobox.id("motorbike_engine"), 0.4f, 0.7f,
                     MotoboxSounds.COPPER_ENGINE,
                     new EngineModel(
-                            Motobox.id("textures/entity/vehicle/engine/copper.png"), Motobox.id("engine_copper"),
-                            new VehicleEngine.ExhaustPos(2, 1.625f, -8.95f, 26, 0)
+                            Motobox.id("textures/entity/vehicle/engine/motorbike_engine.png"), Motobox.id("motorbike_engine")
                     )
             )
     );
 
-    public static final VehicleEngine GOLD = REGISTRY.register(
-            new VehicleEngine(Motobox.id("gold"), 0.8f, 0.75f,
-                    MotoboxSounds.GOLD_ENGINE,
+    public static final VehicleEngine RUSTY_CAR_ENGINE = REGISTRY.register(
+            new VehicleEngine(Motobox.id("rusty_car_engine"), 0.4f, 0.7f,
+                    MotoboxSounds.STONE_ENGINE,
                     new EngineModel(
-                            Motobox.id("textures/entity/vehicle/engine/gold.png"), Motobox.id("engine_gold"),
-                            new VehicleEngine.ExhaustPos(4, 9.3f, -7.75f, 26, 0),
-                            new VehicleEngine.ExhaustPos(-4, 9.3f, -7.75f, 26, 0)
-                    )
-            )
-    );
-
-    public static final VehicleEngine DIAMOND = REGISTRY.register(
-            new VehicleEngine(Motobox.id("diamond"), 0.95f, 0.85f,
-                    MotoboxSounds.DIAMOND_ENGINE,
-                    new EngineModel(
-                            Motobox.id("textures/entity/vehicle/engine/diamond.png"), Motobox.id("engine_diamond"),
-                            new VehicleEngine.ExhaustPos(3, 3.8f, -7.6f, 40, 0),
-                            new VehicleEngine.ExhaustPos(-3, 3.8f, -7.6f, 40, 0),
-                            new VehicleEngine.ExhaustPos(4, 7.075f, -4.95f, 40, 0),
-                            new VehicleEngine.ExhaustPos(-4, 7.075f, -4.95f, 40, 0)
-                    )
-            )
-    );
-
-    public static final VehicleEngine CREATIVE = REGISTRY.register(
-            new VehicleEngine(Motobox.id("creative"), 1f, 1f,
-                    MotoboxSounds.CREATIVE_ENGINE,
-                    new EngineModel(
-                            Motobox.id("textures/entity/vehicle/engine/creative.png"), Motobox.id("engine_creative"),
-                            new VehicleEngine.ExhaustPos(0, 7, -7, 90, 0)
+                            Motobox.id("textures/entity/vehicle/engine/rusty_car_engine.png"), Motobox.id("rusty_car_engine")
                     )
             )
     );
@@ -125,7 +87,7 @@ public record VehicleEngine(
         return "engine." + id.getNamespace() + "." + id.getPath();
     }
 
-    public static record EngineModel(
+    public record EngineModel(
             Identifier texture,
             Identifier modelId,
             ExhaustPos... exhausts
@@ -136,7 +98,7 @@ public record VehicleEngine(
         }
     }
 
-    public static record ExhaustPos(
+    public record ExhaustPos(
             float x, float y, float z,
             float pitch, float yaw
     ) {

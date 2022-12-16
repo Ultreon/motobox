@@ -41,6 +41,8 @@ public record VehicleFrame(Identifier id, float weight, FrameModel model
     public static final VehicleFrame TRUCK = REGISTRY.register(truck());
     public static final VehicleFrame MOTORBIKE = REGISTRY.register(motorbike());
 
+    public static final VehicleFrame RUSTY_CAR = REGISTRY.register(rustyCar());
+
     private static VehicleFrame truck() {
         return new VehicleFrame(
                 Motobox.id("truck"),
@@ -56,8 +58,8 @@ public record VehicleFrame(Identifier id, float weight, FrameModel model
                         ),
                         () -> 28,
                         () -> 3.5f,
-                        () -> -18,
-                        () -> 2,
+                        () -> -21,
+                        () -> 24,
                         () -> 34,
                         () -> 31
                 )
@@ -74,10 +76,33 @@ public record VehicleFrame(Identifier id, float weight, FrameModel model
                         () -> WheelBase.bicycleOffset(26, 1),
                         () -> 28,
                         () -> 9.5f,
-                        () -> 0,
-                        () -> 2,
+                        () -> 1.1f,
+                        () -> 23,
                         () -> 21,
                         () -> 22
+                )
+        );
+    }
+
+    private static VehicleFrame rustyCar() {
+        return new VehicleFrame(
+                Motobox.id("rusty_car"),
+                0.73f,
+                new FrameModel(
+                        Motobox.id("textures/entity/vehicle/frame/rusty_car.png"),
+                        Motobox.id("frame_rusty_car"),
+                        () -> new WheelBase(
+                                new WheelBase.WheelPos(-26, -11f, 0.7f, 0, WheelBase.WheelEnd.BACK, WheelBase.WheelSide.LEFT),
+                                new WheelBase.WheelPos(-26, 11f, 0.7f, 180, WheelBase.WheelEnd.BACK, WheelBase.WheelSide.RIGHT),
+                                new WheelBase.WheelPos(27, -11f, 0.7f, 0, WheelBase.WheelEnd.FRONT, WheelBase.WheelSide.LEFT),
+                                new WheelBase.WheelPos(27, 11f, 0.7f, 180, WheelBase.WheelEnd.FRONT, WheelBase.WheelSide.RIGHT)
+                        ),
+                        () -> 28,
+                        () -> -2.6f,
+                        () -> -24.2f,
+                        () -> 21,
+                        () -> 34,
+                        () -> 31
                 )
         );
     }

@@ -268,6 +268,7 @@ public class VehicleEntity extends Entity implements RenderableVehicle, EntityWi
     private boolean steeringRight = false;
     private boolean holdingDrift = false;
 
+    @SuppressWarnings("ConstantValue")
     private boolean prevHoldDrift = holdingDrift;
 
     public byte compactInputData() {
@@ -504,6 +505,8 @@ public class VehicleEntity extends Entity implements RenderableVehicle, EntityWi
     public boolean hasSpaceForPassengers() {
         if (frame.id().equals(id("truck"))) {
             return (this.rearAttachment.isRideable()) ? (this.getPassengerList().size() < 4) : (this.getPassengerList().size() < 3);
+        } else if (frame.id().equals(id("rusty_car"))) {
+            return (this.rearAttachment.isRideable()) ? (this.getPassengerList().size() < 5) : (this.getPassengerList().size() < 4);
         }
         return (this.rearAttachment.isRideable()) ? (this.getPassengerList().size() < 2) : (!this.hasPassengers());
     }
@@ -541,7 +544,7 @@ public class VehicleEntity extends Entity implements RenderableVehicle, EntityWi
         }
         this.wasEngineRunning = this.engineRunning();
 
-        if (!this.hasPassengers() || !this.getFrontAttachment().canDrive(this.getFirstPassenger())) {
+        if (!this.hasPassengers() || !Objects.requireNonNull(this.getFrontAttachment()).canDrive(this.getFirstPassenger())) {
             accelerating = false;
             braking = false;
             steeringLeft = false;
@@ -593,7 +596,7 @@ public class VehicleEntity extends Entity implements RenderableVehicle, EntityWi
                 }
             }
             if (this.hasPassengers()) {
-                if (this.getFrontAttachment().canDrive(this.getFirstPassenger()) && this.getFirstPassenger() instanceof MobEntity mob) {
+                if (Objects.requireNonNull(this.getFrontAttachment()).canDrive(this.getFirstPassenger()) && this.getFirstPassenger() instanceof MobEntity mob) {
                     provideMobDriverInputs(mob);
                 }
 
@@ -1437,6 +1440,65 @@ public class VehicleEntity extends Entity implements RenderableVehicle, EntityWi
             }
             return;
         }
+        if (Objects.equals(frame.getId(), id("rusty_car"))) {
+            Vec3d pos;
+            if (Objects.equals(passenger, getFirstPassenger())) {
+                pos = getPos().add(0.0, displacement.verticalTarget + passenger.getHeightOffset(), 0.0)
+                        .add(new Vec3d(-0.6, getMountedHeightOffset(), -0.4)
+                                .rotateY((float) Math.toRadians((180.0f - getYaw())))
+                                .rotateX((float) Math.toRadians((getPitch())))
+                                .rotateX((float) Math.toRadians(-displacement.currAngularX))
+                                .rotateZ((float) Math.toRadians(-displacement.currAngularZ))
+                        );
+                passenger.setPosition(pos.x, pos.y, pos.z);
+                passenger.setBodyYaw(getYaw());
+                passenger.setYaw(getYaw());
+            } else if (getPassengerList().size() >= 2 && passenger == getPassengerList().get(1)) {
+                pos = getPos().add(0.0, displacement.verticalTarget + passenger.getHeightOffset(), 0.0)
+                        .add(new Vec3d(0.6, getMountedHeightOffset(), -0.4)
+                                .rotateY((float) Math.toRadians((180.0f - getYaw())))
+                                .rotateX((float) Math.toRadians(getPitch()))
+                                .rotateX((float) Math.toRadians(-displacement.currAngularX))
+                                .rotateZ((float) Math.toRadians(-displacement.currAngularZ))
+                        );
+                passenger.setPosition(pos.x, pos.y, pos.z);
+                passenger.setBodyYaw(getYaw());
+                passenger.setYaw(getYaw());
+            } else if (getPassengerList().size() >= 3 && passenger == getPassengerList().get(2)) {
+                pos = getPos().add(0.0, displacement.verticalTarget + passenger.getHeightOffset(), 0.0)
+                        .add(new Vec3d(0.6, getMountedHeightOffset(), 0.8)
+                                .rotateY((float) Math.toRadians((180.0f - getYaw())))
+                                .rotateX((float) Math.toRadians((getPitch())))
+                                .rotateX((float) Math.toRadians(-displacement.currAngularX))
+                                .rotateZ((float) Math.toRadians(-displacement.currAngularZ))
+                        );
+                passenger.setPosition(pos.x, pos.y, pos.z);
+                passenger.setBodyYaw(getYaw());
+                passenger.setYaw(getYaw());
+            } else if (getPassengerList().size() >= 4 && passenger == getPassengerList().get(3)) {
+                pos = getPos().add(0.0, displacement.verticalTarget + passenger.getHeightOffset(), 0.0)
+                        .add(new Vec3d(-0.6, getMountedHeightOffset(), 0.8)
+                                .rotateY((float) Math.toRadians((180.0f - getYaw())))
+                                .rotateX((float) Math.toRadians((getPitch())))
+                                .rotateX((float) Math.toRadians(-displacement.currAngularX))
+                                .rotateZ((float) Math.toRadians(-displacement.currAngularZ))
+                        );
+                passenger.setPosition(pos.x, pos.y, pos.z);
+                passenger.setBodyYaw(getYaw());
+                passenger.setYaw(getYaw());
+            } else if (hasPassenger(passenger)) {
+                pos = getPos().add(
+                        new Vec3d(0.0, displacement.verticalTarget, getFrame().model().rearAttachmentPos().getFloat() * 0.0625)
+                                .rotateY((float) Math.toRadians((180.0f - getYaw())))
+                                .add(0.0, rearAttachment.getPassengerHeightOffset() + passenger.getHeightOffset() - 0.14, 0.0)
+                                .add(rearAttachment.scaledYawVec())
+                                .rotateX((float) Math.toRadians(-displacement.currAngularX))
+                                .rotateZ((float) Math.toRadians(-displacement.currAngularZ))
+                );
+                passenger.setPosition(pos.x, pos.y, pos.z);
+            }
+            return;
+        }
         if (passenger == this.getFirstPassenger()) {
             var pos = this.getPos().add(0, this.displacement.verticalTarget + passenger.getHeightOffset(), 0)
                     .add(new Vec3d(0, this.getMountedHeightOffset(), 0)
@@ -1529,6 +1591,7 @@ public class VehicleEntity extends Entity implements RenderableVehicle, EntityWi
         world.playSound(this.getX(), this.getY(), this.getZ(), MotoboxSounds.LANDING, SoundCategory.AMBIENT, 1, 1.5f + (0.15f * (this.world.random.nextFloat() - 0.5f)), true);
     }
 
+    @SuppressWarnings("ConstantValue")
     public static final class Displacement {
         private static final int SCAN_STEPS_PER_BLOCK = 20;
         private static final double INV_SCAN_STEPS = 1d / SCAN_STEPS_PER_BLOCK;
