@@ -199,7 +199,7 @@ public enum AUtils {;
     }
 
     public static ItemStack createGroupIcon() {
-        return new ItemStack(MotoboxItems.CROWBAR);
+        return new ItemStack(MotoboxItems.HAMMER);
     }
 
     public static ItemStack createCourseElementsIcon() {

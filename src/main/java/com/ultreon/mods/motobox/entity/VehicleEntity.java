@@ -1345,7 +1345,7 @@ public class VehicleEntity extends Entity implements RenderableVehicle, EntityWi
         }
 
         var stack = player.getStackInHand(hand);
-        if ((!this.decorative || player.isCreative()) && stack.isOf(MotoboxItems.CROWBAR)) {
+        if ((!this.decorative || player.isCreative()) && stack.isOf(MotoboxItems.HAMMER)) {
             double playerAngle = Math.toDegrees(Math.atan2(player.getZ() - this.getZ(), player.getX() - this.getX()));
             double angleDiff = MathHelper.wrapDegrees(this.getYaw() - playerAngle);
 
