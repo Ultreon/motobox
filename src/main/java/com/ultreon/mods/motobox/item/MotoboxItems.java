@@ -26,7 +26,7 @@ import java.util.function.Function;
 
 public enum MotoboxItems {
     ;
-    public static final Item CROWBAR = register("crowbar", new TooltipItem(Text.translatable("tooltip.item.motobox.crowbar").formatted(Formatting.BLUE), new Item.Settings().maxCount(1).group(Motobox.GROUP)));
+    public static final Item HAMMER = register("hammer", new TooltipItem(Text.translatable("tooltip.item.motobox.hammer").formatted(Formatting.BLUE), new Item.Settings().maxCount(1).group(Motobox.GROUP)));
     public static final Item AUTOMOBILE = register("vehicle", new VehicleItem(new Item.Settings().maxCount(1).group(Motobox.PREFABS)));
     public static final VehicleFrameItem AUTOMOBILE_FRAME = register("vehicle_frame", new VehicleFrameItem(new Item.Settings().maxCount(16).group(Motobox.GROUP)));
     public static final VehicleWheelItem AUTOMOBILE_WHEEL = register("vehicle_wheel", new VehicleWheelItem(new Item.Settings().group(Motobox.GROUP)));

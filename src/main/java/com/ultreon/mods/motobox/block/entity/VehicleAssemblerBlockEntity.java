@@ -138,7 +138,7 @@ public class VehicleAssemblerBlockEntity extends BlockEntity implements Renderab
         // Returns success on the server since the client is never 100% confident that the action was valid
         // Subsequent handling is performed with the action result
 
-        if (stack.isOf(MotoboxItems.CROWBAR)) {
+        if (stack.isOf(MotoboxItems.HAMMER)) {
             if (!world.isClient()) {
                 this.dropParts();
                 this.partChanged();
