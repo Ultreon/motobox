@@ -19,61 +19,76 @@ import net.minecraft.util.math.Vec3f;
 public class TruckWheelModel<T extends VehicleEntity> extends EntityModel<T> {
 	// This layer location should be baked with EntityRendererProvider.Context in the entity renderer and passed into this model's constructor
 	public static final EntityModelLayer MODEL_LAYER = new EntityModelLayer(Motobox.id("wheel_truck"), "main");
-	private final ModelPart wheel;
+
+	private final ModelPart bone2;
+	private final ModelPart bone3;
+	private final ModelPart bone4;
+	private final ModelPart bone;
 
 	public TruckWheelModel(EntityRendererFactory.Context context) {
-		this.wheel = context.getPart(MODEL_LAYER).getChild("wheel");
+		ModelPart root = context.getPart(MODEL_LAYER);
+		this.bone2 = root.getChild("bone2");
+		this.bone3 = root.getChild("bone3");
+		this.bone4 = root.getChild("bone4");
+		this.bone = root.getChild("bone");
 	}
 
 	public static TexturedModelData createBodyLayer() {
 		ModelData modelData = new ModelData();
 		ModelPartData root = modelData.getRoot();
 
-		ModelPartData wheel = root.addChild("wheel", ModelPartBuilder.create(), ModelTransform.pivot(-7.975F, 20.0F, 5.875F));
+		ModelPartData bone2 = root.addChild("bone2", ModelPartBuilder.create().uv(0, 0).cuboid(-1.0F, -5.05F, -4.0F, 2.0F, 2.0F, 4.0F, new Dilation(0.0F)), ModelTransform.pivot(0.0F, 24.0F, 0.0F));
 
-		ModelPartData group2 = wheel.addChild("group2", ModelPartBuilder.create().uv(0, 0).cuboid(19.8003F, 1.8745F, -4.1334F, 2.0F, 2.0F, 4.0F, new Dilation(0.0F))
-				.uv(0, 0).cuboid(15.5044F, -2.4213F, -4.1334F, 2.0F, 2.0F, 4.0F, new Dilation(0.0F))
-				.uv(0, 0).cuboid(15.5044F, 6.1704F, -4.1334F, 2.0F, 2.0F, 4.0F, new Dilation(0.0F))
-				.uv(0, 0).cuboid(11.2086F, 1.8745F, -4.1334F, 2.0F, 2.0F, 4.0F, new Dilation(0.0F)), ModelTransform.pivot(-8.592F, 1.0541F, -6.0166F));
+		bone2.addChild("cube_r1", ModelPartBuilder.create().uv(0, 0).cuboid(-1.0F, -5.25F, -4.0F, 2.0F, 2.0F, 4.0F, new Dilation(0.0F)), ModelTransform.of(0.0852F, 0.1831F, 0.0F, 0.0F, 0.0F, -0.3927F));
 
-		group2.addChild("cube_r1", ModelPartBuilder.create().uv(0, 0).cuboid(-5.3625F, -1.0667F, -2.1334F, 2.0F, 2.0F, 4.0F, new Dilation(0.0F))
-				.uv(0, 0).cuboid(-1.0667F, 3.2292F, -2.1334F, 2.0F, 2.0F, 4.0F, new Dilation(0.0F))
-				.uv(0, 0).cuboid(-1.0667F, -5.3625F, -2.1334F, 2.0F, 2.0F, 4.0F, new Dilation(0.0F))
-				.uv(0, 0).cuboid(3.2292F, -1.0667F, -2.1334F, 2.0F, 2.0F, 4.0F, new Dilation(0.0F)), ModelTransform.of(16.5711F, 2.9412F, -2.0F, 0.0F, 0.0F, 0.3927F));
+		bone2.addChild("cube_r2", ModelPartBuilder.create().uv(0, 0).cuboid(-1.0F, -5.25F, -4.0F, 2.0F, 2.0F, 4.0F, new Dilation(0.0F)), ModelTransform.of(0.1574F, 0.1348F, 0.0F, 0.0F, 0.0F, -0.7854F));
 
-		group2.addChild("cube_r2", ModelPartBuilder.create().uv(0, 0).cuboid(-5.3625F, -1.0667F, -2.1334F, 2.0F, 2.0F, 4.0F, new Dilation(0.0F))
-				.uv(0, 0).cuboid(-1.0667F, 3.2292F, -2.1334F, 2.0F, 2.0F, 4.0F, new Dilation(0.0F))
-				.uv(0, 0).cuboid(3.2292F, -1.0667F, -2.1334F, 2.0F, 2.0F, 4.0F, new Dilation(0.0F))
-				.uv(0, 0).cuboid(-1.0667F, -5.3625F, -2.1334F, 2.0F, 2.0F, 4.0F, new Dilation(0.0F)), ModelTransform.of(16.5711F, 2.9412F, -2.0F, 0.0F, 0.0F, -0.3927F));
+		bone2.addChild("cube_r3", ModelPartBuilder.create().uv(0, 0).cuboid(-1.0F, -5.25F, -4.0F, 2.0F, 2.0F, 4.0F, new Dilation(0.0F)), ModelTransform.of(0.2057F, 0.0625F, 0.0F, 0.0F, 0.0F, -1.1781F));
 
-		group2.addChild("cube_r3", ModelPartBuilder.create().uv(0, 0).cuboid(-5.3625F, -1.0667F, -2.1334F, 2.0F, 2.0F, 4.0F, new Dilation(0.0F))
-				.uv(0, 0).cuboid(3.2292F, -1.0667F, -2.1334F, 2.0F, 2.0F, 4.0F, new Dilation(0.0F))
-				.uv(0, 0).cuboid(-1.0667F, 3.2292F, -2.1334F, 2.0F, 2.0F, 4.0F, new Dilation(0.0F))
-				.uv(0, 0).cuboid(-1.0667F, -5.3625F, -2.1334F, 2.0F, 2.0F, 4.0F, new Dilation(0.0F)), ModelTransform.of(16.5711F, 2.9412F, -2.0F, 0.0F, 0.0F, -0.7854F));
+		bone2.addChild("cube_r4", ModelPartBuilder.create().uv(0, 0).cuboid(-1.0F, -5.25F, -4.0F, 2.0F, 2.0F, 4.0F, new Dilation(0.0F)), ModelTransform.of(0.2227F, -0.0227F, 0.0F, 0.0F, 0.0F, -1.5708F));
 
-		ModelPartData group3 = wheel.addChild("group3", ModelPartBuilder.create().uv(0, 0).cuboid(18.6378F, 2.2585F, -3.3653F, 1.0F, 1.0F, 2.0F, new Dilation(0.0F))
-				.uv(0, 0).cuboid(15.8884F, -0.4908F, -3.3653F, 1.0F, 1.0F, 2.0F, new Dilation(0.0F))
-				.uv(0, 0).cuboid(15.8884F, 5.0079F, -3.3653F, 1.0F, 1.0F, 2.0F, new Dilation(0.0F))
-				.uv(0, 0).cuboid(13.1391F, 2.2585F, -3.3653F, 1.0F, 1.0F, 2.0F, new Dilation(0.0F)), ModelTransform.pivot(-8.592F, 1.0541F, -6.0166F));
+		bone2.addChild("cube_r5", ModelPartBuilder.create().uv(0, 0).cuboid(-1.0F, -5.25F, -4.0F, 2.0F, 2.0F, 4.0F, new Dilation(0.0F)), ModelTransform.of(0.2057F, -0.1079F, 0.0F, 0.0F, 0.0F, -1.9635F));
 
-		group3.addChild("cube_r4", ModelPartBuilder.create().uv(0, 0).cuboid(-0.6827F, -3.432F, -1.3653F, 1.0F, 1.0F, 2.0F, new Dilation(0.0F))
-				.uv(0, 0).cuboid(-3.432F, -0.6827F, -1.3653F, 1.0F, 1.0F, 2.0F, new Dilation(0.0F))
-				.uv(0, 0).cuboid(2.0667F, -0.6827F, -1.3653F, 1.0F, 1.0F, 2.0F, new Dilation(0.0F))
-				.uv(0, 0).cuboid(-0.6827F, 2.0667F, -1.3653F, 1.0F, 1.0F, 2.0F, new Dilation(0.0F))
-				.uv(0, 0).cuboid(-2.2292F, -2.1334F, -0.5333F, 4.0F, 4.0F, 1.0F, new Dilation(0.0F))
-				.uv(0, 0).cuboid(-0.8958F, -0.8F, -1.4667F, 1.0F, 1.0F, 2.0F, new Dilation(0.0F)), ModelTransform.of(16.5711F, 2.9412F, -2.0F, 0.0F, 0.0F, -0.7854F));
+		bone2.addChild("cube_r6", ModelPartBuilder.create().uv(0, 0).cuboid(-1.0F, -5.25F, -4.0F, 2.0F, 2.0F, 4.0F, new Dilation(0.0F)), ModelTransform.of(0.1574F, -0.1801F, 0.0F, 0.0F, 0.0F, -2.3562F));
 
-		group3.addChild("cube_r5", ModelPartBuilder.create().uv(0, 0).cuboid(-3.432F, -0.6827F, -1.632F, 1.0F, 1.0F, 3.0F, new Dilation(0.0F))
-				.uv(0, 0).cuboid(-0.6827F, 2.0667F, -1.632F, 1.0F, 1.0F, 3.0F, new Dilation(0.0F))
-				.uv(0, 0).cuboid(-0.6827F, -3.432F, -1.632F, 1.0F, 1.0F, 3.0F, new Dilation(0.0F))
-				.uv(0, 0).cuboid(2.0667F, -0.6827F, -1.632F, 1.0F, 1.0F, 3.0F, new Dilation(0.0F)), ModelTransform.of(16.5711F, 2.9412F, -2.0F, 0.0F, 0.0F, 0.3927F));
+		bone2.addChild("cube_r7", ModelPartBuilder.create().uv(0, 0).cuboid(-1.0F, -5.25F, -4.0F, 2.0F, 2.0F, 4.0F, new Dilation(0.0F)), ModelTransform.of(0.0852F, -0.2284F, 0.0F, 0.0F, 0.0F, -2.7489F));
 
-		group3.addChild("cube_r6", ModelPartBuilder.create().uv(0, 0).cuboid(-3.432F, -0.6827F, -1.632F, 1.0F, 1.0F, 3.0F, new Dilation(0.0F))
-				.uv(0, 0).cuboid(-0.6827F, 2.0667F, -1.632F, 1.0F, 1.0F, 3.0F, new Dilation(0.0F))
-				.uv(0, 0).cuboid(2.0667F, -0.6827F, -1.632F, 1.0F, 1.0F, 3.0F, new Dilation(0.0F))
-				.uv(0, 0).cuboid(-0.6827F, -3.432F, -1.632F, 1.0F, 1.0F, 3.0F, new Dilation(0.0F)), ModelTransform.of(16.5711F, 2.9412F, -2.0F, 0.0F, 0.0F, -0.3927F));
+		bone2.addChild("cube_r8", ModelPartBuilder.create().uv(0, 0).cuboid(-1.0F, -5.25F, -4.0F, 2.0F, 2.0F, 4.0F, new Dilation(0.0F)), ModelTransform.of(0.0F, -0.2453F, 0.0F, 0.0F, 0.0F, -3.1416F));
 
-		return TexturedModelData.of(modelData, 128, 128);
+		bone2.addChild("cube_r9", ModelPartBuilder.create().uv(0, 0).cuboid(-1.0F, -5.25F, -4.0F, 2.0F, 2.0F, 4.0F, new Dilation(0.0F)), ModelTransform.of(-0.0852F, -0.2284F, 0.0F, 0.0F, 0.0F, 2.7489F));
+
+		bone2.addChild("cube_r10", ModelPartBuilder.create().uv(0, 0).cuboid(-1.0F, -5.25F, -4.0F, 2.0F, 2.0F, 4.0F, new Dilation(0.0F)), ModelTransform.of(-0.1574F, -0.1801F, 0.0F, 0.0F, 0.0F, 2.3562F));
+
+		bone2.addChild("cube_r11", ModelPartBuilder.create().uv(0, 0).cuboid(-1.0F, -5.25F, -4.0F, 2.0F, 2.0F, 4.0F, new Dilation(0.0F)), ModelTransform.of(-0.2057F, -0.1079F, 0.0F, 0.0F, 0.0F, 1.9635F));
+
+		bone2.addChild("cube_r12", ModelPartBuilder.create().uv(0, 0).cuboid(-1.0F, -5.25F, -4.0F, 2.0F, 2.0F, 4.0F, new Dilation(0.0F)), ModelTransform.of(-0.2227F, -0.0227F, 0.0F, 0.0F, 0.0F, 1.5708F));
+
+		bone2.addChild("cube_r13", ModelPartBuilder.create().uv(0, 0).cuboid(-1.0F, -5.25F, -4.0F, 2.0F, 2.0F, 4.0F, new Dilation(0.0F)), ModelTransform.of(-0.2057F, 0.0625F, 0.0F, 0.0F, 0.0F, 1.1781F));
+
+		bone2.addChild("cube_r14", ModelPartBuilder.create().uv(0, 0).cuboid(-1.0F, -5.25F, -4.0F, 2.0F, 2.0F, 4.0F, new Dilation(0.0F)), ModelTransform.of(-0.1574F, 0.1348F, 0.0F, 0.0F, 0.0F, 0.7854F));
+
+		bone2.addChild("cube_r15", ModelPartBuilder.create().uv(0, 0).cuboid(-1.0F, -5.25F, -4.0F, 2.0F, 2.0F, 4.0F, new Dilation(0.0F)), ModelTransform.of(-0.0852F, 0.1831F, 0.0F, 0.0F, 0.0F, 0.3927F));
+
+		ModelPartData bone3 = root.addChild("bone3", ModelPartBuilder.create(), ModelTransform.pivot(0.0F, 20.0F, 0.0F));
+
+		bone3.addChild("cube_r16", ModelPartBuilder.create().uv(0, 10).cuboid(-1.0F, -5.25F, -2.5F, 2.0F, 2.0F, 2.0F, new Dilation(0.0F))
+				.uv(0, 10).cuboid(-1.0F, -5.25F, -3.5F, 2.0F, 2.0F, 2.0F, new Dilation(0.0F)), ModelTransform.of(0.0F, -0.2453F, 0.0F, 0.0F, 0.0F, -3.1416F));
+
+		ModelPartData bone4 = root.addChild("bone4", ModelPartBuilder.create(), ModelTransform.pivot(0.0F, 20.0F, 0.0F));
+
+		bone4.addChild("cube_r17", ModelPartBuilder.create().uv(0, 6).cuboid(1.0F, -5.25F, -3.0F, 2.0F, 2.0F, 2.0F, new Dilation(0.0F))
+				.uv(0, 6).cuboid(-3.0F, -5.25F, -3.0F, 2.0F, 2.0F, 2.0F, new Dilation(0.0F))
+				.uv(0, 6).cuboid(-1.0F, -3.25F, -3.0F, 2.0F, 2.0F, 2.0F, new Dilation(0.0F))
+				.uv(0, 6).cuboid(-1.0F, -7.25F, -3.0F, 2.0F, 2.0F, 2.0F, new Dilation(0.0F)), ModelTransform.of(0.0F, -0.2453F, 0.0F, 0.0F, 0.0F, -3.1416F));
+
+		ModelPartData bone = root.addChild("bone", ModelPartBuilder.create(), ModelTransform.pivot(0.0F, 26.0F, 0.0F));
+
+		bone.addChild("cube_r18", ModelPartBuilder.create().uv(0, 4).cuboid(1.0F, -1.25F, -2.0F, 2.0F, 2.0F, 0.0F, new Dilation(0.0F))
+				.uv(0, 4).cuboid(-3.0F, -1.25F, -2.0F, 2.0F, 2.0F, 0.0F, new Dilation(0.0F))
+				.uv(0, 4).cuboid(-3.0F, -5.25F, -2.0F, 2.0F, 2.0F, 0.0F, new Dilation(0.0F))
+				.uv(0, 4).cuboid(1.0F, -5.25F, -2.0F, 2.0F, 2.0F, 0.0F, new Dilation(0.0F)), ModelTransform.of(0.0F, -4.2453F, 0.0F, 0.0F, 0.0F, -3.1416F));
+
+		return TexturedModelData.of(modelData, 16, 16);
 	}
 
 	@Override
@@ -83,12 +98,17 @@ public class TruckWheelModel<T extends VehicleEntity> extends EntityModel<T> {
 
 	@Override
 	public void render(MatrixStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha) {
+//		wheel.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
+
 		poseStack.push();
-		poseStack.scale(1.4f, 1.4f, 1.4f);
-		poseStack.translate(8 / 16.0, -24 / 16.0, 0 / 16.0);
+		poseStack.scale(1.7f, 1.7f, 1.7f);
+		poseStack.translate(0 / 16.0, -24 / 16.0, 0 / 16.0);
 		poseStack.multiply(new Quaternion(Vec3f.POSITIVE_Y, 270, true));
 		poseStack.multiply(new Quaternion(Vec3f.POSITIVE_Z, 0, true));
-		wheel.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
+		bone2.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
+		bone3.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
+		bone4.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
+		bone.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
 		poseStack.pop();
 	}
 }

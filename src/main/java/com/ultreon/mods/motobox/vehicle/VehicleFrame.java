@@ -51,10 +51,10 @@ public record VehicleFrame(Identifier id, float weight, FrameModel model
                         Motobox.id("textures/entity/vehicle/frame/truck.png"),
                         Motobox.id("frame_truck"),
                         () -> new WheelBase(
-                                new WheelBase.WheelPos(-20, -12, 0.7f, 0, WheelBase.WheelEnd.BACK, WheelBase.WheelSide.LEFT),
-                                new WheelBase.WheelPos(-20, 12, 0.7f, 180, WheelBase.WheelEnd.BACK, WheelBase.WheelSide.RIGHT),
-                                new WheelBase.WheelPos(22, -12, 0.7f, 0, WheelBase.WheelEnd.FRONT, WheelBase.WheelSide.LEFT),
-                                new WheelBase.WheelPos(22, 12, 0.7f, 180, WheelBase.WheelEnd.FRONT, WheelBase.WheelSide.RIGHT)
+                                new WheelBase.WheelPos(-20, -12, 0.65f, 0, WheelBase.WheelEnd.BACK, WheelBase.WheelSide.LEFT),
+                                new WheelBase.WheelPos(-20, 12, 0.65f, 180, WheelBase.WheelEnd.BACK, WheelBase.WheelSide.RIGHT),
+                                new WheelBase.WheelPos(22, -12, 0.65f, 0, WheelBase.WheelEnd.FRONT, WheelBase.WheelSide.LEFT),
+                                new WheelBase.WheelPos(22, 12, 0.65f, 180, WheelBase.WheelEnd.FRONT, WheelBase.WheelSide.RIGHT)
                         ),
                         () -> 28,
                         () -> 3.5f,
