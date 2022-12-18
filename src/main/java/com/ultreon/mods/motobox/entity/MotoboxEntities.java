@@ -49,6 +49,8 @@ public enum MotoboxEntities {
         EntityModelLayerRegistry.registerModelLayer(RustyCarFrameModel.MODEL_LAYER, RustyCarFrameModel::createBodyLayer);
         EntityModelLayerRegistry.registerModelLayer(TrailerRearAttachmentRenderModel.MODEL_LAYER, TrailerRearAttachmentRenderModel::createBodyLayer);
 
+        EntityModelLayerRegistry.registerModelLayer(TruckWheelModel.MODEL_LAYER, TruckWheelModel::createBodyLayer);
+
         EntityModelLayerRegistry.registerModelLayer(TruckEngineModel.MODEL_LAYER, TruckEngineModel::getTexturedModelData);
 
         JsonEM.registerModelLayer(StandardWheelModel.MODEL_LAYER);

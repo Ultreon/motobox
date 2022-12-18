@@ -34,19 +34,11 @@ public record VehicleWheel(
             new VehicleWheel(Motobox.id("off_road"), 1.1f, 0.8f, new WheelModel(8.4f, 5, Motobox.id("textures/entity/vehicle/wheel/off_road.png"), Motobox.id("wheel_off_road")))
     );
 
-    public static final VehicleWheel STEEL = REGISTRY.register(
-            new VehicleWheel(Motobox.id("steel"), 0.69f, 0.4f, new WheelModel(3.625f, 3, Motobox.id("textures/entity/vehicle/wheel/steel.png"), Motobox.id("wheel_steel")))
+    public static final VehicleWheel TRUCK = REGISTRY.register(
+            new VehicleWheel(Motobox.id("truck"), 1.1f, 0.8f, new WheelModel(8.4f, 5, Motobox.id("textures/entity/vehicle/wheel/truck.png"), Motobox.id("wheel_truck")))
     );
 
-    public static final VehicleWheel TRACTOR = REGISTRY.register(
-            new VehicleWheel(Motobox.id("tractor"), 1.05f, 0.69f, new WheelModel(3.625f, 3, Motobox.id("textures/entity/vehicle/wheel/tractor.png"), Motobox.id("wheel_tractor")))
-    );
-
-    public static final VehicleWheel CARRIAGE = REGISTRY.register(carriage("carriage", 0.2f));
-    public static final VehicleWheel PLATED = REGISTRY.register(carriage("plated", 0.33f));
     public static final VehicleWheel STREET = REGISTRY.register(carriage("street", 0.5f));
-    public static final VehicleWheel GILDED = REGISTRY.register(carriage("gilded", 0.45f));
-    public static final VehicleWheel BEJEWELED = REGISTRY.register(carriage("bejeweled", 0.475f));
 
     public static final VehicleWheel CONVERTIBLE = REGISTRY.register(
             new VehicleWheel(Motobox.id("convertible"), 0.75f, 0.45f, new WheelModel(5.2f, 4.1f, Motobox.id("textures/entity/vehicle/frame/dababy.png"), Motobox.id("wheel_convertible")))
@@ -87,7 +79,7 @@ public record VehicleWheel(
     public enum Ability {
     }
 
-    public static record WheelModel(
+    public record WheelModel(
             float radius,
             float width,
             Identifier texture,

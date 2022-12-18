@@ -35,6 +35,7 @@ public enum MotoboxModels {
 
         MODELS.put(Motobox.id("wheel_standard"), StandardWheelModel::new);
         MODELS.put(Motobox.id("wheel_off_road"), OffRoadWheelModel::new);
+        MODELS.put(Motobox.id("wheel_truck"), TruckWheelModel::new);
         MODELS.put(Motobox.id("wheel_steel"), SteelWheelModel::new);
         MODELS.put(Motobox.id("wheel_tractor"), TractorWheelModel::new);
         MODELS.put(Motobox.id("wheel_carriage"), CarriageWheelModel::new);

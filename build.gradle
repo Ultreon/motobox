@@ -32,8 +32,8 @@ repositories {
 		name = "GitHubPackages"
 		url = uri("https://maven.pkg.github.com/Ultreon/myron-updated")
 		credentials {
-			username = rootProject.hasProperty("gpr.user") ? rootProject.property("gpr.user") : System.getenv("USERNAME")
-			password = rootProject.hasProperty("gpr.key") ? rootProject.property("gpr.key") : System.getenv("TOKEN")
+			username = rootProject.hasProperty("gpr.user") ? rootProject.property("gpr.user") : System.getenv("GITHUB_ACTOR")
+			password = rootProject.hasProperty("gpr.key") ? rootProject.property("gpr.key") : System.getenv("GITHUB_TOKEN")
 		}
 	}
 }
