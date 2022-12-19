@@ -24,7 +24,7 @@ import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
 public class VehicleAssemblerBlock extends HorizontalFacingBlock implements BlockEntityProvider {
-    public static final Text USE_CROWBAR_DIALOG = Text.translatable("dialog.motobox.use_crowbar").formatted(Formatting.GOLD);
+    public static final Text USE_HAMMER_DIALOG = Text.translatable("dialog.motobox.use_hammer").formatted(Formatting.GOLD);
     public static final Text INCOMPLETE_AUTOMOBILE_DIALOG = Text.translatable("dialog.motobox.incomplete_vehicle").formatted(Formatting.RED);
 
     public static final BooleanProperty POWERED = Properties.POWERED;
@@ -56,7 +56,7 @@ public class VehicleAssemblerBlock extends HorizontalFacingBlock implements Bloc
     @Override
     public void onPlaced(World world, BlockPos pos, BlockState state, @Nullable LivingEntity placer, ItemStack itemStack) {
         if (!world.isClient() && placer instanceof PlayerEntity player) {
-            player.sendMessage(USE_CROWBAR_DIALOG, true);
+            player.sendMessage(USE_HAMMER_DIALOG, true);
         }
 
         super.onPlaced(world, pos, state, placer, itemStack);
