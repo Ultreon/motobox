@@ -56,6 +56,7 @@ import java.util.function.Consumer;
 
 import static com.ultreon.mods.motobox.Motobox.id;
 
+@SuppressWarnings("deprecation")
 public class VehicleEntity extends Entity implements RenderableVehicle, EntityWithInventory {
     private static final TrackedData<Float> REAR_ATTACHMENT_YAW = DataTracker.registerData(VehicleEntity.class, TrackedDataHandlerRegistry.FLOAT);
     private static final TrackedData<Float> REAR_ATTACHMENT_ANIMATION = DataTracker.registerData(VehicleEntity.class, TrackedDataHandlerRegistry.FLOAT);
@@ -823,11 +824,11 @@ public class VehicleEntity extends Entity implements RenderableVehicle, EntityWi
         }
 
         // Handle being in off-road
-        if (boostSpeed < 0.4f && world.getBlockState(getBlockPos()).getBlock() instanceof OffRoadBlock offRoad) {
+        if (boostSpeed < 0.4f && world.getBlockState(getBlockPos()).getBlock() instanceof OffRoadBlock offRoadBlock) {
             int layers = world.getBlockState(getBlockPos()).get(OffRoadBlock.LAYERS);
             float cap = stats.getComfortableSpeed() * (1 - ((float)layers / 3.5f));
             engineSpeed = Math.min(cap, engineSpeed);
-            this.debrisColor = offRoad.color;
+            this.debrisColor = offRoadBlock.color;
             this.offRoad = true;
         } else this.offRoad = false;
 
@@ -1271,12 +1272,15 @@ public class VehicleEntity extends Entity implements RenderableVehicle, EntityWi
 
     @Override
     public boolean hasInventory() {
-        return this.getRearAttachment().hasMenu();
+        var attachment = this.getRearAttachment();
+        return attachment != null && attachment.hasMenu();
     }
 
     @Override
     public void openInventory(PlayerEntity player) {
-        var factory = this.getRearAttachment().createMenu(new VehicleScreenHandlerContext(this));
+        var attachment = this.getRearAttachment();
+        if (attachment == null) return;
+        var factory = attachment.createMenu(new VehicleScreenHandlerContext(this));
         if (factory != null) {
             player.openHandledScreen(factory);
         }
@@ -1398,6 +1402,20 @@ public class VehicleEntity extends Entity implements RenderableVehicle, EntityWi
 
     @Override
     public void updatePassengerPosition(Entity passenger) {
+        setYaw((getYaw() + 180) % 360 - 180);
+        passenger.setYaw(getYaw());
+        if (world.isClient) {
+            float yaw = getYaw();
+            float left = yaw - 90;
+            float right = yaw + 90;
+            System.out.println("yaw = " + yaw);
+            System.out.println("left = " + left);
+            System.out.println("right = " + right);
+            float clamped = MathHelper.clamp(passenger.getHeadYaw(), left, right);
+            System.out.println("clamped = " + clamped);
+            passenger.setHeadYaw((clamped + 180) % 360 - 180);
+        }
+
         if (Objects.equals(frame.getId(), id("truck"))) {
             Vec3d pos;
             if (Objects.equals(passenger, getFirstPassenger())) {

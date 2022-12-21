@@ -33,8 +33,8 @@ public record VehicleEngine(
     );
 
     public static final VehicleEngine TRUCK_ENGINE = REGISTRY.register(
-            new VehicleEngine(Motobox.id("truck_engine"), 0.4f, 0.7f,
-                    MotoboxSounds.IRON_ENGINE,
+            new VehicleEngine(Motobox.id("truck_engine"), 0.55f, 1.2f,
+                    MotoboxSounds.TRUCK_ENGINE,
                     new EngineModel(
                             Motobox.id("textures/entity/vehicle/engine/truck_engine.png"), Motobox.id("truck_engine")
                     )
@@ -42,8 +42,8 @@ public record VehicleEngine(
     );
 
     public static final VehicleEngine MOTORBIKE_ENGINE = REGISTRY.register(
-            new VehicleEngine(Motobox.id("motorbike_engine"), 0.4f, 0.7f,
-                    MotoboxSounds.COPPER_ENGINE,
+            new VehicleEngine(Motobox.id("motorbike_engine"), 0.6f, 0.8f,
+                    MotoboxSounds.MOTORBIKE_ENGINE,
                     new EngineModel(
                             Motobox.id("textures/entity/vehicle/engine/motorbike_engine.png"), Motobox.id("motorbike_engine")
                     )

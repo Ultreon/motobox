@@ -40,6 +40,9 @@ public class TruckEngineModel extends EntityModel<VehicleEntity> {
 	}
 	@Override
 	public void render(MatrixStack matrices, VertexConsumer vertexConsumer, int light, int overlay, float red, float green, float blue, float alpha) {
+		matrices.push();
+		matrices.translate(0, -1.5, 0);
 		bb_main.render(matrices, vertexConsumer, light, overlay, red, green, blue, alpha);
+		matrices.pop();
 	}
 }

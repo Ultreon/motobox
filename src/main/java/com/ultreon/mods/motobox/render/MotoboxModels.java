@@ -42,7 +42,7 @@ public enum MotoboxModels {
         MODELS.put(Motobox.id("wheel_convertible"), ConvertibleWheelModel::new);
 
         MODELS.put(Motobox.id("truck_engine"), TruckEngineModel::new);
-        MODELS.put(Motobox.id("motorbike_engine"), TruckEngineModel::new);
+        MODELS.put(Motobox.id("motorbike_engine"), MotorbikeEngineModel::new);
         MODELS.put(Motobox.id("rusty_car_engine"), TruckEngineModel::new);
 
         MODELS.put(Motobox.id("rearatt_passenger_seat"), PassengerSeatRearAttachmentModel::new);

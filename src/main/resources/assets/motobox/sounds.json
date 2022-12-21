@@ -23,16 +23,16 @@
       "motobox:stone_engine"
     ]
   },
-  "entity.vehicle.copper_engine": {
+  "entity.vehicle.motorbike_engine": {
     "subtitle": "subtitles.motobox.vehicle_engine",
     "sounds": [
-      "motobox:copper_engine"
+      "motobox:motorbike_engine"
     ]
   },
-  "entity.vehicle.iron_engine": {
+  "entity.vehicle.truck_engine": {
     "subtitle": "subtitles.motobox.vehicle_engine",
     "sounds": [
-      "motobox:iron_engine"
+      "motobox:truck_engine"
     ]
   },
   "entity.vehicle.gold_engine": {

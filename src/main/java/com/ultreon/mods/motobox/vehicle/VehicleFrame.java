@@ -59,7 +59,7 @@ public record VehicleFrame(Identifier id, float weight, FrameModel model
                         () -> 28,
                         () -> 3.5f,
                         () -> -21,
-                        () -> 24,
+                        () -> 1,
                         () -> 34,
                         () -> 31
                 )
@@ -77,7 +77,7 @@ public record VehicleFrame(Identifier id, float weight, FrameModel model
                         () -> 28,
                         () -> 9.5f,
                         () -> 1.1f,
-                        () -> 23,
+                        () -> 3,
                         () -> 21,
                         () -> 22
                 )
@@ -100,7 +100,7 @@ public record VehicleFrame(Identifier id, float weight, FrameModel model
                         () -> 28,
                         () -> -2.6f,
                         () -> -24.2f,
-                        () -> 21,
+                        () -> -2f,
                         () -> 34,
                         () -> 31
                 )

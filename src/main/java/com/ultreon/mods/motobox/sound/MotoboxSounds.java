@@ -10,11 +10,8 @@ public class MotoboxSounds {
     public static final SoundEvent SKID = register("entity.vehicle.skid");
 
     public static final SoundEvent STONE_ENGINE = register("entity.vehicle.stone_engine");
-    public static final SoundEvent COPPER_ENGINE = register("entity.vehicle.copper_engine");
-    public static final SoundEvent IRON_ENGINE = register("entity.vehicle.iron_engine");
-    public static final SoundEvent GOLD_ENGINE = register("entity.vehicle.gold_engine");
-    public static final SoundEvent DIAMOND_ENGINE = register("entity.vehicle.diamond_engine");
-    public static final SoundEvent CREATIVE_ENGINE = register("entity.vehicle.creative_engine");
+    public static final SoundEvent MOTORBIKE_ENGINE = register("entity.vehicle.motorbike_engine");
+    public static final SoundEvent TRUCK_ENGINE = register("entity.vehicle.truck_engine");
 
     private static SoundEvent register(String path) {
         var id = Motobox.id(path);
