@@ -78,7 +78,7 @@ public class RustyCarFrameModel extends EntityModel<VehicleEntity> {
 				.uv(121, 61).cuboid(-13.0F, -5.5F, 11.0F, 34.0F, 5.0F, 5.0F, new Dilation(0.0F, -0.5F, 0.0F))
 				.uv(97, 87).cuboid(-14.0F, -8.0F, 11.0F, 36.0F, 3.0F, 5.0F, new Dilation(0.0F, 0.0F, 0.0F))
 				.uv(0, 72).cuboid(-14.0F, -11.0F, 11.0F, 36.0F, 3.0F, 24.0F, new Dilation(0.0F, 0.0F, 0.0F))
-				.uv(0, 42).cuboid(-13.0F, -21.435F, -13.3934F, 34.0F, 2.0F, 26.0F, new Dilation(0.0F, 0.0F, 0.0F))
+				.uv(0, 43).cuboid(-13.0F, -21.435F, -13.3934F, 34.0F, 2.0F, 26.0F, new Dilation(0.0F, 0.0F, 0.0F))
 				.uv(166, 117).cuboid(-13.0F, -4.0F, 39.0F, 34.0F, 1.0F, 1.0F, new Dilation(0.0F, 0.0F, 0.0F))
 				.uv(174, 123).cuboid(-10.0F, -5.5F, 38.5F, 28.0F, 1.0F, 1.0F, new Dilation(0.0F, 0.0F, 0.0F))
 				.uv(75, 148).cuboid(-10.0F, -8.5F, 38.5F, 28.0F, 1.0F, 1.0F, new Dilation(0.0F, 0.0F, 0.0F))

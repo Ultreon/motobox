@@ -11,7 +11,8 @@
   ],
   "contact": {
     "homepage": "https://ultreon.github.io/web/",
-    "sources": "https://github.com/Ultreon/motobox"
+    "sources": "https://github.com/Ultreon/motobox",
+    "issues": "https://github.com/Ultreon/motobox/issues"
   },
   "license": "MIT",
   "icon": "assets/motobox/icon.png",
@@ -35,5 +36,12 @@
   },
   "suggests": {
     "lambdacontrols": "*"
+  },
+  "custom": {
+    "modmenu": {
+      "links": {
+        "modmenu.discord": "https://discord.gg/dtdc46g6ry"
+      }
+    }
   }
 }

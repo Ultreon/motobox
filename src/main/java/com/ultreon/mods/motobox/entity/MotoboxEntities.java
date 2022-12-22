@@ -60,13 +60,6 @@ public enum MotoboxEntities {
         JsonEM.registerModelLayer(CarriageWheelModel.MODEL_LAYER);
         JsonEM.registerModelLayer(SteelWheelModel.MODEL_LAYER);
 
-//        JsonEM.registerModelLayer(StoneEngineModel.MODEL_LAYER);
-//        JsonEM.registerModelLayer(IronEngineModel.MODEL_LAYER);
-//        JsonEM.registerModelLayer(CopperEngineModel.MODEL_LAYER);
-//        JsonEM.registerModelLayer(GoldEngineModel.MODEL_LAYER);
-//        JsonEM.registerModelLayer(DiamondEngineModel.MODEL_LAYER);
-//        JsonEM.registerModelLayer(CreativeEngineModel.MODEL_LAYER);
-
         JsonEM.registerModelLayer(PassengerSeatRearAttachmentModel.MODEL_LAYER);
         JsonEM.registerModelLayer(BlockRearAttachmentModel.MODEL_LAYER);
         JsonEM.registerModelLayer(GrindstoneRearAttachmentModel.MODEL_LAYER);
