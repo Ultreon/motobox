@@ -1,30 +1,14 @@
-# Forked from [[Automobility]](https://github.com/FoundationGames/Automobility)
-
-# This project is made as a commission for someone.
-
-*Note that the text about the fork isn't at the title anymore. That's because I restored it from a backup.*
-
-![Motobox](./md/banner.png)
+# This project is made as a commission to be published soon.™
 
 ### A Minecraft mod adding customizable vehicles.
-
-## Available for Fabric/Quilt
-
-- Requires **[Fabric API](https://modrinth.com/mod/fabric-api)** (Fabric) or **[QSL](https://modrinth.com/mod/qsl)** (
-  Quilt)
-
-**Support for Forge or old versions is NOT PLANNED.**
 
 ## Getting Started
 
 - **Recipes:** Crafting recipes can be viewed using [**EMI**](https://www.curseforge.com/minecraft/mc-mods/emi).
 - **Vehicle Parts:** Craft an Auto Mechanic Table. Use the GUI to craft the frame, engine, and wheels for your
-  automobile. You can optionally craft an attachment.
-- **Building your Vehicle:** Craft an Vehicle Assembler, as well as a Crowbar. Place parts on the assembler until the
-  vehicle is complete. Use a crowbar to destroy the vehicle. After building, add your attachments.
-
-![Vehicle Construction](./md/construction.png)
-![Vehicle Types](./md/parking.png)
+  vehicle. You can optionally craft an attachment.
+- **Building your Vehicle:** Place parts on the assembler until the
+  vehicle is complete. Use a hammer to destroy the vehicle. After building, add your attachments.
 
 ## Driving
 - W - Accelerate
@@ -38,13 +22,4 @@
 - LStick - Steer left/right
 - RTrigger - Drift
 
-![Driving](./md/driving.png)
-
-### Credit: Audio
-All sound effects used (originals licensed under CC0) from [freesound.org](https://freesound.org/): <br/>
-- [ENGINE~1.WAV](https://freesound.org/people/MarlonHJ/sounds/242739/) *by MarlonHJ* <br/>
-- [Marine diesel engine](https://freesound.org/people/AugustSandberg/sounds/264864/) *by AugustSandberg* <br/>
-- [metal_ring_01.wav](https://freesound.org/people/Department64/sounds/95272/) *by Department64* <br/>
-- [metalbang0.wav](https://freesound.org/people/SamsterBirdies/sounds/435699/) *by SamsterBirdies* <br/>
-- [Hollow Bang](https://freesound.org/people/qubodup/sounds/157609/) *by qubodup* <br/>
-- [car park skiding corner.wav](https://freesound.org/people/martian/sounds/178889/) *by martian* <br/>
+**Original mod** [[Automobility]](https://github.com/FoundationGames/Automobility)
