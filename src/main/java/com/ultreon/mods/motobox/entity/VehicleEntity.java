@@ -1402,14 +1402,14 @@ public class VehicleEntity extends Entity implements RenderableVehicle, EntityWi
 
     @Override
     public void updatePassengerPosition(Entity passenger) {
-        setYaw((getYaw() + 180) % 360 - 180);
-        passenger.setBodyYaw(getYaw());
         if (world.isClient) {
-            float yaw = getYaw();
-            float left = yaw - 90;
-            float right = yaw + 90;
-            float clamped = MathHelper.clamp(passenger.getHeadYaw(), left, right);
-            passenger.setHeadYaw(clamped);
+            passenger.setYaw(getYaw());
+            passenger.setBodyYaw(getYaw());
+//            float yaw = getYaw();
+//            float left = yaw - 90;
+//            float right = yaw + 90;
+//            float clamped = MathHelper.clamp(passenger.getHeadYaw(), left, right);
+//            passenger.setHeadYaw(clamped);
         }
 
         if (Objects.equals(frame.getId(), id("truck"))) {

@@ -72,12 +72,11 @@ public class TrailerRearAttachmentRenderModel<T extends Entity> extends EntityMo
 
     @Override
     public void render(MatrixStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha) {
-//        poseStack.push();
-//        poseStack.scale(3, 3, 3);
-//        poseStack.translate(0, -1.5 + (0.0 / 16.0), 0);
-//        poseStack.multiply(new Quaternion(Vec3f.POSITIVE_Y, -90, true));
+        poseStack.push();
+        poseStack.translate(-5.0 / 6.0, (-27.0 / 16.0), 30.0 / 16.0);
+        poseStack.scale(1.2f, 1.2f, 1.2f);
 
         bb_main.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
-//        poseStack.pop();
+        poseStack.pop();
     }
 }

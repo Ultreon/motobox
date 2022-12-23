@@ -24,7 +24,7 @@ public class TruckEngineModel extends EntityModel<VehicleEntity> {
 		ModelData modelData = new ModelData();
 		ModelPartData modelPartData = modelData.getRoot();
 		ModelPartData bb_main = modelPartData.addChild("bb_main", ModelPartBuilder.create().uv(0, 0).cuboid(-3.0F, -2.0F, -5.0F, 6.0F, 2.0F, 13.0F, new Dilation(0.0F))
-		.uv(0, 0).cuboid(-2.0F, -9.0F, -5.0F, 4.0F, 7.0F, 13.0F, new Dilation(0.0F)), ModelTransform.pivot(0.0F, 24.0F, 0.0F));
+				.uv(0, 0).cuboid(-2.0F, -9.0F, -5.0F, 4.0F, 7.0F, 13.0F, new Dilation(0.0F)), ModelTransform.pivot(0.0F, 24.0F, 0.0F));
 
 		bb_main.addChild("cube_r1", ModelPartBuilder.create().uv(0, 0).cuboid(-3.0F, -1.25F, -4.5F, 4.0F, 2.0F, 12.0F, new Dilation(0.0F)), ModelTransform.of(-2.5911F, -4.8549F, 0.0F, 0.0F, 0.0F, -1.9635F));
 

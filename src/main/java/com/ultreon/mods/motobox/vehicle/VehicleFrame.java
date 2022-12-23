@@ -101,7 +101,7 @@ public record VehicleFrame(Identifier id, float weight, FrameModel model
                         () -> -2.6f,
                         () -> -24.2f,
                         () -> -2f,
-                        () -> 34,
+                        () -> 44,
                         () -> 31
                 )
         );
@@ -133,6 +133,7 @@ public record VehicleFrame(Identifier id, float weight, FrameModel model
         return "frame." + id.getNamespace() + "." + id.getPath();
     }
 
+    @SuppressWarnings("unused")
     public static final class FrameModel {
         private final Identifier texture;
         private final Identifier modelId;
