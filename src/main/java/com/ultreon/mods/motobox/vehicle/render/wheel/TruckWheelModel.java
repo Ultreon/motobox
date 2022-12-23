@@ -33,6 +33,81 @@ public class TruckWheelModel<T extends VehicleEntity> extends EntityModel<T> {
 	}
 
 	public static TexturedModelData createBodyLayer() {
+		System.out.println("HELLO");
+		System.out.println("HELLO");
+		System.out.println("HELLO");
+		System.out.println("HELLO");
+		System.out.println("HELLO");
+		System.out.println("HELLO");
+		System.out.println("HELLO");
+		System.out.println("HELLO");
+		System.out.println("HELLO");
+		System.out.println("HELLO");
+		System.out.println("HELLO");
+		System.out.println("HELLO");
+		System.out.println("HELLO");
+		System.out.println("HELLO");
+		System.out.println("HELLO");
+		System.out.println("HELLO");
+		System.out.println("HELLO");
+		System.out.println("HELLO");
+		System.out.println("HELLO");
+		System.out.println("HELLO");
+		System.out.println("HELLO");
+		System.out.println("HELLO");
+		System.out.println("HELLO");
+		System.out.println("HELLO");
+		System.out.println("HELLO");
+		System.out.println("HELLO");
+		System.out.println("HELLO");
+		System.out.println("HELLO");
+		System.out.println("HELLO");
+		System.out.println("HELLO");
+		System.out.println("HELLO");
+		System.out.println("HELLO");
+		System.out.println("HELLO");
+		System.out.println("HELLO");
+		System.out.println("HELLO");
+		System.out.println("HELLO");
+		System.out.println("HELLO");
+		System.out.println("HELLO");
+		System.out.println("HELLO");
+		System.out.println("HELLO");
+		System.out.println("HELLO");
+		System.out.println("HELLO");
+		System.out.println("HELLO");
+		System.out.println("HELLO");
+		System.out.println("HELLO");
+		System.out.println("HELLO");
+		System.out.println("HELLO");
+		System.out.println("HELLO");
+		System.out.println("HELLO");
+		System.out.println("HELLO");
+		System.out.println("HELLO");
+		System.out.println("HELLO");
+		System.out.println("HELLO");
+		System.out.println("HELLO");
+		System.out.println("HELLO");
+		System.out.println("HELLO");
+		System.out.println("HELLO");
+		System.out.println("HELLO");
+		System.out.println("HELLO");
+		System.out.println("HELLO");
+		System.out.println("HELLO");
+		System.out.println("HELLO");
+		System.out.println("HELLO");
+		System.out.println("HELLO");
+		System.out.println("HELLO");
+		System.out.println("HELLO");
+		System.out.println("HELLO");
+		System.out.println("HELLO");
+		System.out.println("HELLO");
+		System.out.println("HELLO");
+		System.out.println("HELLO");
+		System.out.println("HELLO");
+		System.out.println("HELLO");
+		System.out.println("HELLO");
+		System.out.println("HELLO");
 		ModelData modelData = new ModelData();
 		ModelPartData root = modelData.getRoot();
 
@@ -100,14 +175,16 @@ public class TruckWheelModel<T extends VehicleEntity> extends EntityModel<T> {
 //		wheel.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
 
 		poseStack.push();
-		poseStack.scale(1.7f, 1.7f, 1.7f);
-		poseStack.translate(0 / 16.0, -24 / 16.0, 0 / 16.0);
-		poseStack.multiply(new Quaternionf(0, 1, 0, 270));
-		poseStack.multiply(new Quaternionf(0, 0, 1, 0));
+		poseStack.scale(400.7f, 400.7f, 400.7f);
+//		poseStack.translate(0 / 16.0, -24 / 16.0, 0 / 16.0);
+//		poseStack.multiply(new Quaternionf(0, 1, 0, 270));
+//		poseStack.multiply(new Quaternionf(0, 0, 1, 0));
 		bone2.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
 		bone3.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
 		bone4.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
 		bone.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
+
+//		System.out.println("poseStack = " + poseStack);
 		poseStack.pop();
 	}
 }

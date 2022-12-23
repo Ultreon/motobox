@@ -9,6 +9,7 @@ import net.minecraft.client.render.entity.EntityRendererFactory;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Identifier;
 import org.joml.Quaternionf;
+import org.joml.Vector3f;
 
 public class VehicleEntityRenderer extends EntityRenderer<VehicleEntity> {
     private final EntityRendererFactory.Context ctx;
@@ -31,8 +32,8 @@ public class VehicleEntityRenderer extends EntityRenderer<VehicleEntity> {
         float offsetY = entity.getDisplacement().getVertical(tickDelta);
 
         matrices.translate(0, offsetY, 0);
-        matrices.multiply(new Quaternionf(1, 0, 0, (float) Math.toRadians(angX)));
-        matrices.multiply(new Quaternionf(0, 0, 1, (float) Math.toRadians(angZ)));
+        matrices.translate(entity.getX(), entity.getY(), entity.getZ());
+        matrices.multiply(new Quaternionf().rotationXYZ((float) Math.toRadians(angX), 0, (float) Math.toRadians(angZ)));
 
         VehicleRenderer.render(matrices, vertexConsumers, light, OverlayTexture.DEFAULT_UV, tickDelta, ctx, entity);
         matrices.pop();
