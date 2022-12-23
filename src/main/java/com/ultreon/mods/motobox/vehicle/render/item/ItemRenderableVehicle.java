@@ -13,9 +13,9 @@ import com.ultreon.mods.motobox.vehicle.render.RenderableVehicle;
 import net.minecraft.client.model.Model;
 import net.minecraft.client.render.entity.EntityRendererFactory;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.math.Vec3f;
 import org.jetbrains.annotations.Nullable;
 
+import java.awt.*;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -149,7 +149,7 @@ public class ItemRenderableVehicle implements RenderableVehicle {
     }
 
     @Override
-    public Vec3f debrisColor() {
-        return new Vec3f();
+    public Color debrisColor() {
+        return new Color(0, 0, 0);
     }
 }

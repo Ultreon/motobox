@@ -26,27 +26,13 @@ public record VehicleWheel(
             new VehicleWheel(Motobox.id("empty"), 0.01f, 0.01f, new WheelModel(1, 1, new Identifier("empty"), Motobox.id("empty")))
     );
 
-    public static final VehicleWheel STANDARD = REGISTRY.register(
-            new VehicleWheel(Motobox.id("standard"), 0.6f, 0.5f, new WheelModel(3, 3, Motobox.id("textures/entity/vehicle/wheel/standard.png"), Motobox.id("wheel_standard")))
-    );
-
-    public static final VehicleWheel OFF_ROAD = REGISTRY.register(
-            new VehicleWheel(Motobox.id("off_road"), 1.1f, 0.8f, new WheelModel(8.4f, 5, Motobox.id("textures/entity/vehicle/wheel/off_road.png"), Motobox.id("wheel_off_road")))
-    );
-
     public static final VehicleWheel TRUCK = REGISTRY.register(
             new VehicleWheel(Motobox.id("truck"), 1.1f, 0.8f, new WheelModel(8.4f, 5, Motobox.id("textures/entity/vehicle/wheel/truck.png"), Motobox.id("wheel_truck")))
     );
 
-    public static final VehicleWheel STREET = REGISTRY.register(carriage("street", 0.5f));
-
     public static final VehicleWheel CONVERTIBLE = REGISTRY.register(
             new VehicleWheel(Motobox.id("convertible"), 0.75f, 0.45f, new WheelModel(5.2f, 4.1f, Motobox.id("textures/entity/vehicle/frame/dababy.png"), Motobox.id("wheel_convertible")))
     );
-
-    private static VehicleWheel carriage(String name, float grip) {
-        return new VehicleWheel(Motobox.id(name), 1.05f, grip, new WheelModel(5, 2, Motobox.id("textures/entity/vehicle/wheel/" + name + ".png"), Motobox.id("wheel_carriage")));
-    }
 
     public static final DisplayStat<VehicleWheel> STAT_SIZE = new DisplayStat<>("size", VehicleWheel::size);
     public static final DisplayStat<VehicleWheel> STAT_GRIP = new DisplayStat<>("grip", VehicleWheel::grip);

@@ -6,7 +6,7 @@ import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.entity.EntityRendererFactory;
 import net.minecraft.client.render.entity.model.EntityModelLayer;
 import net.minecraft.client.util.math.MatrixStack;
-import net.minecraft.util.math.Vec3f;
+import org.joml.Quaternionf;
 
 public class StandardWheelModel extends BaseModel {
     public static final EntityModelLayer MODEL_LAYER = new EntityModelLayer(Motobox.id("vehicle/wheel/standard"), "main");
@@ -17,6 +17,6 @@ public class StandardWheelModel extends BaseModel {
 
     @Override
     protected void prepare(MatrixStack matrices) {
-        matrices.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion(-90));
+        matrices.multiply(new Quaternionf(0, 1, 0, -90));
     }
 }

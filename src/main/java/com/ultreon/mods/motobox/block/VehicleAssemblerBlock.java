@@ -1,6 +1,8 @@
 package com.ultreon.mods.motobox.block;
 
 import com.ultreon.mods.motobox.block.entity.VehicleAssemblerBlockEntity;
+import com.ultreon.mods.motobox.item.CourseElementItem;
+import com.ultreon.mods.motobox.item.GenericMotoboxItem;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.LivingEntity;
@@ -23,7 +25,7 @@ import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
-public class VehicleAssemblerBlock extends HorizontalFacingBlock implements BlockEntityProvider {
+public class VehicleAssemblerBlock extends HorizontalFacingBlock implements BlockEntityProvider, GenericMotoboxItem {
     public static final Text USE_HAMMER_DIALOG = Text.translatable("dialog.motobox.use_hammer").formatted(Formatting.GOLD);
     public static final Text INCOMPLETE_AUTOMOBILE_DIALOG = Text.translatable("dialog.motobox.incomplete_vehicle").formatted(Formatting.RED);
 

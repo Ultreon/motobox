@@ -33,27 +33,13 @@ public enum MotoboxModels {
         MODELS.put(Motobox.id("frame_motorbike"), MotorbikeFrameModel::new);
         MODELS.put(Motobox.id("frame_rusty_car"), RustyCarFrameModel::new);
 
-        MODELS.put(Motobox.id("wheel_standard"), StandardWheelModel::new);
-        MODELS.put(Motobox.id("wheel_off_road"), OffRoadWheelModel::new);
         MODELS.put(Motobox.id("wheel_truck"), TruckWheelModel::new);
-        MODELS.put(Motobox.id("wheel_steel"), SteelWheelModel::new);
-        MODELS.put(Motobox.id("wheel_tractor"), TractorWheelModel::new);
-        MODELS.put(Motobox.id("wheel_carriage"), CarriageWheelModel::new);
-        MODELS.put(Motobox.id("wheel_convertible"), ConvertibleWheelModel::new);
+
 
         MODELS.put(Motobox.id("truck_engine"), TruckEngineModel::new);
         MODELS.put(Motobox.id("motorbike_engine"), MotorbikeEngineModel::new);
         MODELS.put(Motobox.id("rusty_car_engine"), TruckEngineModel::new);
 
-        MODELS.put(Motobox.id("rearatt_passenger_seat"), PassengerSeatRearAttachmentModel::new);
-        MODELS.put(Motobox.id("rearatt_block"), BlockRearAttachmentModel::new);
-        MODELS.put(Motobox.id("rearatt_grindstone"), GrindstoneRearAttachmentModel::new);
-        MODELS.put(Motobox.id("rearatt_stonecutter"), StonecutterRearAttachmentModel::new);
-        MODELS.put(Motobox.id("rearatt_chest"), ChestRearAttachmentModel::new);
-        MODELS.put(Motobox.id("rearatt_banner_post"), BannerPostRearAttachmentModel::new);
         MODELS.put(Motobox.id("rearatt_trailer"), TrailerRearAttachmentRenderModel::new);
-
-        MODELS.put(Motobox.id("frontatt_mob_controller"), MobControllerFrontAttachmentModel::new);
-        MODELS.put(Motobox.id("frontatt_harvester"), HarvesterFrontAttachmentModel::new);
     }
 }

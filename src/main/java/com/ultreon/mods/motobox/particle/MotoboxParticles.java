@@ -4,10 +4,11 @@ import com.ultreon.mods.motobox.Motobox;
 import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
 import net.fabricmc.fabric.api.particle.v1.FabricParticleTypes;
 import net.minecraft.particle.DefaultParticleType;
-import net.minecraft.util.registry.Registry;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.Registry;
 
 public class MotoboxParticles {
-    public static final DefaultParticleType DRIFT_SMOKE = Registry.register(Registry.PARTICLE_TYPE, Motobox.id("drift_smoke"), FabricParticleTypes.simple(true));
+    public static final DefaultParticleType DRIFT_SMOKE = Registry.register(Registries.PARTICLE_TYPE, Motobox.id("drift_smoke"), FabricParticleTypes.simple(true));
 
     public static void init() {
     }

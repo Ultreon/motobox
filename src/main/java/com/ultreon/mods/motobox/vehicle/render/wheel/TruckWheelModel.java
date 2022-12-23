@@ -13,8 +13,7 @@ import net.minecraft.client.render.entity.EntityRendererFactory;
 import net.minecraft.client.render.entity.model.EntityModel;
 import net.minecraft.client.render.entity.model.EntityModelLayer;
 import net.minecraft.client.util.math.MatrixStack;
-import net.minecraft.util.math.Quaternion;
-import net.minecraft.util.math.Vec3f;
+import org.joml.Quaternionf;
 
 public class TruckWheelModel<T extends VehicleEntity> extends EntityModel<T> {
 	// This layer location should be baked with EntityRendererProvider.Context in the entity renderer and passed into this model's constructor
@@ -103,8 +102,8 @@ public class TruckWheelModel<T extends VehicleEntity> extends EntityModel<T> {
 		poseStack.push();
 		poseStack.scale(1.7f, 1.7f, 1.7f);
 		poseStack.translate(0 / 16.0, -24 / 16.0, 0 / 16.0);
-		poseStack.multiply(new Quaternion(Vec3f.POSITIVE_Y, 270, true));
-		poseStack.multiply(new Quaternion(Vec3f.POSITIVE_Z, 0, true));
+		poseStack.multiply(new Quaternionf(0, 1, 0, 270));
+		poseStack.multiply(new Quaternionf(0, 0, 1, 0));
 		bone2.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
 		bone3.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
 		bone4.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);

@@ -7,8 +7,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.recipe.RecipeSerializer;
+import net.minecraft.registry.Registries;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.Registry;
 
 import java.util.LinkedHashSet;
 
@@ -18,7 +18,7 @@ public class AutoMechanicTableRecipeSerializer implements RecipeSerializer<AutoM
     public static ItemStack autoComponentStackFromJson(JsonObject obj) throws JsonSyntaxException, IllegalStateException {
         var id = Identifier.tryParse(obj.get("item").getAsString());
         int count = obj.has("count") ? obj.get("count").getAsInt() : 1;
-        var stack = Registry.ITEM.getOrEmpty(id).map(i -> new ItemStack(i, count)).orElse(ItemStack.EMPTY);
+        var stack = Registries.ITEM.getOrEmpty(id).map(i -> new ItemStack(i, count)).orElse(ItemStack.EMPTY);
 
         if (obj.has("component") && stack.getItem() instanceof VehicleComponentItem<?> item) {
             var component = Identifier.tryParse(obj.get("component").getAsString());

@@ -9,8 +9,9 @@ import com.ultreon.mods.motobox.vehicle.attachment.front.FrontAttachment;
 import com.ultreon.mods.motobox.vehicle.attachment.rear.RearAttachment;
 import net.minecraft.client.model.Model;
 import net.minecraft.client.render.entity.EntityRendererFactory;
-import net.minecraft.util.math.Vec3f;
 import org.jetbrains.annotations.Nullable;
+
+import java.awt.*;
 
 public interface RenderableVehicle {
     VehicleFrame getFrame();
@@ -73,5 +74,5 @@ public interface RenderableVehicle {
 
     boolean debris();
 
-    Vec3f debrisColor();
+    Color debrisColor();
 }

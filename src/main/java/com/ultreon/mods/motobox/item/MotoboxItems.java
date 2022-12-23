@@ -16,9 +16,10 @@ import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.model.Model;
 import net.minecraft.client.render.entity.EntityRendererFactory;
 import net.minecraft.item.Item;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.Registry;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
-import net.minecraft.util.registry.Registry;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -26,19 +27,19 @@ import java.util.function.Function;
 
 public enum MotoboxItems {
     ;
-    public static final Item HAMMER = register("hammer", new TooltipItem(Text.translatable("tooltip.item.motobox.hammer").formatted(Formatting.BLUE), new Item.Settings().maxCount(1).group(Motobox.GROUP)));
-    public static final Item AUTOMOBILE = register("vehicle", new VehicleItem(new Item.Settings().maxCount(1).group(Motobox.PREFABS)));
-    public static final VehicleFrameItem AUTOMOBILE_FRAME = register("vehicle_frame", new VehicleFrameItem(new Item.Settings().maxCount(16).group(Motobox.GROUP)));
-    public static final VehicleWheelItem AUTOMOBILE_WHEEL = register("vehicle_wheel", new VehicleWheelItem(new Item.Settings().group(Motobox.GROUP)));
-    public static final VehicleEngineItem AUTOMOBILE_ENGINE = register("vehicle_engine", new VehicleEngineItem(new Item.Settings().maxCount(16).group(Motobox.GROUP)));
-    public static final FrontAttachmentItem FRONT_ATTACHMENT = register("front_attachment", new FrontAttachmentItem(new Item.Settings().maxCount(1).group(Motobox.GROUP)));
-    public static final RearAttachmentItem REAR_ATTACHMENT = register("rear_attachment", new RearAttachmentItem(new Item.Settings().maxCount(1).group(Motobox.GROUP)));
+    public static final Item HAMMER = register("hammer", new TooltipItem(Text.translatable("tooltip.item.motobox.hammer").formatted(Formatting.BLUE), new Item.Settings().maxCount(1)));
+    public static final Item AUTOMOBILE = register("vehicle", new VehicleItem(new Item.Settings().maxCount(1)));
+    public static final VehicleFrameItem AUTOMOBILE_FRAME = register("vehicle_frame", new VehicleFrameItem(new Item.Settings().maxCount(16)));
+    public static final VehicleWheelItem AUTOMOBILE_WHEEL = register("vehicle_wheel", new VehicleWheelItem(new Item.Settings()));
+    public static final VehicleEngineItem AUTOMOBILE_ENGINE = register("vehicle_engine", new VehicleEngineItem(new Item.Settings().maxCount(16)));
+    public static final FrontAttachmentItem FRONT_ATTACHMENT = register("front_attachment", new FrontAttachmentItem(new Item.Settings().maxCount(1)));
+    public static final RearAttachmentItem REAR_ATTACHMENT = register("rear_attachment", new RearAttachmentItem(new Item.Settings().maxCount(1)));
 
     public static void init() {
         VehicleItem.addPrefabs(
                 new VehiclePrefab(Motobox.id("truck"), VehicleFrame.TRUCK, VehicleWheel.TRUCK, VehicleEngine.TRUCK_ENGINE),
-                new VehiclePrefab(Motobox.id("motorbike"), VehicleFrame.MOTORBIKE, VehicleWheel.STREET, VehicleEngine.MOTORBIKE_ENGINE),
-                new VehiclePrefab(Motobox.id("rusty_car"), VehicleFrame.RUSTY_CAR, VehicleWheel.OFF_ROAD, VehicleEngine.RUSTY_CAR_ENGINE)
+                new VehiclePrefab(Motobox.id("motorbike"), VehicleFrame.MOTORBIKE, VehicleWheel.TRUCK, VehicleEngine.MOTORBIKE_ENGINE),
+                new VehiclePrefab(Motobox.id("rusty_car"), VehicleFrame.RUSTY_CAR, VehicleWheel.TRUCK, VehicleEngine.RUSTY_CAR_ENGINE)
         );
     }
 
@@ -109,6 +110,6 @@ public enum MotoboxItems {
     }
 
     public static <T extends Item> T register(String name, T item) {
-        return Registry.register(Registry.ITEM, Motobox.id(name), item);
+        return Registry.register(Registries.ITEM, Motobox.id(name), item);
     }
 }

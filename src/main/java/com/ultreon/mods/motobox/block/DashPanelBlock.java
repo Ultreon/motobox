@@ -2,6 +2,7 @@ package com.ultreon.mods.motobox.block;
 
 import com.ultreon.mods.motobox.entity.MotoboxEntities;
 import com.ultreon.mods.motobox.entity.VehicleEntity;
+import com.ultreon.mods.motobox.item.CourseElementItem;
 import net.minecraft.block.*;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
@@ -22,7 +23,7 @@ import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
 import org.jetbrains.annotations.Nullable;
 
-public class DashPanelBlock extends HorizontalFacingBlock implements Waterloggable {
+public class DashPanelBlock extends HorizontalFacingBlock implements Waterloggable, CourseElementItem {
     public static final BooleanProperty LEFT = BooleanProperty.of("left");
     public static final BooleanProperty RIGHT = BooleanProperty.of("right");
     public static final BooleanProperty WATERLOGGED = Properties.WATERLOGGED;

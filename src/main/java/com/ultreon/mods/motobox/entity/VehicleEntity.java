@@ -38,6 +38,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.network.Packet;
 import net.minecraft.network.PacketByteBuf;
+import net.minecraft.network.listener.ClientPlayPacketListener;
 import net.minecraft.network.packet.s2c.play.EntitySpawnS2CPacket;
 import net.minecraft.predicate.entity.EntityPredicates;
 import net.minecraft.server.network.ServerPlayerEntity;
@@ -51,7 +52,9 @@ import net.minecraft.world.World;
 import net.minecraft.world.event.GameEvent;
 import org.jetbrains.annotations.Nullable;
 
+import java.awt.*;
 import java.util.*;
+import java.util.List;
 import java.util.function.Consumer;
 
 import static com.ultreon.mods.motobox.Motobox.id;
@@ -146,7 +149,7 @@ public class VehicleEntity extends Entity implements RenderableVehicle, EntityWi
     private final Deque<Double> prevYDisplacements = new ArrayDeque<>();
 
     private boolean offRoad = false;
-    private Vec3f debrisColor = new Vec3f();
+    private Color debrisColor = new Color(0, 0, 0);
 
     private int fallTicks = 0;
 
@@ -403,7 +406,7 @@ public class VehicleEntity extends Entity implements RenderableVehicle, EntityWi
     }
 
     @Override
-    public Vec3f debrisColor() {
+    public Color debrisColor() {
         return debrisColor;
     }
 
@@ -1572,7 +1575,7 @@ public class VehicleEntity extends Entity implements RenderableVehicle, EntityWi
     }
 
     @Override
-    public Packet<?> createSpawnPacket() {
+    public Packet<ClientPlayPacketListener> createSpawnPacket() {
         return new EntitySpawnS2CPacket(this);
     }
 

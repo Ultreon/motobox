@@ -65,13 +65,10 @@ public class VehicleComponentItem<T extends VehicleComponent<T>> extends Item {
         component.appendTexts(tooltip, component);
     }
 
-    @Override
-    public void appendStacks(ItemGroup group, DefaultedList<ItemStack> stacks) {
-        if (this.isIn(group)) {
-            this.registry.forEach(component -> {
-                if (addToCreative(component)) stacks.add(this.createStack(component));
-            });
-        }
+    public void appendStacks(ItemGroup.Entries entries) {
+        this.registry.forEach(component -> {
+            if (addToCreative(component)) entries.add(this.createStack(component));
+        });
     }
 
     @Environment(EnvType.CLIENT)

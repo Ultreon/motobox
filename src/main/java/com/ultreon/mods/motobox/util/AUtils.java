@@ -16,9 +16,9 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.Vec3d;
-import net.minecraft.util.math.Vec3f;
 import net.minecraft.util.math.random.Random;
 
+import java.awt.*;
 import java.text.DecimalFormat;
 
 // Everyday Chicken: E Edition
@@ -161,11 +161,11 @@ public enum AUtils {;
      * @param color An RGB color integer
      * @return A Vec3f containing the color integer's RGB, with x being r, y being g, and z being b. All values are from 0 to 1.
      */
-    public static Vec3f colorFromInt(int color) {
+    public static Color colorFromInt(int color) {
         int r = (color >> 16) & 0xFF;
         int g = (color >> 8) & 0xFF;
         int b = color & 0xFF;
-        return new Vec3f((float)r / 255, (float)g / 255, (float)b / 255);
+        return new Color((float)r / 255, (float)g / 255, (float)b / 255);
     }
 
     public static boolean canMerge(ItemStack a, ItemStack b) {
@@ -207,6 +207,6 @@ public enum AUtils {;
     }
 
     public static ItemStack createPrefabsIcon() {
-        return new VehiclePrefab(Motobox.id("truck"), VehicleFrame.TRUCK, VehicleWheel.STANDARD, VehicleEngine.TRUCK_ENGINE).toStack();
+        return new VehiclePrefab(Motobox.id("truck"), VehicleFrame.TRUCK, VehicleWheel.TRUCK, VehicleEngine.TRUCK_ENGINE).toStack();
     }
 }

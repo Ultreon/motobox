@@ -1,6 +1,7 @@
 package com.ultreon.mods.motobox.block;
 
 import com.ultreon.mods.motobox.entity.VehicleEntity;
+import com.ultreon.mods.motobox.item.CourseElementItem;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.ShapeContext;
@@ -12,7 +13,7 @@ import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldView;
 
-public class LaunchGelBlock extends Block {
+public class LaunchGelBlock extends Block implements CourseElementItem {
     public static final VoxelShape SHAPE = createCuboidShape(0, 0, 0, 16, 1, 16);
 
     public LaunchGelBlock(Settings settings) {

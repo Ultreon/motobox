@@ -90,6 +90,15 @@ public class BlockRearAttachment extends RearAttachment {
 
     public static RearAttachment trailer(RearAttachmentType<?> type, VehicleEntity entity) {
         return new RearAttachment(type, entity) {
+            @Override
+            public boolean hasMenu() {
+                return true;
+            }
+
+            @Override
+            public @Nullable NamedScreenHandlerFactory createMenu(ScreenHandlerContext ctx) {
+                return super.createMenu(ctx);
+            }
         };
     }
 

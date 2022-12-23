@@ -1,5 +1,7 @@
 package com.ultreon.mods.motobox.block;
 
+import com.ultreon.mods.motobox.item.CourseElementItem;
+import com.ultreon.mods.motobox.item.GenericMotoboxItem;
 import com.ultreon.mods.motobox.screen.AutoMechanicTableScreenHandler;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -15,7 +17,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
-public class AutoMechanicTableBlock extends Block {
+public class AutoMechanicTableBlock extends Block implements GenericMotoboxItem {
     public static final Text UI_TITLE = Text.translatable("container.motobox.auto_mechanic_table");
 
     public AutoMechanicTableBlock(Settings settings) {

@@ -1,5 +1,6 @@
 package com.ultreon.mods.motobox.block;
 
+import com.ultreon.mods.motobox.item.CourseElementItem;
 import com.ultreon.mods.motobox.item.SlopePlacementContext;
 import com.ultreon.mods.motobox.util.AUtils;
 import net.minecraft.block.*;
@@ -18,7 +19,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 
-public class SteepSlopeBlock extends HorizontalFacingBlock implements Waterloggable {
+public class SteepSlopeBlock extends HorizontalFacingBlock implements Waterloggable, CourseElementItem {
     public static final VoxelShape NORTH_SHAPE;
     public static final VoxelShape SOUTH_SHAPE;
     public static final VoxelShape EAST_SHAPE;

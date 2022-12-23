@@ -9,7 +9,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class TooltipItem extends Item {
+public class TooltipItem extends Item implements GenericMotoboxItem {
     private final Text tooltip;
 
     public TooltipItem(Text tooltip, Settings settings) {

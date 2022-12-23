@@ -13,7 +13,7 @@ import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.entity.EntityRendererFactory;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.math.Vec3f;
+import org.joml.Quaternionf;
 
 public enum VehicleRenderer {
     ;
@@ -35,8 +35,8 @@ public enum VehicleRenderer {
 
         matrices.push();
 
-        matrices.multiply(Vec3f.POSITIVE_Z.getDegreesQuaternion(180));
-        matrices.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion(vehicle.getVehicleYaw(tickDelta) + 180));
+        matrices.multiply(new Quaternionf(0, 0, 1, 180));
+        matrices.multiply(new Quaternionf(0, 1, 0, vehicle.getVehicleYaw(tickDelta) + 180));
 
         float chassisRaise = wheels.model().radius() / 16;
         float bounce = vehicle.getSuspensionBounce(tickDelta) * 0.048f;
@@ -65,7 +65,7 @@ public enum VehicleRenderer {
         float eBack = frame.model().enginePosBack().getFloat() / 16;
         float eUp = frame.model().enginePosUp().getFloat() / 16;
         matrices.translate(0, -eUp, eBack);
-        matrices.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion(180));
+        matrices.multiply(new Quaternionf(0, 1, 0, 180));
         if (!engine.isEmpty() && engineModel != null) {
             engineModel.render(matrices, vertexConsumers.getBuffer(engineModel.getLayer(engineTexture)), light, overlay, 1, 1, 1, 1);
             if (engineModel instanceof BaseModel base) {
@@ -89,8 +89,8 @@ public enum VehicleRenderer {
                 matrices.push();
 
                 matrices.translate(exhaust.x() / 16, -exhaust.y() / 16, exhaust.z() / 16);
-                matrices.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion(exhaust.yaw()));
-                matrices.multiply(Vec3f.POSITIVE_X.getDegreesQuaternion(exhaust.pitch()));
+                matrices.multiply(new Quaternionf(0, 1, 0, exhaust.yaw()));
+                matrices.multiply(new Quaternionf(1, 0, 0, exhaust.pitch()));
                 exhaustFumesModel.render(matrices, exhaustBuffer, light, overlay, 1, 1, 1, 1);
 
                 matrices.pop();
@@ -103,7 +103,7 @@ public enum VehicleRenderer {
         if (!rearAtt.isEmpty()) {
             matrices.push();
             matrices.translate(0, chassisRaise, frame.model().rearAttachmentPos().getFloat() / 16);
-            matrices.multiply(Vec3f.NEGATIVE_Y.getDegreesQuaternion(vehicle.getVehicleYaw(tickDelta) - vehicle.getRearAttachmentYaw(tickDelta)));
+            matrices.multiply(new Quaternionf(0, -1, 0, vehicle.getVehicleYaw(tickDelta) - vehicle.getRearAttachmentYaw(tickDelta)));
 
             matrices.translate(0, 0, rearAtt.model().pivotDistPx().getFloat() / 16);
             if (rearAttachmentModel instanceof RearAttachmentRenderModel rm) {
@@ -155,12 +155,12 @@ public enum VehicleRenderer {
                 matrices.translate(pos.right() / 16, wheelRadius / 16, -pos.forward() / 16);
 
                 if (pos.end() == WheelBase.WheelEnd.FRONT)
-                    matrices.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion(vehicle.getSteering(tickDelta) * 27));
+                    matrices.multiply(new Quaternionf(0, 1, 0, vehicle.getSteering(tickDelta) * 27));
                 matrices.translate(0, -chassisRaise, 0);
-                matrices.multiply(Vec3f.POSITIVE_X.getDegreesQuaternion(wheelAngle));
+                matrices.multiply(new Quaternionf(1, 0, 0,wheelAngle));
                 matrices.scale(scale, scale, scale);
 
-                matrices.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion(180 + pos.yaw()));
+                matrices.multiply(new Quaternionf(0, 1, 0, 180 + pos.yaw()));
 
                 wheelModel.render(matrices, wheelBuffer, light, overlay, 1, 1, 1, 1);
                 if (wheelModel instanceof BaseModel base) {
@@ -187,9 +187,9 @@ public enum VehicleRenderer {
             } else if (vehicle.debris()) {
                 skidTexes = SkidEffectModel.DEBRIS_TEXTURES;
                 var c = vehicle.debrisColor();
-                r = c.getX() * 0.85f;
-                g = c.getY() * 0.85f;
-                b = c.getZ() * 0.85f;
+                r = (c.getRed() / 255f) * 0.85f;
+                g = (c.getGreen() / 255f) * 0.85f;
+                b = (c.getBlue() / 255f) * 0.85f;
                 bright = false;
             }
             int index = (int) Math.floor(((vehicle.getTime() + tickDelta) / 1.5f) % skidTexes.length);

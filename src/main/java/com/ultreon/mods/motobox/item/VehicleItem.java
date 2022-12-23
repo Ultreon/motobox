@@ -76,13 +76,4 @@ public class VehicleItem extends Item {
     public static void addPrefabs(VehiclePrefab... prefabs) {
         PREFABS.addAll(Arrays.asList(prefabs));
     }
-
-    @Override
-    public void appendStacks(ItemGroup group, DefaultedList<ItemStack> stacks) {
-        if (isIn(group) || group == ItemGroup.TRANSPORTATION) {
-            for (var prefab : PREFABS) {
-                stacks.add(prefab.toStack());
-            }
-        }
-    }
 }

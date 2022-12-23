@@ -1,5 +1,6 @@
 package com.ultreon.mods.motobox.block;
 
+import com.ultreon.mods.motobox.item.CourseElementItem;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.Entity;
@@ -10,7 +11,7 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
 
-public class SteepSlopedDashPanelBlock extends SteepSlopeBlock {
+public class SteepSlopedDashPanelBlock extends SteepSlopeBlock implements CourseElementItem {
     public static final BooleanProperty LEFT = BooleanProperty.of("left");
     public static final BooleanProperty RIGHT = BooleanProperty.of("right");
 
