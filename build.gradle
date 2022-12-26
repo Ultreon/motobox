@@ -1,3 +1,4 @@
+//file:noinspection GroovyAssignabilityCheck
 plugins {
 	id 'fabric-loom' version '1.0-SNAPSHOT'
 	id 'org.jetbrains.kotlin.jvm' version "1.7.10"
@@ -59,10 +60,6 @@ dependencies {
 		exclude group: 'com.google.code.gson'
 		exclude group: 'com.google.guava'
 	}
-
-	// OBJ loader
-	modImplementation "com.ultreon.mods:myron-updated:${project.myron_version}"
-	include "com.ultreon.mods:myron-updated:${project.myron_version}"
 
 	// Json't
 	modImplementation "net.devtech:arrp:${project.arrp_version}"
