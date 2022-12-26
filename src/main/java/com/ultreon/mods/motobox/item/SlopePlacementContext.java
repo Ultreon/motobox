@@ -4,7 +4,6 @@ import net.minecraft.block.enums.BlockHalf;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.item.ItemUsageContext;
 import net.minecraft.util.math.Direction;
-import org.jetbrains.annotations.Nullable;
 
 public class SlopePlacementContext extends ItemPlacementContext {
     private final Direction slopeFacing;

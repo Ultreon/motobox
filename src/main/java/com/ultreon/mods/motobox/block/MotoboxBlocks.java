@@ -31,26 +31,28 @@ import net.minecraft.util.Identifier;
 import java.awt.*;
 import java.util.function.Function;
 
+@SuppressWarnings("unused")
 public enum MotoboxBlocks {
     ;
-    public static final Block AUTO_MECHANIC_TABLE = register("auto_mechanic_table", new AutoMechanicTableBlock(FabricBlockSettings.copyOf(Blocks.COPPER_BLOCK)));
-    public static final Block AUTOMOBILE_ASSEMBLER = register("vehicle_assembler", new VehicleAssemblerBlock(FabricBlockSettings.copyOf(Blocks.ANVIL)));
+    public static final Block AUTO_MECHANIC_TABLE = register("auto_mechanic_table", new AutoMechanicTableBlock(FabricBlockSettings.copyOf(Blocks.COPPER_BLOCK)), MotoboxBlocks::simpleItem);
 
-    public static final Block LAUNCH_GEL = register("launch_gel", new LaunchGelBlock(FabricBlockSettings.copyOf(Blocks.GLOW_LICHEN).sounds(BlockSoundGroup.HONEY).noCollision()));
+    public static final Block AUTOMOBILE_ASSEMBLER = register("vehicle_assembler", new VehicleAssemblerBlock(FabricBlockSettings.copyOf(Blocks.ANVIL)), MotoboxBlocks::simpleItem);
+
+    public static final Block LAUNCH_GEL = register("launch_gel", new LaunchGelBlock(FabricBlockSettings.copyOf(Blocks.GLOW_LICHEN).sounds(BlockSoundGroup.HONEY).noCollision()), MotoboxBlocks::simpleItem);
+
     public static final Block ALLOW = register("allow", new Block(FabricBlockSettings.copyOf(Blocks.BARRIER).sounds(BlockSoundGroup.METAL)),
             b -> new TooltipBlockItem(b, Text.translatable("tooltip.block.motobox.allow").formatted(Formatting.AQUA), new Item.Settings()));
+    public static final Block GRASS_OFF_ROAD = register("grass_off_road", new OffRoadBlock(FabricBlockSettings.copyOf(Blocks.GRASS_BLOCK).noCollision(), new Color(0x406918)), MotoboxBlocks::simpleItem);
 
-    public static final Block GRASS_OFF_ROAD = register("grass_off_road", new OffRoadBlock(FabricBlockSettings.copyOf(Blocks.GRASS_BLOCK).noCollision(), new Color(0x406918)));
-    public static final Block DIRT_OFF_ROAD = register("dirt_off_road", new OffRoadBlock(FabricBlockSettings.copyOf(Blocks.DIRT).noCollision(), new Color(0x594227)));
-    public static final Block SAND_OFF_ROAD = register("sand_off_road", new OffRoadBlock(FabricBlockSettings.copyOf(Blocks.SAND).noCollision(), new Color(0xC2B185)));
-    public static final Block SNOW_OFF_ROAD = register("snow_off_road", new OffRoadBlock(FabricBlockSettings.copyOf(Blocks.SNOW).noCollision(), new Color(0xD0E7ED)));
+    public static final Block DIRT_OFF_ROAD = register("dirt_off_road", new OffRoadBlock(FabricBlockSettings.copyOf(Blocks.DIRT).noCollision(), new Color(0x594227)), MotoboxBlocks::simpleItem);
+    public static final Block SAND_OFF_ROAD = register("sand_off_road", new OffRoadBlock(FabricBlockSettings.copyOf(Blocks.SAND).noCollision(), new Color(0xC2B185)), MotoboxBlocks::simpleItem);
+    public static final Block SNOW_OFF_ROAD = register("snow_off_road", new OffRoadBlock(FabricBlockSettings.copyOf(Blocks.SNOW).noCollision(), new Color(0xD0E7ED)), MotoboxBlocks::simpleItem);
+    public static final Block ASPHALT = register("asphalt", new RoadBlock(FabricBlockSettings.of(Material.STONE, MapColor.BLACK)), MotoboxBlocks::simpleItem);
 
-    public static final Block ASPHALT = register("asphalt", new RoadBlock(FabricBlockSettings.of(Material.STONE, MapColor.BLACK)));
+    public static final Block DASH_PANEL = register("dash_panel", new DashPanelBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK).luminance(1).emissiveLighting((state, world, pos) -> true).noCollision()), MotoboxBlocks::simpleItem);
 
-    public static final Block DASH_PANEL = register("dash_panel", new DashPanelBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK).luminance(1).emissiveLighting((state, world, pos) -> true).noCollision()));
     public static final Block SLOPED_DASH_PANEL = register("sloped_dash_panel", new SlopedDashPanelBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK).luminance(1).emissiveLighting((state, world, pos) -> true)));
     public static final Block STEEP_SLOPED_DASH_PANEL = register("steep_sloped_dash_panel", new SteepSlopedDashPanelBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK).luminance(1).emissiveLighting((state, world, pos) -> true)));
-
     public static final BlockEntityType<VehicleAssemblerBlockEntity> AUTOMOBILE_ASSEMBLER_ENTITY = Registry.register(Registries.BLOCK_ENTITY_TYPE,
             Motobox.id("vehicle_assembler"), FabricBlockEntityTypeBuilder.create(VehicleAssemblerBlockEntity::new, AUTOMOBILE_ASSEMBLER).build());
 
@@ -88,7 +90,7 @@ public enum MotoboxBlocks {
         MotoboxData.NON_STEEP_SLOPE_TAG_CANDIDATES.add(Motobox.id("sloped_dash_panel"));
         MotoboxData.STEEP_SLOPE_TAG_CANDIDATES.add(Motobox.id("steep_sloped_dash_panel"));
         for (var base : Registries.BLOCK) {
-            if (base.getClass().equals(Block.class)) {
+            if (base.getClass().equals(Block.class) && base != Blocks.REINFORCED_DEEPSLATE) {
                 var id = Registries.BLOCK.getId(base);
                 if (id.getNamespace().equals(namespace)) {
                     var path = id.getPath() + "_slope";
@@ -108,8 +110,10 @@ public enum MotoboxBlocks {
             makeStairsSticky(base, Registries.BLOCK.getId(base));
         }
 
-        RegistryEntryAddedCallback.event(Registries.BLOCK).register((raw, id, block) -> {
-            makeStairsSticky(block, id);
-        });
+        RegistryEntryAddedCallback.event(Registries.BLOCK).register((raw, id, block) -> makeStairsSticky(block, id));
+    }
+
+    private static BlockItem simpleItem(Block block) {
+        return new BlockItem(block, new Item.Settings());
     }
 }

@@ -33,6 +33,9 @@ public class Motobox implements ModInitializer {
             if (item instanceof GenericMotoboxItem) {
                 entries.add(item);
             }
+            if (item instanceof BlockItem blockItem && blockItem.getBlock() instanceof GenericMotoboxItem) {
+                entries.add(item);
+            }
             if (item instanceof VehicleComponentItem<?> vehicleComponentItem) {
                 vehicleComponentItem.appendStacks(entries);
             }

@@ -9,7 +9,6 @@ import net.minecraft.client.render.entity.EntityRendererFactory;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Identifier;
 import org.joml.Quaternionf;
-import org.joml.Vector3f;
 
 public class VehicleEntityRenderer extends EntityRenderer<VehicleEntity> {
     private final EntityRendererFactory.Context ctx;

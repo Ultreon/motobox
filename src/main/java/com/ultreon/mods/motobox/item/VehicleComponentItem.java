@@ -13,7 +13,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.function.ToFloatFunction;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;

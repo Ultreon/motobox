@@ -12,11 +12,6 @@ import com.ultreon.mods.motobox.screen.AutoMechanicTableScreen;
 import com.ultreon.mods.motobox.screen.SingleSlotScreen;
 import com.ultreon.mods.motobox.screen.VehicleHud;
 import com.ultreon.mods.motobox.util.network.PayloadPackets;
-import com.ultreon.mods.motobox.vehicle.VehicleEngine;
-import com.ultreon.mods.motobox.vehicle.VehicleFrame;
-import com.ultreon.mods.motobox.vehicle.VehicleWheel;
-import com.ultreon.mods.motobox.vehicle.render.VehicleRenderer;
-import com.ultreon.mods.motobox.vehicle.render.engine.TruckEngineModel;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.rendering.v1.BlockEntityRendererRegistry;
@@ -25,13 +20,6 @@ import net.fabricmc.fabric.api.client.rendering.v1.WorldRenderEvents;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.ingame.HandledScreens;
 import net.minecraft.client.render.RenderLayer;
-import net.minecraft.client.render.RenderLayers;
-import net.minecraft.client.render.VertexConsumerProvider;
-import net.minecraft.client.render.entity.EntityRendererFactory;
-import net.minecraft.client.util.math.MatrixStack;
-import net.minecraft.util.Identifier;
-import org.jetbrains.annotations.Nullable;
-import org.joml.Quaternionf;
 
 public class MotoboxClient implements ClientModInitializer {
     @Override

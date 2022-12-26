@@ -1,7 +1,6 @@
 package com.ultreon.mods.motobox.block;
 
 import com.ultreon.mods.motobox.block.entity.VehicleAssemblerBlockEntity;
-import com.ultreon.mods.motobox.item.CourseElementItem;
 import com.ultreon.mods.motobox.item.GenericMotoboxItem;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;

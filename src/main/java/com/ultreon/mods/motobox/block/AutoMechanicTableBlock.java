@@ -1,6 +1,5 @@
 package com.ultreon.mods.motobox.block;
 
-import com.ultreon.mods.motobox.item.CourseElementItem;
 import com.ultreon.mods.motobox.item.GenericMotoboxItem;
 import com.ultreon.mods.motobox.screen.AutoMechanicTableScreenHandler;
 import net.minecraft.block.Block;
