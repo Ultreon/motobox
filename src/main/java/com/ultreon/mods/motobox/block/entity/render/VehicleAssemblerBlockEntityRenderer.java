@@ -36,7 +36,7 @@ public class VehicleAssemblerBlockEntityRenderer implements BlockEntityRenderer<
 
             matrices.push();
             matrices.translate(0.5, 0, 0.5);
-            matrices.multiply(new Quaternionf(0, 1, 0, -entity.getCachedState().get(Properties.HORIZONTAL_FACING).asRotation()));
+            matrices.multiply(new Quaternionf().rotateY((float) Math.toRadians(-entity.getCachedState().get(Properties.HORIZONTAL_FACING).asRotation())));
             matrices.translate(0, 0.372, 0.501);
             matrices.scale(0.008f, -0.008f, -0.008f);
 

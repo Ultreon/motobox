@@ -34,6 +34,7 @@ public enum MotoboxModels {
         MODELS.put(Motobox.id("frame_rusty_car"), RustyCarFrameModel::new);
 
         MODELS.put(Motobox.id("wheel_truck"), TruckWheelModel::new);
+        MODELS.put(Motobox.id("wheel_rusty_car"), RustyCarWheelModel::new);
 
 
         MODELS.put(Motobox.id("truck_engine"), TruckEngineModel::new);
@@ -41,5 +42,6 @@ public enum MotoboxModels {
         MODELS.put(Motobox.id("rusty_car_engine"), TruckEngineModel::new);
 
         MODELS.put(Motobox.id("rearatt_trailer"), TrailerRearAttachmentRenderModel::new);
+        MODELS.put(Motobox.id("rearatt_caravan"), CaravanRearAttachmentRenderModel::new);
     }
 }

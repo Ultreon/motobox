@@ -39,7 +39,7 @@ public enum MotoboxItems {
         VehicleItem.addPrefabs(
                 new VehiclePrefab(Motobox.id("truck"), VehicleFrame.TRUCK, VehicleWheel.TRUCK, VehicleEngine.TRUCK_ENGINE),
                 new VehiclePrefab(Motobox.id("motorbike"), VehicleFrame.MOTORBIKE, VehicleWheel.TRUCK, VehicleEngine.MOTORBIKE_ENGINE),
-                new VehiclePrefab(Motobox.id("rusty_car"), VehicleFrame.RUSTY_CAR, VehicleWheel.TRUCK, VehicleEngine.RUSTY_CAR_ENGINE)
+                new VehiclePrefab(Motobox.id("rusty_car"), VehicleFrame.RUSTY_CAR, VehicleWheel.RUSTY_CAR, VehicleEngine.RUSTY_CAR_ENGINE)
         );
     }
 

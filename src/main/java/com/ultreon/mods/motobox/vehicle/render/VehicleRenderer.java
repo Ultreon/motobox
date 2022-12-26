@@ -35,8 +35,8 @@ public enum VehicleRenderer {
 
         matrices.push();
 
-        matrices.multiply(new Quaternionf(0, 0, 1, Math.toRadians(180)));
-        matrices.multiply(new Quaternionf(0, 1, 0, Math.toRadians(vehicle.getVehicleYaw(tickDelta) + 180)));
+        matrices.multiply(new Quaternionf().rotateZ((float) Math.toRadians(180)));
+        matrices.multiply(new Quaternionf().rotateY((float) Math.toRadians(vehicle.getVehicleYaw(tickDelta) + 180)));
 
         float chassisRaise = wheels.model().radius() / 16;
         float bounce = vehicle.getSuspensionBounce(tickDelta) * 0.048f;
@@ -46,12 +46,6 @@ public enum VehicleRenderer {
         var engineModel = vehicle.getEngineModel(ctx);
         var rearAttachmentModel = vehicle.getRearAttachmentModel(ctx);
         var frontAttachmentModel = vehicle.getFrontAttachmentModel(ctx);
-
-//        System.out.println("frame = " + frame);
-
-//        System.out.println("frameModel = " + frameModel);
-//        System.out.println("wheelModel = " + wheelModel);
-//        System.out.println("engineModel = " + engineModel);
 
         matrices.translate(0, -chassisRaise, 0);
 
@@ -68,13 +62,13 @@ public enum VehicleRenderer {
             }
         } else {
             System.out.println("frame.isEmpty() = " + frame.isEmpty());
-            System.out.println("frameModel = " + frameModel);;
+            System.out.println("frameModel = " + frameModel);
         }
 
         float eBack = frame.model().enginePosBack().getFloat() / 16;
         float eUp = frame.model().enginePosUp().getFloat() / 16;
         matrices.translate(0, -eUp, eBack);
-        matrices.multiply(new Quaternionf(0, 1, 0, Math.toRadians(180)));
+        matrices.multiply(new Quaternionf().rotateY((float) Math.toRadians(180)));
         if (!engine.isEmpty() && engineModel != null) {
             engineModel.render(matrices, vertexConsumers.getBuffer(engineModel.getLayer(engineTexture)), light, overlay, 1, 1, 1, 1);
             if (engineModel instanceof BaseModel base) {
@@ -98,8 +92,8 @@ public enum VehicleRenderer {
                 matrices.push();
 
                 matrices.translate(exhaust.x() / 16, -exhaust.y() / 16, exhaust.z() / 16);
-                matrices.multiply(new Quaternionf(0, 1, 0, Math.toRadians(exhaust.yaw())));
-                matrices.multiply(new Quaternionf(1, 0, 0, Math.toRadians(exhaust.pitch())));
+                matrices.multiply(new Quaternionf().rotateY((float) Math.toRadians(exhaust.yaw())));
+                matrices.multiply(new Quaternionf().rotateX((float) Math.toRadians(exhaust.pitch())));
                 exhaustFumesModel.render(matrices, exhaustBuffer, light, overlay, 1, 1, 1, 1);
 
                 matrices.pop();
@@ -112,7 +106,7 @@ public enum VehicleRenderer {
         if (!rearAtt.isEmpty()) {
             matrices.push();
             matrices.translate(0, chassisRaise, frame.model().rearAttachmentPos().getFloat() / 16);
-            matrices.multiply(new Quaternionf(0, -1, 0, Math.toRadians(vehicle.getVehicleYaw(tickDelta) - vehicle.getRearAttachmentYaw(tickDelta))));
+            matrices.multiply(new Quaternionf().rotateY((float) -Math.toRadians(vehicle.getVehicleYaw(tickDelta) - vehicle.getRearAttachmentYaw(tickDelta))));
 
             matrices.translate(0, 0, rearAtt.model().pivotDistPx().getFloat() / 16);
             if (rearAttachmentModel instanceof RearAttachmentRenderModel rm) {
@@ -164,12 +158,12 @@ public enum VehicleRenderer {
                 matrices.translate(pos.right() / 16, wheelRadius / 16, -pos.forward() / 16);
 
                 if (pos.end() == WheelBase.WheelEnd.FRONT)
-                    matrices.multiply(new Quaternionf(0, 1, 0, Math.toRadians(vehicle.getSteering(tickDelta) * 27)));
+                    matrices.multiply(new Quaternionf().rotateY((float) Math.toRadians(vehicle.getSteering(tickDelta) * 27)));
                 matrices.translate(0, -chassisRaise, 0);
-                matrices.multiply(new Quaternionf(1, 0, 0, Math.toRadians(wheelAngle)));
+                matrices.multiply(new Quaternionf().rotateX((float) Math.toRadians(wheelAngle)));
                 matrices.scale(scale, scale, scale);
 
-                matrices.multiply(new Quaternionf(0, 1, 0, Math.toRadians(180 + pos.yaw())));
+                matrices.multiply(new Quaternionf().rotateY((float) Math.toRadians(180 + pos.yaw())));
 
                 wheelModel.render(matrices, wheelBuffer, light, overlay, 1, 1, 1, 1);
                 if (wheelModel instanceof BaseModel base) {

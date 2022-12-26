@@ -32,7 +32,7 @@ public class VehicleEntityRenderer extends EntityRenderer<VehicleEntity> {
         float offsetY = entity.getDisplacement().getVertical(tickDelta);
 
         matrices.translate(0, offsetY, 0);
-        matrices.translate(entity.getX(), entity.getY(), entity.getZ());
+//        matrices.translate(entity.getX(), entity.getY(), entity.getZ());
         matrices.multiply(new Quaternionf().rotationXYZ((float) Math.toRadians(angX), 0, (float) Math.toRadians(angZ)));
 
         VehicleRenderer.render(matrices, vertexConsumers, light, OverlayTexture.DEFAULT_UV, tickDelta, ctx, entity);

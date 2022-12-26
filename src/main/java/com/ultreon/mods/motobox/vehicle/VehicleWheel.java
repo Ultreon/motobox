@@ -30,6 +30,10 @@ public record VehicleWheel(
             new VehicleWheel(Motobox.id("truck"), 1.1f, 0.8f, new WheelModel(8.4f, 5, Motobox.id("textures/entity/vehicle/wheel/truck.png"), Motobox.id("wheel_truck")))
     );
 
+    public static final VehicleWheel RUSTY_CAR = REGISTRY.register(
+            new VehicleWheel(Motobox.id("rusty_car"), 1.1f, 0.8f, new WheelModel(8.4f, 5, Motobox.id("textures/entity/vehicle/wheel/rusty_car.png"), Motobox.id("wheel_rusty_car")))
+    );
+
     public static final VehicleWheel CONVERTIBLE = REGISTRY.register(
             new VehicleWheel(Motobox.id("convertible"), 0.75f, 0.45f, new WheelModel(5.2f, 4.1f, Motobox.id("textures/entity/vehicle/frame/dababy.png"), Motobox.id("wheel_convertible")))
     );

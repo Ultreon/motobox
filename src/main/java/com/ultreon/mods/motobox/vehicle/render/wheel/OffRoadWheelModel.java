@@ -17,6 +17,6 @@ public class OffRoadWheelModel extends BaseModel {
 
     @Override
     protected void prepare(MatrixStack matrices) {
-        matrices.multiply(new Quaternionf(0, 1, 0, -90));
+        matrices.multiply(new Quaternionf().rotateY((float) Math.toRadians(-90)));
     }
 }

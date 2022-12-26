@@ -68,7 +68,7 @@ public class MotoboxClient implements ClientModInitializer {
 //            vehicleEntity.updateModels = true;
 //            VehicleRenderer.render(matrixStack, consumers, 1, 1, 0f, new EntityRendererFactory.Context(client.getEntityRenderDispatcher(), client.getItemRenderer(), client.getBlockRenderManager(), client.getEntityRenderDispatcher().getHeldItemRenderer(), client.getResourceManager(), client.getEntityModelLoader(), client.textRenderer), vehicleEntity);
 //
-//            matrixStack.multiply(new Quaternionf(0, 1, 0, Math.toRadians(180)));
+//            matrixStack.multiply(new Quaternionf().rotateY((float) Math.toRadians(180)));
 //            TruckEngineModel.getTexturedModelData().createModel().render(matrixStack, consumers.getBuffer(RenderLayer.getEntityTranslucent(new Identifier("textures/block/dirt.png"))), 1, 1);
         });
     }

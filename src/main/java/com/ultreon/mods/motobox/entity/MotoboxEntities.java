@@ -4,12 +4,14 @@ import com.ultreon.mods.motobox.Motobox;
 import com.ultreon.mods.motobox.entity.render.VehicleEntityRenderer;
 import com.ultreon.mods.motobox.vehicle.render.ExhaustFumesModel;
 import com.ultreon.mods.motobox.vehicle.render.SkidEffectModel;
+import com.ultreon.mods.motobox.vehicle.render.attachment.rear.CaravanRearAttachmentRenderModel;
 import com.ultreon.mods.motobox.vehicle.render.attachment.rear.TrailerRearAttachmentRenderModel;
 import com.ultreon.mods.motobox.vehicle.render.engine.MotorbikeEngineModel;
 import com.ultreon.mods.motobox.vehicle.render.engine.TruckEngineModel;
 import com.ultreon.mods.motobox.vehicle.render.frame.MotorbikeFrameModel;
 import com.ultreon.mods.motobox.vehicle.render.frame.RustyCarFrameModel;
 import com.ultreon.mods.motobox.vehicle.render.frame.TruckFrameModel;
+import com.ultreon.mods.motobox.vehicle.render.wheel.RustyCarWheelModel;
 import com.ultreon.mods.motobox.vehicle.render.wheel.TruckWheelModel;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -47,8 +49,10 @@ public enum MotoboxEntities {
         EntityModelLayerRegistry.registerModelLayer(MotorbikeFrameModel.MODEL_LAYER, MotorbikeFrameModel::createBodyLayer);
         EntityModelLayerRegistry.registerModelLayer(RustyCarFrameModel.MODEL_LAYER, RustyCarFrameModel::createBodyLayer);
         EntityModelLayerRegistry.registerModelLayer(TrailerRearAttachmentRenderModel.MODEL_LAYER, TrailerRearAttachmentRenderModel::createBodyLayer);
+        EntityModelLayerRegistry.registerModelLayer(CaravanRearAttachmentRenderModel.MODEL_LAYER, CaravanRearAttachmentRenderModel::createBodyLayer);
 
         EntityModelLayerRegistry.registerModelLayer(TruckWheelModel.MODEL_LAYER, TruckWheelModel::createBodyLayer);
+        EntityModelLayerRegistry.registerModelLayer(RustyCarWheelModel.MODEL_LAYER, RustyCarWheelModel::createBodyLayer);
 
         EntityModelLayerRegistry.registerModelLayer(TruckEngineModel.MODEL_LAYER, TruckEngineModel::getTexturedModelData);
         EntityModelLayerRegistry.registerModelLayer(MotorbikeEngineModel.MODEL_LAYER, MotorbikeEngineModel::getTexturedModelData);

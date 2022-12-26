@@ -23,8 +23,8 @@ public class ConvertibleWheelModel extends Model {
     public void render(MatrixStack matrices, VertexConsumer vertices, int light, int overlay, float red, float green, float blue, float alpha) {
         if (model == null) return;
         matrices.push();
-        matrices.multiply(new Quaternionf(0, 0, 1, 180));
-        matrices.multiply(new Quaternionf(0, 1, 0, 90));
+        matrices.multiply(new Quaternionf().rotateZ((float) Math.toRadians(180)));
+        matrices.multiply(new Quaternionf().rotateY((float) Math.toRadians(90)));
         matrices.translate(0, -0.325, 0);
         AUtils.renderMyronObj(model, vertices, matrices, light, overlay);
         matrices.pop();
