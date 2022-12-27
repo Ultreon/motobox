@@ -24,14 +24,10 @@ Add a crash report to the issue, this is essential for developers to know what w
  - OS: [e.g. Windows]
  - Minecraft version [example 1.18.2]
  - Motobox Version: [example: 0.1.0+1]
- - Architectury API Version: [example: 6.2.43]
-
-**FOR FABRIC:**
- - Fabric Loader version [example: 0.14.6]
- - Fabric API version [example: 0.60.0]
-
-**FOR FORGE:**
- - Forge version [example: 40.1.15]
+ - MidnightLib Version: [example: 1.1.0-fabric]
+ - MidnightControls Version: [example: 1.7.2-1.19.3]
+ - Fabric Loader version [example: 0.14.12]
+ - Fabric API version [example: 0.69.1]
 
 **Additional context**
 Add any other context about the problem here.
