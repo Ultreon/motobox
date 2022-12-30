@@ -33,7 +33,7 @@ public record VehicleEngine(
     );
 
     public static final VehicleEngine TRUCK_ENGINE = REGISTRY.register(
-            new VehicleEngine(Motobox.id("truck_engine"), 0.55f, 1.2f,
+            new VehicleEngine(Motobox.id("truck"), 0.55f, 1.2f,
                     MotoboxSounds.TRUCK_ENGINE,
                     new EngineModel(
                             Motobox.id("textures/entity/vehicle/engine/truck_engine.png"), Motobox.id("truck_engine")
@@ -42,7 +42,7 @@ public record VehicleEngine(
     );
 
     public static final VehicleEngine MOTORBIKE_ENGINE = REGISTRY.register(
-            new VehicleEngine(Motobox.id("motorbike_engine"), 0.6f, 0.8f,
+            new VehicleEngine(Motobox.id("motorbike"), 0.6f, 0.8f,
                     MotoboxSounds.MOTORBIKE_ENGINE,
                     new EngineModel(
                             Motobox.id("textures/entity/vehicle/engine/motorbike_engine.png"), Motobox.id("motorbike_engine")
@@ -51,7 +51,7 @@ public record VehicleEngine(
     );
 
     public static final VehicleEngine RUSTY_CAR_ENGINE = REGISTRY.register(
-            new VehicleEngine(Motobox.id("rusty_car_engine"), 0.4f, 0.7f,
+            new VehicleEngine(Motobox.id("rusty_car"), 0.4f, 0.7f,
                     MotoboxSounds.STONE_ENGINE,
                     new EngineModel(
                             Motobox.id("textures/entity/vehicle/engine/rusty_car_engine.png"), Motobox.id("rusty_car_engine")

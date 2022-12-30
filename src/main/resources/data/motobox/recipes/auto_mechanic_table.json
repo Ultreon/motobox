@@ -1,19 +1,20 @@
 {
-    "type": "minecraft:crafting_shaped",
-    "pattern": [
-        "AA",
-        "BB"
-    ],
-    "key": {
-        "A": {
-            "item": "minecraft:copper_ingot"
-        },
-        "B": {
-            "tag": "minecraft:stone_crafting_materials"
-        }
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "///",
+    "/O/",
+    "/ /"
+  ],
+  "key": {
+    "/": {
+      "item": "minecraft:iron_ingot"
     },
-    "result": {
-        "item": "motobox:auto_mechanic_table",
-        "count": 1
+    "O": {
+      "tag": "minecraft:stone_crafting_materials"
     }
+  },
+  "result": {
+    "item": "motobox:auto_mechanic_table",
+    "count": 1
+  }
 }

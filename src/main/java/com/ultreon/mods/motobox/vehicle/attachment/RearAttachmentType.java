@@ -31,10 +31,10 @@ public record RearAttachmentType<T extends RearAttachment>(
             Motobox.id("empty"), EmptyRearAttachment::new, new RearAttachmentModel(new Identifier("empty"), Motobox.id("empty"), 0)
     ));
 
-    public static final RearAttachmentType<BaseChestRearAttachment> TRAILER = register(new RearAttachmentType<>(Motobox.id("rearatt_trailer"),
+    public static final RearAttachmentType<BaseChestRearAttachment> TRAILER = register(new RearAttachmentType<>(Motobox.id("trailer"),
             BaseChestRearAttachment::chest, new RearAttachmentModel(Motobox.id("textures/entity/vehicle/rear_attachment/trailer.png"), Motobox.id("rearatt_trailer"), () -> 3)));
 
-    public static final RearAttachmentType<BaseChestRearAttachment> CARAVAN = register(new RearAttachmentType<>(Motobox.id("rearatt_caravan"),
+    public static final RearAttachmentType<BaseChestRearAttachment> CARAVAN = register(new RearAttachmentType<>(Motobox.id("caravan"),
             BaseChestRearAttachment::saddledBarrel, new RearAttachmentModel(Motobox.id("textures/entity/vehicle/rear_attachment/caravan.png"), Motobox.id("rearatt_caravan"), () -> 3)));
 
     @Override

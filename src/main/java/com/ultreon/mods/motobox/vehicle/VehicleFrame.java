@@ -69,7 +69,7 @@ public record VehicleFrame(Identifier id, float weight, FrameModel model
     private static VehicleFrame motorbike() {
         return new VehicleFrame(
                 Motobox.id("motorbike"),
-                0.73f,
+                0.34f,
                 new FrameModel(
                         Motobox.id("textures/entity/vehicle/frame/motorbike.png"),
                         Motobox.id("frame_motorbike"),
@@ -87,7 +87,7 @@ public record VehicleFrame(Identifier id, float weight, FrameModel model
     private static VehicleFrame rustyCar() {
         return new VehicleFrame(
                 Motobox.id("rusty_car"),
-                0.73f,
+                0.84f,
                 new FrameModel(
                         Motobox.id("textures/entity/vehicle/frame/rusty_car.png"),
                         Motobox.id("frame_rusty_car"),
