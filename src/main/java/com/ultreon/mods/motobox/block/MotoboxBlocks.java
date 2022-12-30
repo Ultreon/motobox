@@ -34,7 +34,7 @@ import java.util.function.Function;
 @SuppressWarnings("unused")
 public enum MotoboxBlocks {
     ;
-    public static final Block AUTO_MECHANIC_TABLE = register("auto_mechanic_table", new AutoMechanicTableBlock(FabricBlockSettings.copyOf(Blocks.COPPER_BLOCK)), MotoboxBlocks::simpleItem);
+    public static final Block AUTO_MECHANIC_TABLE = register("auto_mechanic_table", new AutoMechanicTableBlock(FabricBlockSettings.copyOf(Blocks.COPPER_BLOCK).nonOpaque()), MotoboxBlocks::simpleItem);
 
     public static final Block AUTOMOBILE_ASSEMBLER = register("vehicle_assembler", new VehicleAssemblerBlock(FabricBlockSettings.copyOf(Blocks.ANVIL)), MotoboxBlocks::simpleItem);
 

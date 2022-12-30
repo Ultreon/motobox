@@ -98,7 +98,7 @@ public class AutoMechanicTableRecipe implements Recipe<SimpleInventory>, Compara
             if (invCopy.stream().noneMatch(ing)) {
                 action.accept(ing);
             } else {
-                invCopy.remove(invCopy.stream().filter(ing).collect(Collectors.toList()).get(0));
+                invCopy.remove(invCopy.stream().filter(ing).toList().get(0));
             }
         }
     }

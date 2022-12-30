@@ -302,6 +302,8 @@ public class VehicleEntity extends Entity implements RenderableVehicle, EntityWi
     public VehicleEntity(EntityType<?> type, World world) {
         super(type, world);
 
+        this.ignoreCameraFrustum = true;
+
         this.setRearAttachment(RearAttachmentType.REGISTRY.getOrDefault(null));
         this.setFrontAttachment(FrontAttachmentType.REGISTRY.getOrDefault(null));
     }
@@ -639,11 +641,11 @@ public class VehicleEntity extends Entity implements RenderableVehicle, EntityWi
             updateTrackedPosition(getX(), getY(), getZ());
         } else if (lerpTicks > 0) {
             this.setPosition(
-                    this.getX() + ((this.trackedX - this.getX()) / (double)this.lerpTicks),
-                    this.getY() + ((this.trackedY - this.getY()) / (double)this.lerpTicks),
-                    this.getZ() + ((this.trackedZ - this.getZ()) / (double)this.lerpTicks)
+                    this.getX() + ((this.trackedX - this.getX()) / (double) this.lerpTicks),
+                    this.getY() + ((this.trackedY - this.getY()) / (double) this.lerpTicks),
+                    this.getZ() + ((this.trackedZ - this.getZ()) / (double) this.lerpTicks)
             );
-            this.setYaw(this.getYaw() + (MathHelper.wrapDegrees(this.trackedYaw - this.getYaw()) / (float)this.lerpTicks));
+            this.setYaw(this.getYaw() + (MathHelper.wrapDegrees(this.trackedYaw - this.getYaw()) / (float) this.lerpTicks));
 
             this.lerpTicks--;
         }
@@ -832,7 +834,7 @@ public class VehicleEntity extends Entity implements RenderableVehicle, EntityWi
         // Handle being in off-road
         if (boostSpeed < 0.4f && world.getBlockState(getBlockPos()).getBlock() instanceof OffRoadBlock offRoadBlock) {
             int layers = world.getBlockState(getBlockPos()).get(OffRoadBlock.LAYERS);
-            float cap = stats.getComfortableSpeed() * (1 - ((float)layers / 3.5f));
+            float cap = stats.getComfortableSpeed() * (1 - ((float) layers / 3.5f));
             engineSpeed = Math.min(cap, engineSpeed);
             this.debrisColor = offRoadBlock.color;
             this.offRoad = true;
@@ -865,7 +867,7 @@ public class VehicleEntity extends Entity implements RenderableVehicle, EntityWi
         }
 
         // Turn the wheels
-        float wheelCircumference = (float)(2 * (wheels.model().radius() / 16) * Math.PI);
+        float wheelCircumference = (float) (2 * (wheels.model().radius() / 16) * Math.PI);
         if (hSpeed > 0) markDirty();
         wheelAngle += 300 * (hSpeed / wheelCircumference) + (hSpeed > 0 ? ((1 - grip) * 15) : 0); // made it a bit slower intentionally, also make it spin more when on slippery surface
 
@@ -904,7 +906,8 @@ public class VehicleEntity extends Entity implements RenderableVehicle, EntityWi
 
         // Reduce the values of addedVelocity incrementally
         double addVelLen = addedVelocity.length();
-        if (addVelLen > 0) addedVelocity = addedVelocity.multiply(Math.max(0, addVelLen - addedVelReduction) / addVelLen);
+        if (addVelLen > 0)
+            addedVelocity = addedVelocity.multiply(Math.max(0, addVelLen - addedVelReduction) / addVelLen);
 
         float angle = (float) Math.toRadians(-speedDirection);
         if (touchingWall && hSpeed > 0.1 && addedVelocity.length() <= 0) {
@@ -1051,9 +1054,9 @@ public class VehicleEntity extends Entity implements RenderableVehicle, EntityWi
         var shapeCtx = ShapeContext.of(this);
         if (this.world.isRegionLoaded(start, end)) {
             var pos = new BlockPos.Mutable();
-            for(int x = start.getX(); x <= end.getX(); ++x) {
-                for(int y = start.getY(); y <= end.getY(); ++y) {
-                    for(int z = start.getZ(); z <= end.getZ(); ++z) {
+            for (int x = start.getX(); x <= end.getX(); ++x) {
+                for (int y = start.getY(); y <= end.getY(); ++y) {
+                    for (int z = start.getZ(); z <= end.getZ(); ++z) {
                         pos.set(x, y, z);
                         var state = this.world.getBlockState(pos);
                         var blockShape = state.getCollisionShape(this.world, pos, shapeCtx).offset(pos.getX(), pos.getY(), pos.getZ());
@@ -1088,8 +1091,8 @@ public class VehicleEntity extends Entity implements RenderableVehicle, EntityWi
                 fwd == accelerating &&
                         back == braking &&
                         left == steeringLeft &&
-                right == steeringRight &&
-                space == holdingDrift
+                        right == steeringRight &&
+                        space == holdingDrift
         )) {
             setInputs(fwd, back, left, right, space);
             PayloadPackets.sendSyncVehicleInputPacket(this, accelerating, braking, steeringLeft, steeringRight, holdingDrift);
@@ -1529,10 +1532,10 @@ public class VehicleEntity extends Entity implements RenderableVehicle, EntityWi
         } else if (this.hasPassenger(passenger)) {
             var pos = this.getPos().add(
                     new Vec3d(0, this.displacement.verticalTarget, this.getFrame().model().rearAttachmentPos().getFloat() * 0.0625)
-                        .rotateY((float) Math.toRadians(180 - this.getYaw())).add(0, this.rearAttachment.getPassengerHeightOffset() + passenger.getHeightOffset() - 0.14, 0)
-                        .add(this.rearAttachment.scaledYawVec())
-                        .rotateX((float) Math.toRadians(-this.displacement.currAngularX))
-                        .rotateZ((float) Math.toRadians(-this.displacement.currAngularZ)));
+                            .rotateY((float) Math.toRadians(180 - this.getYaw())).add(0, this.rearAttachment.getPassengerHeightOffset() + passenger.getHeightOffset() - 0.14, 0)
+                            .add(this.rearAttachment.scaledYawVec())
+                            .rotateX((float) Math.toRadians(-this.displacement.currAngularX))
+                            .rotateZ((float) Math.toRadians(-this.displacement.currAngularZ)));
 
             passenger.setPosition(pos.x, pos.y, pos.z);
         }
