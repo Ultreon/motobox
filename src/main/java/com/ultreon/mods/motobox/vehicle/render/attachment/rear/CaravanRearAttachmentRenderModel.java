@@ -29,7 +29,7 @@ public class CaravanRearAttachmentRenderModel<T extends VehicleEntity> extends E
 	}
 
 	@SuppressWarnings("unused")
-	public static TexturedModelData createBodyLayer() {
+	public static TexturedModelData getTexturedModelData() {
 		ModelData modelData = new ModelData();
 		ModelPartData root = modelData.getRoot();
 

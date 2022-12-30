@@ -1,10 +1,5 @@
 package com.ultreon.mods.motobox.vehicle.render.wheel;
 
-// Made with Blockbench 4.5.2
-// Exported for Minecraft version 1.17 - 1.18 with Mojang mappings
-// Paste this class into your mod and generate all required imports
-
-
 import com.ultreon.mods.motobox.entity.VehicleEntity;
 import net.minecraft.client.model.*;
 import net.minecraft.client.render.VertexConsumer;
@@ -15,88 +10,49 @@ import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Identifier;
 import org.joml.Quaternionf;
 
+/**
+ * Made with Blockbench 4.5.2
+ * Exported for Minecraft version 1.17 - 1.18 with Mojang mappings
+ * Paste this class into your mod and generate all required imports
+ */
 public class RustyCarWheelModel<T extends VehicleEntity> extends EntityModel<T> {
 	// This layer location should be baked with EntityRendererProvider.Context in the entity renderer and passed into this model's constructor
 	public static final EntityModelLayer MODEL_LAYER = new EntityModelLayer(new Identifier("modid", "rusty_car_1_converted"), "main");
-	private final ModelPart front;
+	private final ModelPart bb_main;
 
 	public RustyCarWheelModel(EntityRendererFactory.Context context) {
-		this.front = context.getPart(MODEL_LAYER).getChild("front");
+		this.bb_main = context.getPart(MODEL_LAYER).getChild("bb_main");
 	}
-
-	public static TexturedModelData createBodyLayer() {
+	public static TexturedModelData getTexturedModelData() {
 		ModelData modelData = new ModelData();
-		ModelPartData root = modelData.getRoot();
+		ModelPartData modelPartData = modelData.getRoot();
+		ModelPartData bb_main = modelPartData.addChild("bb_main", ModelPartBuilder.create().uv(0, 5).cuboid(-4.2339F, -0.7388F, -2.8F, 8.0F, 1.0F, 3.0F, new Dilation(0.0F))
+				.uv(17, 15).cuboid(-0.5F, -4.0F, -2.8705F, 1.0F, 8.0F, 3.0F, new Dilation(0.0F))
+				.uv(32, 14).cuboid(-5.7526F, -1.1458F, -2.9216F, 1.0F, 2.0F, 3.0F, new Dilation(0.0F))
+				.uv(16, 28).cuboid(3.883F, -1.1458F, -2.9216F, 1.0F, 2.0F, 3.0F, new Dilation(0.0F))
+				.uv(23, 24).cuboid(-1.1443F, -5.7541F, -2.9216F, 2.0F, 1.0F, 3.0F, new Dilation(0.0F))
+				.uv(20, 7).cuboid(-1.1443F, 3.8816F, -2.9216F, 2.0F, 1.0F, 3.0F, new Dilation(0.0F))
+				.uv(0, 15).cuboid(-4.0F, -4.0F, -2.2F, 8.0F, 8.0F, 0.0F, new Dilation(0.0F)), ModelTransform.pivot(0.0F, 24.0F, 0.0F));
 
-		ModelPartData front = root.addChild("front", ModelPartBuilder.create(), ModelTransform.pivot(0.0F, 24.0632F, -1.6F));
+		ModelPartData wheel_r1 = bb_main.addChild("wheel_r1", ModelPartBuilder.create().uv(20, 2).cuboid(-1.1541F, 3.9032F, -1.6264F, 2.0F, 1.0F, 3.0F, new Dilation(0.0F))
+				.uv(0, 24).cuboid(-1.1541F, -5.7325F, -1.6264F, 2.0F, 1.0F, 3.0F, new Dilation(0.0F))
+				.uv(28, 4).cuboid(3.8732F, -1.1241F, -1.6264F, 1.0F, 2.0F, 3.0F, new Dilation(0.0F))
+				.uv(31, 26).cuboid(-5.7625F, -1.1241F, -1.6264F, 1.0F, 2.0F, 3.0F, new Dilation(0.0F)), ModelTransform.of(0.0014F, -0.0239F, -1.3121F, 0.0F, 0.0F, -0.3927F));
 
-		ModelPartData fronttire = front.addChild("fronttire", ModelPartBuilder.create(), ModelTransform.pivot(-26.4133F, -8.3147F, -21.7881F));
+		ModelPartData wheel_r2 = bb_main.addChild("wheel_r2", ModelPartBuilder.create().uv(23, 12).cuboid(-1.137F, 3.9043F, -1.6264F, 2.0F, 1.0F, 3.0F, new Dilation(0.0F))
+				.uv(8, 26).cuboid(-1.137F, -5.7314F, -1.6264F, 2.0F, 1.0F, 3.0F, new Dilation(0.0F))
+				.uv(0, 29).cuboid(3.8903F, -1.1231F, -1.6264F, 1.0F, 2.0F, 3.0F, new Dilation(0.0F))
+				.uv(32, 20).cuboid(-5.7454F, -1.1231F, -1.6264F, 1.0F, 2.0F, 3.0F, new Dilation(0.0F)), ModelTransform.of(0.0014F, -0.0239F, -1.3121F, 0.0F, 0.0F, 0.3927F));
 
-		ModelPartData ftl8 = fronttire.addChild("ftl8", ModelPartBuilder.create().uv(0, 24).cuboid(18.6274F, 6.4906F, 18.0175F, 1.0F, 2.0F, 3.0F, new Dilation(0.0F))
-				.uv(16, 18).cuboid(28.9653F, 6.4906F, 18.0175F, 1.0F, 2.0F, 3.0F, new Dilation(0.0F))
-				.uv(15, 0).cuboid(23.3025F, 12.1535F, 18.0175F, 2.0F, 1.0F, 3.0F, new Dilation(0.0F))
-				.uv(8, 10).cuboid(23.3025F, 1.8155F, 18.0175F, 2.0F, 1.0F, 3.0F, new Dilation(0.0F)), ModelTransform.pivot(1.95F, 0.6F, 2.3407F));
+		ModelPartData wheel_r3 = bb_main.addChild("wheel_r3", ModelPartBuilder.create().uv(26, 17).cuboid(3.8662F, -1.1294F, -1.6264F, 1.0F, 2.0F, 3.0F, new Dilation(0.0F))
+				.uv(9, 31).cuboid(-5.7695F, -1.1294F, -1.6264F, 1.0F, 2.0F, 3.0F, new Dilation(0.0F)), ModelTransform.of(0.0014F, -0.0239F, -1.2952F, 0.0F, 0.0F, -0.7854F));
 
-		ModelPartData ftl_r1 = ftl8.addChild("ftl_r1", ModelPartBuilder.create().uv(0, 8).cuboid(-1.1608F, -5.8359F, -1.8341F, 2.0F, 1.0F, 3.0F, new Dilation(0.0F))
-				.uv(0, 13).cuboid(-1.1608F, 4.502F, -1.8341F, 2.0F, 1.0F, 3.0F, new Dilation(0.0F))
-				.uv(0, 18).cuboid(4.502F, -1.1608F, -1.8341F, 1.0F, 2.0F, 3.0F, new Dilation(0.0F))
-				.uv(16, 18).cuboid(-5.8359F, -1.1608F, -1.8341F, 1.0F, 2.0F, 3.0F, new Dilation(0.0F)), ModelTransform.of(24.4633F, 7.6515F, 19.8516F, 0.0F, 0.0F, 0.3927F));
+		ModelPartData wheel_r4 = bb_main.addChild("wheel_r4", ModelPartBuilder.create().uv(25, 29).cuboid(3.8979F, -1.1275F, -1.6264F, 1.0F, 2.0F, 3.0F, new Dilation(0.0F))
+				.uv(31, 32).cuboid(-5.7378F, -1.1275F, -1.6264F, 1.0F, 2.0F, 3.0F, new Dilation(0.0F)), ModelTransform.of(0.0014F, -0.0239F, -1.2952F, 0.0F, 0.0F, 0.7854F));
 
-		ModelPartData ftl_r2 = ftl8.addChild("ftl_r2", ModelPartBuilder.create().uv(12, 5).cuboid(-1.1608F, -5.8359F, -1.8341F, 2.0F, 1.0F, 3.0F, new Dilation(0.0F))
-				.uv(8, 15).cuboid(-1.1608F, 4.502F, -1.8341F, 2.0F, 1.0F, 3.0F, new Dilation(0.0F))
-				.uv(6, 21).cuboid(4.502F, -1.1608F, -1.8341F, 1.0F, 2.0F, 3.0F, new Dilation(0.0F))
-				.uv(12, 24).cuboid(-5.8359F, -1.1608F, -1.8341F, 1.0F, 2.0F, 3.0F, new Dilation(0.0F)), ModelTransform.of(24.4633F, 7.6515F, 19.8516F, 0.0F, 0.0F, -0.3927F));
+		ModelPartData wheel_r5 = bb_main.addChild("wheel_r5", ModelPartBuilder.create().uv(0, 0).cuboid(-4.0962F, -0.7057F, -1.4753F, 8.0F, 1.0F, 3.0F, new Dilation(0.0F)), ModelTransform.of(0.0344F, 0.1621F, -1.331F, 0.0F, 0.0F, -0.7854F));
 
-		ModelPartData ftl_r3 = ftl8.addChild("ftl_r3", ModelPartBuilder.create().uv(16, 12).cuboid(4.502F, -1.1608F, -1.8341F, 1.0F, 2.0F, 3.0F, new Dilation(0.0F))
-				.uv(22, 15).cuboid(-5.8359F, -1.1608F, -1.8341F, 1.0F, 2.0F, 3.0F, new Dilation(0.0F)), ModelTransform.of(24.4633F, 7.6515F, 19.8516F, 0.0F, 0.0F, 0.7854F));
-
-		ModelPartData ftl_r4 = ftl8.addChild("ftl_r4", ModelPartBuilder.create().uv(22, 7).cuboid(4.502F, -1.1608F, -1.8341F, 1.0F, 2.0F, 3.0F, new Dilation(0.0F))
-				.uv(26, 0).cuboid(-5.8359F, -1.1608F, -1.8341F, 1.0F, 2.0F, 3.0F, new Dilation(0.0F)), ModelTransform.of(24.4633F, 7.6515F, 19.8516F, 0.0F, 0.0F, -0.7854F));
-
-		ModelPartData frl8 = fronttire.addChild("frl8", ModelPartBuilder.create().uv(31, 11).cuboid(6.8855F, 1.2087F, 2.823F, 0.0F, 1.0F, 2.0F, new Dilation(0.0F))
-				.uv(22, 28).cuboid(15.0558F, 1.2087F, 2.823F, 0.0F, 1.0F, 2.0F, new Dilation(0.0F))
-				.uv(28, 21).cuboid(10.492F, 5.7724F, 2.823F, 1.0F, 2.0F, 2.0F, new Dilation(0.0F))
-				.uv(28, 6).cuboid(10.492F, -3.5641F, 2.823F, 1.0F, 2.0F, 2.0F, new Dilation(0.0F)), ModelTransform.pivot(15.0258F, 6.1473F, 17.952F));
-
-		ModelPartData frl_r1 = frl8.addChild("frl_r1", ModelPartBuilder.create().uv(21, 27).cuboid(-0.8955F, -5.6683F, -1.4173F, 1.0F, 2.0F, 2.0F, new Dilation(0.0F))
-				.uv(28, 13).cuboid(-0.8955F, 3.6683F, -1.4173F, 1.0F, 2.0F, 2.0F, new Dilation(0.0F))
-				.uv(22, 28).cuboid(3.6683F, -0.8955F, -1.4173F, 0.0F, 1.0F, 2.0F, new Dilation(0.0F))
-				.uv(29, 13).cuboid(-4.502F, -0.8955F, -1.4173F, 0.0F, 1.0F, 2.0F, new Dilation(0.0F)), ModelTransform.of(11.3875F, 2.1042F, 4.2403F, 0.0F, 0.0F, 0.3927F));
-
-		ModelPartData frl_r2 = frl8.addChild("frl_r2", ModelPartBuilder.create().uv(30, 10).cuboid(-0.8955F, -5.6683F, -1.4173F, 1.0F, 2.0F, 2.0F, new Dilation(0.0F))
-				.uv(26, 28).cuboid(-0.8955F, 3.6683F, -1.4173F, 1.0F, 2.0F, 2.0F, new Dilation(0.0F))
-				.uv(22, 28).cuboid(3.6683F, -0.8955F, -1.4173F, 0.0F, 1.0F, 2.0F, new Dilation(0.0F))
-				.uv(27, 29).cuboid(-4.502F, -0.8955F, -1.4173F, 0.0F, 1.0F, 2.0F, new Dilation(0.0F)), ModelTransform.of(11.3875F, 2.1042F, 4.2403F, 0.0F, 0.0F, -0.3927F));
-
-		ModelPartData frl_r3 = frl8.addChild("frl_r3", ModelPartBuilder.create().uv(22, 28).cuboid(3.6683F, -0.8955F, -1.4173F, 0.0F, 1.0F, 2.0F, new Dilation(0.0F))
-				.uv(31, 10).cuboid(-4.502F, -0.8955F, -1.4173F, 0.0F, 1.0F, 2.0F, new Dilation(0.0F)), ModelTransform.of(11.3875F, 2.1042F, 4.2403F, 0.0F, 0.0F, 0.7854F));
-
-		ModelPartData frl_r4 = frl8.addChild("frl_r4", ModelPartBuilder.create().uv(22, 28).cuboid(3.6683F, -0.8955F, -1.4173F, 0.0F, 1.0F, 2.0F, new Dilation(0.0F))
-				.uv(27, 29).cuboid(-4.502F, -0.8955F, -1.4173F, 0.0F, 1.0F, 2.0F, new Dilation(0.0F)), ModelTransform.of(11.3875F, 2.1042F, 4.2403F, 0.0F, 0.0F, -0.7854F));
-
-		ModelPartData firl14 = fronttire.addChild("firl14", ModelPartBuilder.create().uv(0, 0).cuboid(7.3004F, -1.6475F, 4.1103F, 7.0F, 7.0F, 0.0F, new Dilation(0.0F)), ModelTransform.pivot(15.1528F, 6.1473F, 17.9067F));
-
-		ModelPartData firl15 = fronttire.addChild("firl15", ModelPartBuilder.create().uv(19, 20).cuboid(8.0527F, 1.4408F, 3.2399F, 0.0F, 1.0F, 1.0F, new Dilation(0.0F))
-				.uv(4, 14).cuboid(13.8886F, 1.4408F, 3.2399F, 0.0F, 1.0F, 1.0F, new Dilation(0.0F))
-				.uv(11, 16).cuboid(10.7242F, 4.6053F, 3.2399F, 1.0F, 2.0F, 1.0F, new Dilation(0.0F))
-				.uv(20, 5).cuboid(10.7242F, -2.3969F, 3.2399F, 1.0F, 2.0F, 1.0F, new Dilation(0.0F)), ModelTransform.pivot(15.0258F, 6.1473F, 17.952F));
-
-		ModelPartData firl3_r1 = firl15.addChild("firl3_r1", ModelPartBuilder.create().uv(16, 10).cuboid(-0.6633F, -4.5011F, -1.0004F, 1.0F, 2.0F, 1.0F, new Dilation(0.0F))
-				.uv(23, 0).cuboid(-0.6633F, 2.5011F, -1.0004F, 1.0F, 3.0F, 1.0F, new Dilation(0.0F))
-				.uv(4, 9).cuboid(2.5011F, -0.6633F, -1.0004F, 0.0F, 1.0F, 1.0F, new Dilation(0.0F))
-				.uv(3, 20).cuboid(-3.3348F, -0.6633F, -1.0004F, 0.0F, 1.0F, 1.0F, new Dilation(0.0F)), ModelTransform.of(11.3875F, 2.1042F, 4.2403F, 0.0F, 0.0F, 0.3927F));
-
-		ModelPartData firl3_r2 = firl15.addChild("firl3_r2", ModelPartBuilder.create().uv(22, 13).cuboid(-0.6633F, -4.5011F, -1.0004F, 1.0F, 2.0F, 1.0F, new Dilation(0.0F))
-				.uv(32, 0).cuboid(-0.6633F, 2.5011F, -1.0004F, 1.0F, 3.0F, 1.0F, new Dilation(0.0F))
-				.uv(18, 1).cuboid(2.5011F, -0.6633F, -1.0004F, 0.0F, 1.0F, 1.0F, new Dilation(0.0F))
-				.uv(15, 26).cuboid(-3.3348F, -0.6633F, -1.0004F, 0.0F, 1.0F, 1.0F, new Dilation(0.0F)), ModelTransform.of(11.3875F, 2.1042F, 4.2403F, 0.0F, 0.0F, -0.3927F));
-
-		ModelPartData firl3_r3 = firl15.addChild("firl3_r3", ModelPartBuilder.create().uv(4, 9).cuboid(2.5011F, -0.6633F, -1.0004F, 0.0F, 1.0F, 1.0F, new Dilation(0.0F))
-				.uv(12, 16).cuboid(-3.3348F, -0.6633F, -1.0004F, 0.0F, 1.0F, 1.0F, new Dilation(0.0F)), ModelTransform.of(11.3875F, 2.1042F, 4.2403F, 0.0F, 0.0F, 0.7854F));
-
-		ModelPartData firl3_r4 = firl15.addChild("firl3_r4", ModelPartBuilder.create().uv(3, 20).cuboid(2.5011F, -0.6633F, -1.0004F, 0.0F, 1.0F, 1.0F, new Dilation(0.0F))
-				.uv(25, 17).cuboid(-3.3348F, -0.6633F, -1.0004F, 0.0F, 1.0F, 1.0F, new Dilation(0.0F)), ModelTransform.of(11.3875F, 2.1042F, 4.2403F, 0.0F, 0.0F, -0.7854F));
-
+		ModelPartData wheel_r6 = bb_main.addChild("wheel_r6", ModelPartBuilder.create().uv(0, 10).cuboid(-4.3736F, -0.7038F, -1.4753F, 8.0F, 1.0F, 3.0F, new Dilation(0.0F)), ModelTransform.of(0.0344F, 0.2429F, -1.381F, 0.0F, 0.0F, 0.7854F));
 		return TexturedModelData.of(modelData, 64, 64);
 	}
 
@@ -113,7 +69,7 @@ public class RustyCarWheelModel<T extends VehicleEntity> extends EntityModel<T> 
 		poseStack.multiply(new Quaternionf().rotateY((float) Math.toRadians(270)));
 		poseStack.multiply(new Quaternionf().rotateZ((float) Math.toRadians(0)));
 
-		front.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
+		bb_main.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
 
 		poseStack.pop();
 	}

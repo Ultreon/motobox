@@ -20,6 +20,10 @@ static String terraformersUrl() {
 	return url
 }
 
+loom {
+	setAccessWidenerPath(file("src/main/resources/motobox.accesswidener"))
+}
+
 repositories {
 	maven { url "https://maven.gegy.dev/" }
 	maven { url terraformersUrl() }

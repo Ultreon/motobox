@@ -44,7 +44,7 @@ public class SkidEffectModel<T extends VehicleEntity> extends EntityModel<T> {
 		this.main = root.getPart(MODEL_LAYER).getChild("main");
 	}
 
-	public static TexturedModelData createBodyLayer() {
+	public static TexturedModelData getTexturedModelData() {
 		ModelData modelData = new ModelData();
 		ModelPartData root = modelData.getRoot();
 

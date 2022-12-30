@@ -11,6 +11,7 @@ import com.ultreon.mods.motobox.vehicle.render.engine.TruckEngineModel;
 import com.ultreon.mods.motobox.vehicle.render.frame.MotorbikeFrameModel;
 import com.ultreon.mods.motobox.vehicle.render.frame.RustyCarFrameModel;
 import com.ultreon.mods.motobox.vehicle.render.frame.TruckFrameModel;
+import com.ultreon.mods.motobox.vehicle.render.wheel.MotorbikeWheelModel;
 import com.ultreon.mods.motobox.vehicle.render.wheel.RustyCarWheelModel;
 import com.ultreon.mods.motobox.vehicle.render.wheel.TruckWheelModel;
 import net.fabricmc.api.EnvType;
@@ -45,19 +46,20 @@ public enum MotoboxEntities {
     public static void initClient() {
         EntityRendererRegistry.register(AUTOMOBILE, VehicleEntityRenderer::new);
 
-        EntityModelLayerRegistry.registerModelLayer(TruckFrameModel.MODEL_LAYER, TruckFrameModel::createBodyLayer);
-        EntityModelLayerRegistry.registerModelLayer(MotorbikeFrameModel.MODEL_LAYER, MotorbikeFrameModel::createBodyLayer);
-        EntityModelLayerRegistry.registerModelLayer(RustyCarFrameModel.MODEL_LAYER, RustyCarFrameModel::createBodyLayer);
-        EntityModelLayerRegistry.registerModelLayer(TrailerRearAttachmentRenderModel.MODEL_LAYER, TrailerRearAttachmentRenderModel::createBodyLayer);
-        EntityModelLayerRegistry.registerModelLayer(CaravanRearAttachmentRenderModel.MODEL_LAYER, CaravanRearAttachmentRenderModel::createBodyLayer);
+        EntityModelLayerRegistry.registerModelLayer(TruckFrameModel.MODEL_LAYER, TruckFrameModel::getTexturedModelData);
+        EntityModelLayerRegistry.registerModelLayer(MotorbikeFrameModel.MODEL_LAYER, MotorbikeFrameModel::getTexturedModelData);
+        EntityModelLayerRegistry.registerModelLayer(RustyCarFrameModel.MODEL_LAYER, RustyCarFrameModel::getTexturedModelData);
+        EntityModelLayerRegistry.registerModelLayer(TrailerRearAttachmentRenderModel.MODEL_LAYER, TrailerRearAttachmentRenderModel::getTexturedModelData);
+        EntityModelLayerRegistry.registerModelLayer(CaravanRearAttachmentRenderModel.MODEL_LAYER, CaravanRearAttachmentRenderModel::getTexturedModelData);
 
-        EntityModelLayerRegistry.registerModelLayer(TruckWheelModel.MODEL_LAYER, TruckWheelModel::createBodyLayer);
-        EntityModelLayerRegistry.registerModelLayer(RustyCarWheelModel.MODEL_LAYER, RustyCarWheelModel::createBodyLayer);
+        EntityModelLayerRegistry.registerModelLayer(TruckWheelModel.MODEL_LAYER, TruckWheelModel::getTexturedModelData);
+        EntityModelLayerRegistry.registerModelLayer(MotorbikeWheelModel.MODEL_LAYER, MotorbikeWheelModel::getTexturedModelData);
+        EntityModelLayerRegistry.registerModelLayer(RustyCarWheelModel.MODEL_LAYER, RustyCarWheelModel::getTexturedModelData);
 
         EntityModelLayerRegistry.registerModelLayer(TruckEngineModel.MODEL_LAYER, TruckEngineModel::getTexturedModelData);
         EntityModelLayerRegistry.registerModelLayer(MotorbikeEngineModel.MODEL_LAYER, MotorbikeEngineModel::getTexturedModelData);
 
-        EntityModelLayerRegistry.registerModelLayer(SkidEffectModel.MODEL_LAYER, SkidEffectModel::createBodyLayer);
-        EntityModelLayerRegistry.registerModelLayer(ExhaustFumesModel.MODEL_LAYER, ExhaustFumesModel::createBodyLayer);
+        EntityModelLayerRegistry.registerModelLayer(SkidEffectModel.MODEL_LAYER, SkidEffectModel::getTexturedModelData);
+        EntityModelLayerRegistry.registerModelLayer(ExhaustFumesModel.MODEL_LAYER, ExhaustFumesModel::getTexturedModelData);
     }
 }

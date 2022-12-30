@@ -23,7 +23,7 @@ public class RustyCarFrameModel extends EntityModel<VehicleEntity> {
 		this.group = root.getPart(MODEL_LAYER).getChild("group");
 	}
 
-	public static TexturedModelData createBodyLayer() {
+	public static TexturedModelData getTexturedModelData() {
 		ModelData modelData = new ModelData();
 		ModelPartData root = modelData.getRoot();
 

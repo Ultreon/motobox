@@ -1,10 +1,5 @@
 package com.ultreon.mods.motobox.vehicle.render.wheel;
 
-// Made with Blockbench 4.5.2
-// Exported for Minecraft version 1.17 - 1.18 with Mojang mappings
-// Paste this class into your mod and generate all required imports
-
-
 import com.ultreon.mods.motobox.Motobox;
 import com.ultreon.mods.motobox.entity.VehicleEntity;
 import net.minecraft.client.model.*;
@@ -15,6 +10,11 @@ import net.minecraft.client.render.entity.model.EntityModelLayer;
 import net.minecraft.client.util.math.MatrixStack;
 import org.joml.Quaternionf;
 
+/**
+ * Made with Blockbench 4.5.2
+ * Exported for Minecraft version 1.17 - 1.18 with Mojang mappings
+ * Paste this class into your mod and generate all required imports
+ */
 public class TruckWheelModel<T extends VehicleEntity> extends EntityModel<T> {
 	// This layer location should be baked with EntityRendererProvider.Context in the entity renderer and passed into this model's constructor
 	public static final EntityModelLayer MODEL_LAYER = new EntityModelLayer(Motobox.id("wheel_truck"), "main");
@@ -32,7 +32,7 @@ public class TruckWheelModel<T extends VehicleEntity> extends EntityModel<T> {
 		this.bone = root.getChild("bone");
 	}
 
-	public static TexturedModelData createBodyLayer() {
+	public static TexturedModelData getTexturedModelData() {
 		ModelData modelData = new ModelData();
 		ModelPartData root = modelData.getRoot();
 

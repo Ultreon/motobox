@@ -21,7 +21,7 @@ public class TrailerRearAttachmentRenderModel<T extends Entity> extends EntityMo
         this.bb_main = root.getPart(MODEL_LAYER).getChild("bb_main");
     }
 
-    public static TexturedModelData createBodyLayer() {
+    public static TexturedModelData getTexturedModelData() {
         ModelData modelData = new ModelData();
         ModelPartData root = modelData.getRoot();
 

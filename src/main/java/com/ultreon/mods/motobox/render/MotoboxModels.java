@@ -9,6 +9,7 @@ import com.ultreon.mods.motobox.vehicle.render.engine.TruckEngineModel;
 import com.ultreon.mods.motobox.vehicle.render.frame.MotorbikeFrameModel;
 import com.ultreon.mods.motobox.vehicle.render.frame.RustyCarFrameModel;
 import com.ultreon.mods.motobox.vehicle.render.frame.TruckFrameModel;
+import com.ultreon.mods.motobox.vehicle.render.wheel.MotorbikeWheelModel;
 import com.ultreon.mods.motobox.vehicle.render.wheel.RustyCarWheelModel;
 import com.ultreon.mods.motobox.vehicle.render.wheel.TruckWheelModel;
 import net.fabricmc.api.EnvType;
@@ -35,6 +36,7 @@ public enum MotoboxModels {
         MODELS.put(Motobox.id("frame_rusty_car"), RustyCarFrameModel::new);
 
         MODELS.put(Motobox.id("wheel_truck"), TruckWheelModel::new);
+        MODELS.put(Motobox.id("wheel_motorbike"), MotorbikeWheelModel::new);
         MODELS.put(Motobox.id("wheel_rusty_car"), RustyCarWheelModel::new);
 
 

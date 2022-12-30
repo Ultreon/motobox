@@ -1,5 +1,6 @@
 package com.ultreon.mods.motobox.entity;
 
+import com.google.common.collect.Lists;
 import com.ultreon.mods.motobox.Motobox;
 import com.ultreon.mods.motobox.block.LaunchGelBlock;
 import com.ultreon.mods.motobox.block.OffRoadBlock;
@@ -32,6 +33,7 @@ import net.minecraft.entity.data.TrackedData;
 import net.minecraft.entity.data.TrackedDataHandlerRegistry;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.mob.WaterCreatureEntity;
+import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.vehicle.BoatEntity;
 import net.minecraft.item.ItemStack;
@@ -51,6 +53,7 @@ import net.minecraft.util.math.Box;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.shape.VoxelShapes;
+import net.minecraft.world.GameRules;
 import net.minecraft.world.World;
 import net.minecraft.world.event.GameEvent;
 import org.jetbrains.annotations.Nullable;
@@ -63,7 +66,7 @@ import java.util.function.Consumer;
 import static com.ultreon.mods.motobox.Motobox.id;
 
 @SuppressWarnings("deprecation")
-public class VehicleEntity extends Entity implements RenderableVehicle, EntityWithInventory {
+public class VehicleEntity extends BoatEntity implements RenderableVehicle, EntityWithInventory {
     private static final TrackedData<Float> REAR_ATTACHMENT_YAW = DataTracker.registerData(VehicleEntity.class, TrackedDataHandlerRegistry.FLOAT);
     private static final TrackedData<Float> REAR_ATTACHMENT_ANIMATION = DataTracker.registerData(VehicleEntity.class, TrackedDataHandlerRegistry.FLOAT);
     private static final TrackedData<Float> FRONT_ATTACHMENT_ANIMATION = DataTracker.registerData(VehicleEntity.class, TrackedDataHandlerRegistry.FLOAT);
@@ -73,6 +76,9 @@ public class VehicleEntity extends Entity implements RenderableVehicle, EntityWi
     private VehicleEngine engine = VehicleEngine.REGISTRY.getOrDefault(null);
     private RearAttachment rearAttachment;
     private FrontAttachment frontAttachment;
+
+    private static final TrackedData<Boolean> ROTATE_LEFT = DataTracker.registerData(VehicleEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
+    private static final TrackedData<Boolean> ROTATE_RIGHT = DataTracker.registerData(VehicleEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
 
     private final VehicleStats stats = new VehicleStats();
 
@@ -299,7 +305,7 @@ public class VehicleEntity extends Entity implements RenderableVehicle, EntityWi
     @Environment(EnvType.CLIENT)
     public boolean updateModels = true;
 
-    public VehicleEntity(EntityType<?> type, World world) {
+    public VehicleEntity(EntityType<? extends VehicleEntity> type, World world) {
         super(type, world);
 
         this.ignoreCameraFrustum = true;
@@ -542,7 +548,31 @@ public class VehicleEntity extends Entity implements RenderableVehicle, EntityWi
     }
 
     @Override
+    public boolean damage(DamageSource source, float amount) {
+        boolean bl;
+        if (this.isInvulnerableTo(source)) {
+            return false;
+        }
+        if (source.getAttacker() != null) {
+            return false;
+        }
+
+        return super.damage(source, amount);
+    }
+
+    @Override
+    protected void dropItems(DamageSource source) {
+        this.dropStack(asPrefabItem());
+    }
+
+    @Override
     public void tick() {
+        this.ticksUnderwater = this.location == Location.UNDER_WATER || this.location == Location.UNDER_FLOWING_WATER ? (this.ticksUnderwater += 1.0f) : 0.0f;
+
+        if (!this.world.isClient && this.ticksUnderwater >= 60.0f) {
+            this.removeAllPassengers();
+        }
+
         boolean first = this.firstUpdate;
 
         if (lastWheelAngle != wheelAngle) markDirty();
@@ -565,7 +595,7 @@ public class VehicleEntity extends Entity implements RenderableVehicle, EntityWi
             this.jumpCooldown--;
         }
 
-        super.tick();
+        super.baseTick();
         if (!this.rearAttachment.type.isEmpty()) this.rearAttachment.tick();
         if (!this.frontAttachment.type.isEmpty()) this.frontAttachment.tick();
 
@@ -1409,17 +1439,23 @@ public class VehicleEntity extends Entity implements RenderableVehicle, EntityWi
         return ((wheels.model().radius() + frame.model().seatHeight().getFloat() - 4) / 16);
     }
 
+    private boolean pressingLeft;
+    private boolean pressingRight;
+    private boolean pressingForward;
+    private boolean pressingBack;
+
+    private float velocityDecay;
+    private float yawVelocity;
+
     @Override
     public void updatePassengerPosition(Entity passenger) {
-        if (world.isClient) {
-            passenger.setYaw(getYaw());
-            passenger.setBodyYaw(getYaw());
-//            float yaw = getYaw();
-//            float left = yaw - 90;
-//            float right = yaw + 90;
-//            float clamped = MathHelper.clamp(passenger.getHeadYaw(), left, right);
-//            passenger.setHeadYaw(clamped);
+        if (!this.hasPassenger(passenger)) {
+            return;
         }
+
+        passenger.setYaw(passenger.getYaw() + this.yawVelocity);
+        passenger.setHeadYaw(passenger.getHeadYaw() + this.yawVelocity);
+        this.copyEntityData(passenger);
 
         if (Objects.equals(frame.getId(), id("truck"))) {
             Vec3d pos;
@@ -1474,8 +1510,6 @@ public class VehicleEntity extends Entity implements RenderableVehicle, EntityWi
                                 .rotateZ((float) Math.toRadians(-displacement.currAngularZ))
                         );
                 passenger.setPosition(pos.x, pos.y, pos.z);
-                passenger.setBodyYaw(getYaw());
-                passenger.setYaw(getYaw());
             } else if (getPassengerList().size() >= 2 && passenger == getPassengerList().get(1)) {
                 pos = getPos().add(0.0, displacement.verticalTarget + passenger.getHeightOffset(), 0.0)
                         .add(new Vec3d(0.6, getMountedHeightOffset(), -0.4)
@@ -1485,8 +1519,6 @@ public class VehicleEntity extends Entity implements RenderableVehicle, EntityWi
                                 .rotateZ((float) Math.toRadians(-displacement.currAngularZ))
                         );
                 passenger.setPosition(pos.x, pos.y, pos.z);
-                passenger.setBodyYaw(getYaw());
-                passenger.setYaw(getYaw());
             } else if (getPassengerList().size() >= 3 && passenger == getPassengerList().get(2)) {
                 pos = getPos().add(0.0, displacement.verticalTarget + passenger.getHeightOffset(), 0.0)
                         .add(new Vec3d(0.6, getMountedHeightOffset(), 0.8)
@@ -1496,8 +1528,6 @@ public class VehicleEntity extends Entity implements RenderableVehicle, EntityWi
                                 .rotateZ((float) Math.toRadians(-displacement.currAngularZ))
                         );
                 passenger.setPosition(pos.x, pos.y, pos.z);
-                passenger.setBodyYaw(getYaw());
-                passenger.setYaw(getYaw());
             } else if (getPassengerList().size() >= 4 && passenger == getPassengerList().get(3)) {
                 pos = getPos().add(0.0, displacement.verticalTarget + passenger.getHeightOffset(), 0.0)
                         .add(new Vec3d(-0.6, getMountedHeightOffset(), 0.8)
@@ -1507,8 +1537,6 @@ public class VehicleEntity extends Entity implements RenderableVehicle, EntityWi
                                 .rotateZ((float) Math.toRadians(-displacement.currAngularZ))
                         );
                 passenger.setPosition(pos.x, pos.y, pos.z);
-                passenger.setBodyYaw(getYaw());
-                passenger.setYaw(getYaw());
             } else if (hasPassenger(passenger)) {
                 pos = getPos().add(
                         new Vec3d(0.0, displacement.verticalTarget, getFrame().model().rearAttachmentPos().getFloat() * 0.0625)
@@ -1542,6 +1570,32 @@ public class VehicleEntity extends Entity implements RenderableVehicle, EntityWi
     }
 
     @Override
+    public Vec3d updatePassengerForDismount(LivingEntity passenger) {
+        double e;
+        Vec3d vec3d = BoatEntity.getPassengerDismountOffset(this.getWidth() * MathHelper.SQUARE_ROOT_OF_TWO, passenger.getWidth(), passenger.getYaw());
+        double d = this.getX() + vec3d.x;
+        BlockPos blockPos = new BlockPos(d, this.getBoundingBox().maxY, e = this.getZ() + vec3d.z);
+        BlockPos blockPos2 = blockPos.down();
+        double g;
+        ArrayList<Vec3d> list = Lists.newArrayList();
+        double f = this.world.getDismountHeight(blockPos);
+        if (Dismounting.canDismountInBlock(f)) {
+            list.add(new Vec3d(d, (double)blockPos.getY() + f, e));
+        }
+        if (Dismounting.canDismountInBlock(g = this.world.getDismountHeight(blockPos2))) {
+            list.add(new Vec3d(d, (double)blockPos2.getY() + g, e));
+        }
+        for (EntityPose entityPose : passenger.getPoses()) {
+            for (Vec3d vec3d2 : list) {
+                if (!Dismounting.canPlaceEntityAt(this.world, vec3d2, passenger, entityPose)) continue;
+                passenger.setPose(entityPose);
+                return vec3d2;
+            }
+        }
+        return super.updatePassengerForDismount(passenger);
+    }
+
+    @Override
     public boolean collidesWith(Entity other) {
         return BoatEntity.canCollide(this, other);
     }
@@ -1563,6 +1617,7 @@ public class VehicleEntity extends Entity implements RenderableVehicle, EntityWi
 
     @Override
     protected void initDataTracker() {
+        super.initDataTracker();
         this.dataTracker.startTracking(REAR_ATTACHMENT_YAW, 0f);
         this.dataTracker.startTracking(REAR_ATTACHMENT_ANIMATION, 0f);
     }

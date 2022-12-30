@@ -17,6 +17,7 @@
   "license": "MIT",
   "icon": "assets/motobox/icon.png",
   "environment": "*",
+  "accessWidener": "motobox.accesswidener",
   "entrypoints": {
     "main": [
       "com.ultreon.mods.motobox.Motobox"

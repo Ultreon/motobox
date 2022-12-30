@@ -35,7 +35,7 @@ public class ExhaustFumesModel<T extends VehicleEntity> extends EntityModel<T> {
         main = ctx.getPart(MODEL_LAYER).getChild("main");
     }
 
-    public static TexturedModelData createBodyLayer() {
+    public static TexturedModelData getTexturedModelData() {
         ModelData meshdefinition = new ModelData();
         ModelPartData partdefinition = meshdefinition.getRoot();
 
