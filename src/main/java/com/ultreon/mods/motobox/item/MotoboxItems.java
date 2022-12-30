@@ -90,7 +90,7 @@ public enum MotoboxItems {
         );
         REAR_ATTACHMENT.registerItemRenderer(
                 pooledModelProvider(t -> t.model().model().apply(cachedCtx), rearAttModelPool),
-                t -> t.model().texture(), (ToFloatFunctionImpl<RearAttachmentType<?>>) t -> 1
+                t -> t.model().texture(), (ToFloatFunctionImpl<RearAttachmentType<?>>) t -> t.model().scale().getFloat()
         );
         FRONT_ATTACHMENT.registerItemRenderer(
                 pooledModelProvider(t -> t.model().model().apply(cachedCtx), frontAttModelPool),

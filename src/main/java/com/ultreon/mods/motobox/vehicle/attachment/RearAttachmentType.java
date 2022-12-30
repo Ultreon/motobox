@@ -28,14 +28,14 @@ public record RearAttachmentType<T extends RearAttachment>(
     public static final SimpleMapContentRegistry<RearAttachmentType<?>> REGISTRY = new SimpleMapContentRegistry<>();
 
     public static final RearAttachmentType<EmptyRearAttachment> EMPTY = register(new RearAttachmentType<>(
-            Motobox.id("empty"), EmptyRearAttachment::new, new RearAttachmentModel(new Identifier("empty"), Motobox.id("empty"), 0)
+            Motobox.id("empty"), EmptyRearAttachment::new, new RearAttachmentModel(new Identifier("empty"), Motobox.id("empty"), 0, 0)
     ));
 
     public static final RearAttachmentType<BaseChestRearAttachment> TRAILER = register(new RearAttachmentType<>(Motobox.id("trailer"),
-            BaseChestRearAttachment::chest, new RearAttachmentModel(Motobox.id("textures/entity/vehicle/rear_attachment/trailer.png"), Motobox.id("rearatt_trailer"), () -> 3)));
+            BaseChestRearAttachment::chest, new RearAttachmentModel(Motobox.id("textures/entity/vehicle/rear_attachment/trailer.png"), Motobox.id("rearatt_trailer"), () -> 3, () -> 1 / 2f)));
 
     public static final RearAttachmentType<BaseChestRearAttachment> CARAVAN = register(new RearAttachmentType<>(Motobox.id("caravan"),
-            BaseChestRearAttachment::saddledBarrel, new RearAttachmentModel(Motobox.id("textures/entity/vehicle/rear_attachment/caravan.png"), Motobox.id("rearatt_caravan"), () -> 3)));
+            BaseChestRearAttachment::saddledBarrel, new RearAttachmentModel(Motobox.id("textures/entity/vehicle/rear_attachment/caravan.png"), Motobox.id("rearatt_caravan"), () -> 3, () -> 1 / 4f)));
 
     @Override
     public boolean isEmpty() {
@@ -65,17 +65,20 @@ public record RearAttachmentType<T extends RearAttachment>(
         private final Identifier texture;
         private final Identifier modelId;
         private final FloatSupplier pivotDistPx;
+        private final FloatSupplier scale;
 
-        public RearAttachmentModel(Identifier texture, Identifier modelId, float pivotDistPx) {
+        public RearAttachmentModel(Identifier texture, Identifier modelId, float pivotDistPx, float scale) {
             this.texture = texture;
             this.modelId = modelId;
             this.pivotDistPx = () -> pivotDistPx;
+            this.scale = () -> scale;
         }
 
-        public RearAttachmentModel(Identifier texture, Identifier modelId, FloatSupplier pivotDistPx) {
+        public RearAttachmentModel(Identifier texture, Identifier modelId, FloatSupplier pivotDistPx, FloatSupplier scale) {
             this.texture = texture;
             this.modelId = modelId;
             this.pivotDistPx = pivotDistPx;
+            this.scale = scale;
         }
 
         @Environment(EnvType.CLIENT)
@@ -93,6 +96,10 @@ public record RearAttachmentType<T extends RearAttachment>(
 
         public FloatSupplier pivotDistPx() {
             return pivotDistPx;
+        }
+
+        public FloatSupplier scale() {
+            return scale;
         }
 
         @Override

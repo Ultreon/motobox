@@ -60,9 +60,6 @@ public enum VehicleRenderer {
             if (frameModel instanceof BaseModel base) {
                 base.doOtherLayerRender(matrices, vertexConsumers, light, overlay);
             }
-        } else {
-            System.out.println("frame.isEmpty() = " + frame.isEmpty());
-            System.out.println("frameModel = " + frameModel);
         }
 
         float eBack = frame.model().enginePosBack().getFloat() / 16;

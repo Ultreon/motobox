@@ -61,7 +61,7 @@
   "stat.motobox.vehicle.acceleration": "Acceleration",
   "stat.motobox.vehicle.acceleration.readout": "%s",
   "stat.motobox.vehicle.comfortable_speed": "Comfortable Speed",
-  "stat.motobox.vehicle.comfortable_speed.readout": "%s m/s",
+  "stat.motobox.vehicle.comfortable_speed.readout": "%s km/h",
   "stat.motobox.vehicle.handling": "Handling",
   "stat.motobox.vehicle.handling.readout": "%s",
   "stat.motobox.vehicle.grip": "Grip",

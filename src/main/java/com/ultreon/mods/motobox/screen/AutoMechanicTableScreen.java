@@ -127,7 +127,8 @@ public class AutoMechanicTableScreen extends HandledScreen<AutoMechanicTableScre
 
     @Override
     protected void drawForeground(MatrixStack matrices, int mouseX, int mouseY) {
-        super.drawForeground(matrices, mouseX, mouseY);
+        this.textRenderer.draw(matrices, this.title, (float)this.titleX, (float)this.titleY, 0xffffffff);
+        this.textRenderer.draw(matrices, this.playerInventoryTitle, (float)this.playerInventoryTitleX, (float)this.playerInventoryTitleY, 4210752);
 
         int hoveredRecipe = this.getHoveredRecipe(mouseX, mouseY);
         if (hoveredRecipe >= 0) {
@@ -178,7 +179,9 @@ public class AutoMechanicTableScreen extends HandledScreen<AutoMechanicTableScre
     }
 
     private void selectRecipe(int id) {
+        assert this.client != null;
         this.handler.onButtonClick(this.client.player, id);
+        assert this.client.interactionManager != null;
         this.client.interactionManager.clickButton(this.handler.syncId, id);
     }
 
@@ -336,7 +339,7 @@ public class AutoMechanicTableScreen extends HandledScreen<AutoMechanicTableScre
         this.itemRenderer.renderInGui(stack, x, y);
     }
 
-    public static record RecipeEntry(int id, AutoMechanicTableRecipe recipe) {}
+    public record RecipeEntry(int id, AutoMechanicTableRecipe recipe) {}
 
     public enum RecipeButtonState {
         DEFAULT, HOVERED, SELECTED

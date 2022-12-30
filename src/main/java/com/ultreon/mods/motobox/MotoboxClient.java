@@ -16,7 +16,6 @@ import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.rendering.v1.BlockEntityRendererRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback;
-import net.fabricmc.fabric.api.client.rendering.v1.WorldRenderEvents;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.ingame.HandledScreens;
 import net.minecraft.client.render.RenderLayer;
@@ -46,18 +45,5 @@ public class MotoboxClient implements ClientModInitializer {
         BlockRenderLayerMap.INSTANCE.putBlock(MotoboxBlocks.AUTOMOBILE_ASSEMBLER, RenderLayer.getCutout());
 
         BlockEntityRendererRegistry.register(MotoboxBlocks.AUTOMOBILE_ASSEMBLER_ENTITY, VehicleAssemblerBlockEntityRenderer::new);
-
-        WorldRenderEvents.AFTER_ENTITIES.register(context -> {
-//            MatrixStack matrixStack = context.matrixStack();
-//            @Nullable VertexConsumerProvider consumers = context.consumers();
-//            MinecraftClient client = context.gameRenderer().getClient();
-//            VehicleEntity vehicleEntity = new VehicleEntity(client.world);
-//            vehicleEntity.setComponents(VehicleFrame.TRUCK, VehicleWheel.TRUCK, VehicleEngine.TRUCK_ENGINE);
-//            vehicleEntity.updateModels = true;
-//            VehicleRenderer.render(matrixStack, consumers, 1, 1, 0f, new EntityRendererFactory.Context(client.getEntityRenderDispatcher(), client.getItemRenderer(), client.getBlockRenderManager(), client.getEntityRenderDispatcher().getHeldItemRenderer(), client.getResourceManager(), client.getEntityModelLoader(), client.textRenderer), vehicleEntity);
-//
-//            matrixStack.multiply(new Quaternionf().rotateY((float) Math.toRadians(180)));
-//            TruckEngineModel.getTexturedModelData().createModel().render(matrixStack, consumers.getBuffer(RenderLayer.getEntityTranslucent(new Identifier("textures/block/dirt.png"))), 1, 1);
-        });
     }
 }

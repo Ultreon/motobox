@@ -28,21 +28,6 @@ public record FrontAttachmentType<T extends FrontAttachment>(
             Motobox.id("empty"), EmptyFrontAttachment::new, new FrontAttachmentModel(new Identifier("empty"), Motobox.id("empty"), 1)
     ));
 
-//    public static final FrontAttachmentType<MobControllerFrontAttachment> MOB_CONTROLLER = register(new FrontAttachmentType<>(
-//            Motobox.id("mob_controller"), MobControllerFrontAttachment::new,
-//            new FrontAttachmentModel(Motobox.id("textures/entity/vehicle/front_attachment/mob_controller.png"), Motobox.id("frontatt_mob_controller"), 1.7f)
-//    ));
-//
-//    public static final FrontAttachmentType<CropHarvesterFrontAttachment> CROP_HARVESTER = register(new FrontAttachmentType<>(
-//            Motobox.id("crop_harvester"), CropHarvesterFrontAttachment::new,
-//            new FrontAttachmentModel(Motobox.id("textures/entity/vehicle/front_attachment/crop_harvester.png"), Motobox.id("frontatt_harvester"), 0.83f)
-//    ));
-//
-//    public static final FrontAttachmentType<GrassCutterFrontAttachment> GRASS_CUTTER = register(new FrontAttachmentType<>(
-//            Motobox.id("grass_cutter"), GrassCutterFrontAttachment::new,
-//            new FrontAttachmentModel(Motobox.id("textures/entity/vehicle/front_attachment/grass_cutter.png"), Motobox.id("frontatt_harvester"), 0.83f)
-//    ));
-
     @Override
     public boolean isEmpty() {
         return this == EMPTY;

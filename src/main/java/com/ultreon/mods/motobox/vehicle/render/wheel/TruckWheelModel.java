@@ -109,7 +109,6 @@ public class TruckWheelModel<T extends VehicleEntity> extends EntityModel<T> {
 		bone4.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
 		bone.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
 
-//		System.out.println("poseStack = " + poseStack);
 		poseStack.pop();
 	}
 }
