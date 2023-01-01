@@ -56,6 +56,9 @@ dependencies {
 	// Fabric API. This is technically optional, but you probably want it anyway.
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
+	// Geckolib
+	modImplementation "software.bernie.geckolib:geckolib-fabric-1.19.3:4.0.3"
+
 	// Controller Support
 	include modImplementation("dev.lambdaurora:spruceui:${project.spruceui_version}")
 	modImplementation "maven.modrinth:midnightlib:${project.midnightlib_version}"
