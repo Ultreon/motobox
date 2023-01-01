@@ -1,7 +1,9 @@
 package com.ultreon.mods.motobox.entity;
 
 import com.ultreon.mods.motobox.Motobox;
+import com.ultreon.mods.motobox.entity.render.UfoEntityRenderer;
 import com.ultreon.mods.motobox.entity.render.VehicleEntityRenderer;
+import com.ultreon.mods.motobox.entity.ufo.UfoEntity;
 import com.ultreon.mods.motobox.vehicle.render.ExhaustFumesModel;
 import com.ultreon.mods.motobox.vehicle.render.SkidEffectModel;
 import com.ultreon.mods.motobox.vehicle.render.attachment.rear.CaravanRearAttachmentRenderModel;
@@ -19,6 +21,7 @@ import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityDimensions;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
@@ -35,6 +38,14 @@ public enum MotoboxEntities {
             FabricEntityTypeBuilder.<VehicleEntity>create(SpawnGroup.MISC, VehicleEntity::new).dimensions(new EntityDimensions(1f, 0.66f, true)).trackedUpdateRate(3).trackRangeChunks(10).build()
     );
 
+    private static final float ufoScale = 4.0f;
+    public static final EntityType<UfoEntity> UFO = MotoboxEntities.register(
+            "ufo",
+            FabricEntityTypeBuilder
+                    .create(SpawnGroup.MISC, UfoEntity::new)
+                    .dimensions(EntityDimensions.fixed(ufoScale * 3, ufoScale * 0.2f))
+    );
+
     public static final TagKey<EntityType<?>> DASH_PANEL_BOOSTABLES = TagKey.of(Registries.ENTITY_TYPE.getKey(), Motobox.id("dash_panel_boostables"));
 
     public static final DamageSource AUTOMOBILE_DAMAGE_SOURCE = new VehicleDamageSource("vehicle");
@@ -44,6 +55,7 @@ public enum MotoboxEntities {
 
     @Environment(EnvType.CLIENT)
     public static void initClient() {
+        EntityRendererRegistry.register(UFO, UfoEntityRenderer::new);
         EntityRendererRegistry.register(AUTOMOBILE, VehicleEntityRenderer::new);
 
         EntityModelLayerRegistry.registerModelLayer(TruckFrameModel.MODEL_LAYER, TruckFrameModel::getTexturedModelData);
@@ -61,5 +73,13 @@ public enum MotoboxEntities {
 
         EntityModelLayerRegistry.registerModelLayer(SkidEffectModel.MODEL_LAYER, SkidEffectModel::getTexturedModelData);
         EntityModelLayerRegistry.registerModelLayer(ExhaustFumesModel.MODEL_LAYER, ExhaustFumesModel::getTexturedModelData);
+    }
+
+    private static <T extends Entity> EntityType<T> register(String name, FabricEntityTypeBuilder<T> type) {
+        return Registry.register(
+                Registries.ENTITY_TYPE,
+                Motobox.id(name),
+                type.build()
+        );
     }
 }
