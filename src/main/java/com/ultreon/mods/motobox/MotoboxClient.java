@@ -4,6 +4,7 @@ import com.ultreon.mods.motobox.block.MotoboxBlocks;
 import com.ultreon.mods.motobox.block.entity.render.VehicleAssemblerBlockEntityRenderer;
 import com.ultreon.mods.motobox.entity.MotoboxEntities;
 import com.ultreon.mods.motobox.entity.VehicleEntity;
+import com.ultreon.mods.motobox.entity.ufo.UfoInput;
 import com.ultreon.mods.motobox.item.MotoboxItems;
 import com.ultreon.mods.motobox.particle.MotoboxParticles;
 import com.ultreon.mods.motobox.render.MotoboxModels;
@@ -45,5 +46,7 @@ public class MotoboxClient implements ClientModInitializer {
         BlockRenderLayerMap.INSTANCE.putBlock(MotoboxBlocks.AUTOMOBILE_ASSEMBLER, RenderLayer.getCutout());
 
         BlockEntityRendererRegistry.register(MotoboxBlocks.AUTOMOBILE_ASSEMBLER_ENTITY, VehicleAssemblerBlockEntityRenderer::new);
+
+        UfoInput.registerKeybinds();
     }
 }
