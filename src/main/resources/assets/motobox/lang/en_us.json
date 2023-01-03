@@ -94,5 +94,7 @@
   "attachment.rear.motobox.caravan": "Caravan",
   "attachment.rear.motobox.trailer": "Trailer",
   "attachment.rear.motobox.empty": "ERROR",
-  "attachment.front.motobox.empty": "ERROR"
+  "attachment.front.motobox.empty": "ERROR",
+
+  "dataPack.motobox.caravan.description": "Adds a WIP caravan toi the game."
 }

@@ -7,18 +7,16 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.model.Model;
 import net.minecraft.client.render.entity.EntityRendererFactory;
+import net.minecraft.resource.featuretoggle.FeatureSet;
 import net.minecraft.util.Identifier;
 
+import java.util.Arrays;
+import java.util.Objects;
 import java.util.function.Consumer;
 import java.util.function.Function;
+import java.util.function.Supplier;
 
-public record VehicleWheel(
-        Identifier id,
-        float size,
-        float grip,
-        WheelModel model,
-        Ability... abilities
-) implements VehicleComponent<VehicleWheel> {
+public final class VehicleWheel implements VehicleComponent<VehicleWheel> {
     public static final Identifier ID = Motobox.id("wheel");
     public static final SimpleMapContentRegistry<VehicleWheel> REGISTRY = new SimpleMapContentRegistry<>();
 
@@ -44,6 +42,38 @@ public record VehicleWheel(
 
     public static final DisplayStat<VehicleWheel> STAT_SIZE = new DisplayStat<>("size", VehicleWheel::size);
     public static final DisplayStat<VehicleWheel> STAT_GRIP = new DisplayStat<>("grip", VehicleWheel::grip);
+    private final Identifier id;
+    private final float size;
+    private final float grip;
+    private final WheelModel model;
+    private final Supplier<FeatureSet> requiredFeatures;
+    private final Ability[] abilities;
+
+    public VehicleWheel(
+            Identifier id,
+            float size,
+            float grip,
+            WheelModel model,
+            Ability... abilities
+    ) {
+        this(id, size, grip, model, FeatureSet::empty, abilities);
+    }
+
+    public VehicleWheel(
+            Identifier id,
+            float size,
+            float grip,
+            WheelModel model,
+            Supplier<FeatureSet> requiredFeatures,
+            Ability... abilities
+    ) {
+        this.id = id;
+        this.size = size;
+        this.grip = grip;
+        this.model = model;
+        this.requiredFeatures = requiredFeatures;
+        this.abilities = abilities;
+    }
 
     @Override
     public boolean isEmpty() {
@@ -69,6 +99,59 @@ public record VehicleWheel(
     public String getTranslationKey() {
         return "wheel." + id.getNamespace() + "." + id.getPath();
     }
+
+    public Identifier id() {
+        return id;
+    }
+
+    public float size() {
+        return size;
+    }
+
+    public float grip() {
+        return grip;
+    }
+
+    public WheelModel model() {
+        return model;
+    }
+
+    public Ability[] abilities() {
+        return abilities;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == this) return true;
+        if (obj == null || obj.getClass() != this.getClass()) return false;
+        var that = (VehicleWheel) obj;
+        return Objects.equals(this.id, that.id) &&
+                Float.floatToIntBits(this.size) == Float.floatToIntBits(that.size) &&
+                Float.floatToIntBits(this.grip) == Float.floatToIntBits(that.grip) &&
+                Objects.equals(this.model, that.model) &&
+                Arrays.equals(this.abilities, that.abilities);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, size, grip, model, Arrays.hashCode(abilities));
+    }
+
+    @Override
+    public String toString() {
+        return "VehicleWheel[" +
+                "id=" + id + ", " +
+                "size=" + size + ", " +
+                "grip=" + grip + ", " +
+                "model=" + model + ", " +
+                "abilities=" + Arrays.toString(abilities) + ']';
+    }
+
+    @Override
+    public FeatureSet getRequiredFeatures() {
+        return requiredFeatures.get();
+    }
+
 
     public enum Ability {
     }

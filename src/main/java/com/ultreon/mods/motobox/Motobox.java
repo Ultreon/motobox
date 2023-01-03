@@ -14,6 +14,7 @@ import com.ultreon.mods.motobox.util.AUtils;
 import com.ultreon.mods.motobox.util.midnightcontrols.ControllerUtils;
 import com.ultreon.mods.motobox.util.network.PayloadPackets;
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.minecraft.block.Block;
 import net.minecraft.item.BlockItem;
@@ -23,6 +24,7 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.tag.TagKey;
 import net.minecraft.screen.ScreenHandlerType;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.Identifier;
 
 public class Motobox implements ModInitializer {
@@ -68,6 +70,11 @@ public class Motobox implements ModInitializer {
             Registry.register(Registries.SCREEN_HANDLER, Motobox.id("auto_mechanic_table"), new ScreenHandlerType<>(AutoMechanicTableScreenHandler::new));
     public static final ScreenHandlerType<SingleSlotScreenHandler> SINGLE_SLOT_SCREEN =
             Registry.register(Registries.SCREEN_HANDLER, Motobox.id("single_slot"), new ScreenHandlerType<>(SingleSlotScreenHandler::new));
+    private static MinecraftServer server;
+
+    public static MinecraftServer server() {
+        return server;
+    }
 
     @Override
     public void onInitialize() {
@@ -81,6 +88,10 @@ public class Motobox implements ModInitializer {
         PayloadPackets.init();
         MotoboxData.setup();
         ControllerUtils.initMidnightControlsHandler();
+
+        ServerLifecycleEvents.SERVER_STARTING.register(server -> Motobox.server = server);
+
+        ServerLifecycleEvents.SERVER_STOPPED.register(server -> Motobox.server = null);
     }
 
     public static void initOther() {

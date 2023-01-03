@@ -3,6 +3,7 @@ package com.ultreon.mods.motobox.vehicle.attachment;
 import com.ultreon.mods.motobox.Motobox;
 import com.ultreon.mods.motobox.common.FloatSupplier;
 import com.ultreon.mods.motobox.entity.VehicleEntity;
+import com.ultreon.mods.motobox.featuretoggle.MotoboxFeatureFlags;
 import com.ultreon.mods.motobox.render.MotoboxModels;
 import com.ultreon.mods.motobox.util.SimpleMapContentRegistry;
 import com.ultreon.mods.motobox.vehicle.DisplayStat;
@@ -14,16 +15,16 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.model.Model;
 import net.minecraft.client.render.entity.EntityRendererFactory;
+import net.minecraft.resource.featuretoggle.FeatureSet;
 import net.minecraft.util.Identifier;
 
 import java.util.Objects;
 import java.util.function.BiFunction;
 import java.util.function.Consumer;
 import java.util.function.Function;
+import java.util.function.Supplier;
 
-public record RearAttachmentType<T extends RearAttachment>(
-        Identifier id, BiFunction<RearAttachmentType<T>, VehicleEntity, T> constructor, RearAttachmentModel model
-) implements VehicleComponent<RearAttachmentType<?>> {
+public final class RearAttachmentType<T extends RearAttachment> implements VehicleComponent<RearAttachmentType<?>> {
     public static final Identifier ID = Motobox.id("rear_attachment");
     public static final SimpleMapContentRegistry<RearAttachmentType<?>> REGISTRY = new SimpleMapContentRegistry<>();
 
@@ -35,7 +36,27 @@ public record RearAttachmentType<T extends RearAttachment>(
             BaseChestRearAttachment::chest, new RearAttachmentModel(Motobox.id("textures/entity/vehicle/rear_attachment/trailer.png"), Motobox.id("rearatt_trailer"), () -> 3, () -> 1 / 2f)));
 
     public static final RearAttachmentType<BaseChestRearAttachment> CARAVAN = register(new RearAttachmentType<>(Motobox.id("caravan"),
-            BaseChestRearAttachment::saddledBarrel, new RearAttachmentModel(Motobox.id("textures/entity/vehicle/rear_attachment/caravan.png"), Motobox.id("rearatt_caravan"), () -> 3, () -> 1 / 4f)));
+            BaseChestRearAttachment::saddledBarrel, new RearAttachmentModel(Motobox.id("textures/entity/vehicle/rear_attachment/caravan.png"), Motobox.id("rearatt_caravan"), () -> 3, () -> 1 / 4f), () -> FeatureSet.of(MotoboxFeatureFlags.CARAVAN)));
+    private final Identifier id;
+    private final BiFunction<RearAttachmentType<T>, VehicleEntity, T> constructor;
+    private final RearAttachmentModel model;
+    private final Supplier<FeatureSet> requiredFeatures;
+
+    public RearAttachmentType(Identifier id,
+                              BiFunction<RearAttachmentType<T>, VehicleEntity, T> constructor,
+                              RearAttachmentModel model) {
+        this(id, constructor, model, FeatureSet::empty);
+    }
+
+    public RearAttachmentType(Identifier id,
+                              BiFunction<RearAttachmentType<T>, VehicleEntity, T> constructor,
+                              RearAttachmentModel model,
+                              Supplier<FeatureSet> requiredFeatures) {
+        this.id = id;
+        this.constructor = constructor;
+        this.model = model;
+        this.requiredFeatures = requiredFeatures;
+    }
 
     @Override
     public boolean isEmpty() {
@@ -60,6 +81,47 @@ public record RearAttachmentType<T extends RearAttachment>(
         REGISTRY.register(entry);
         return entry;
     }
+
+    public Identifier id() {
+        return id;
+    }
+
+    public BiFunction<RearAttachmentType<T>, VehicleEntity, T> constructor() {
+        return constructor;
+    }
+
+    public RearAttachmentModel model() {
+        return model;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == this) return true;
+        if (obj == null || obj.getClass() != this.getClass()) return false;
+        var that = (RearAttachmentType<?>) obj;
+        return Objects.equals(this.id, that.id) &&
+                Objects.equals(this.constructor, that.constructor) &&
+                Objects.equals(this.model, that.model);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, constructor, model);
+    }
+
+    @Override
+    public String toString() {
+        return "RearAttachmentType[" +
+                "id=" + id + ", " +
+                "constructor=" + constructor + ", " +
+                "model=" + model + ']';
+    }
+
+    @Override
+    public FeatureSet getRequiredFeatures() {
+        return requiredFeatures.get();
+    }
+
 
     public static final class RearAttachmentModel {
         private final Identifier texture;

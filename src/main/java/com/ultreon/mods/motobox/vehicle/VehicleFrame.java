@@ -8,6 +8,7 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.model.Model;
 import net.minecraft.client.render.entity.EntityRendererFactory;
+import net.minecraft.resource.featuretoggle.FeatureSet;
 import net.minecraft.util.Identifier;
 
 import java.util.Objects;
@@ -15,8 +16,7 @@ import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
-public record VehicleFrame(Identifier id, float weight, FrameModel model
-) implements VehicleComponent<VehicleFrame> {
+public final class VehicleFrame implements VehicleComponent<VehicleFrame> {
     public static final Identifier ID = Motobox.id("frame");
     public static final SimpleMapContentRegistry<VehicleFrame> REGISTRY = new SimpleMapContentRegistry<>();
 
@@ -42,7 +42,6 @@ public record VehicleFrame(Identifier id, float weight, FrameModel model
     public static final VehicleFrame MOTORBIKE = REGISTRY.register(motorbike());
 
     public static final VehicleFrame RUSTY_CAR = REGISTRY.register(rustyCar());
-
     private static VehicleFrame truck() {
         return new VehicleFrame(
                 Motobox.id("truck"),
@@ -107,7 +106,23 @@ public record VehicleFrame(Identifier id, float weight, FrameModel model
         );
     }
 
+
     public static final DisplayStat<VehicleFrame> STAT_WEIGHT = new DisplayStat<>("weight", VehicleFrame::weight);
+    private final Identifier id;
+    private final float weight;
+    private final FrameModel model;
+    private final Supplier<FeatureSet> requiredFeatures;
+
+    public VehicleFrame(Identifier id, float weight, FrameModel model) {
+        this(id, weight, model, FeatureSet::empty);
+    }
+
+    public VehicleFrame(Identifier id, float weight, FrameModel model, Supplier<FeatureSet> requiredFeatures) {
+        this.id = id;
+        this.weight = weight;
+        this.model = model;
+        this.requiredFeatures = requiredFeatures;
+    }
 
     @Override
     public boolean isEmpty() {
@@ -132,6 +147,47 @@ public record VehicleFrame(Identifier id, float weight, FrameModel model
     public String getTranslationKey() {
         return "frame." + id.getNamespace() + "." + id.getPath();
     }
+
+    public Identifier id() {
+        return id;
+    }
+
+    public float weight() {
+        return weight;
+    }
+
+    public FrameModel model() {
+        return model;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == this) return true;
+        if (obj == null || obj.getClass() != this.getClass()) return false;
+        var that = (VehicleFrame) obj;
+        return Objects.equals(this.id, that.id) &&
+                Float.floatToIntBits(this.weight) == Float.floatToIntBits(that.weight) &&
+                Objects.equals(this.model, that.model);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, weight, model);
+    }
+
+    @Override
+    public String toString() {
+        return "VehicleFrame[" +
+                "id=" + id + ", " +
+                "weight=" + weight + ", " +
+                "model=" + model + ']';
+    }
+
+    @Override
+    public FeatureSet getRequiredFeatures() {
+        return requiredFeatures.get();
+    }
+
 
     @SuppressWarnings("unused")
     public static final class FrameModel {

@@ -6,6 +6,8 @@
   "mixins": [
     "EnderChestInventoryMixin",
     "EntityMixin",
+    "FeatureFlagsMixin",
+    "FeatureManagerBuilderMixin",
     "ForgingScreenHandlerMixin",
     "ScreenHandlerMixin",
     "ServerPlayNetworkHandlerMixin"

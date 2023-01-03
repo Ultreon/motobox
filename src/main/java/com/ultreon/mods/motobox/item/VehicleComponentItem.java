@@ -18,6 +18,7 @@ import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.function.Function;
 
 public class VehicleComponentItem<T extends VehicleComponent<T>> extends Item {
@@ -47,7 +48,7 @@ public class VehicleComponentItem<T extends VehicleComponent<T>> extends Item {
     }
 
     public T getComponent(ItemStack stack) {
-        if (stack.hasNbt() && stack.getNbt().contains(this.nbtKey)) {
+        if (stack.hasNbt() && Objects.requireNonNull(stack.getNbt()).contains(this.nbtKey)) {
             return this.registry.getOrDefault(Identifier.tryParse(stack.getNbt().getString(this.nbtKey)));
         }
         return this.registry.getOrDefault(null);
@@ -66,7 +67,9 @@ public class VehicleComponentItem<T extends VehicleComponent<T>> extends Item {
 
     public void appendStacks(ItemGroup.Entries entries) {
         this.registry.forEach(component -> {
-            if (addToCreative(component)) entries.add(this.createStack(component));
+            if (component.isEnabled(registry.getEnabledFeatures())) {
+                if (addToCreative(component)) entries.add(this.createStack(component));
+            }
         });
     }
 

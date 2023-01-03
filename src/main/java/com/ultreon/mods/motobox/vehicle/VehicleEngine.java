@@ -8,20 +8,17 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.model.Model;
 import net.minecraft.client.render.entity.EntityRendererFactory;
+import net.minecraft.resource.featuretoggle.FeatureSet;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Identifier;
 
+import java.util.Objects;
 import java.util.function.Consumer;
 import java.util.function.Function;
+import java.util.function.Supplier;
 
-public record VehicleEngine(
-        Identifier id,
-        float torque,
-        float speed,
-        SoundEvent sound,
-        EngineModel model
-) implements VehicleComponent<VehicleEngine> {
+public final class VehicleEngine implements VehicleComponent<VehicleEngine> {
     public static final Identifier ID = Motobox.id("engine");
     public static final SimpleMapContentRegistry<VehicleEngine> REGISTRY = new SimpleMapContentRegistry<>();
 
@@ -61,6 +58,38 @@ public record VehicleEngine(
 
     public static final DisplayStat<VehicleEngine> STAT_TORQUE = new DisplayStat<>("torque", VehicleEngine::torque);
     public static final DisplayStat<VehicleEngine> STAT_SPEED = new DisplayStat<>("speed", VehicleEngine::speed);
+    private final Identifier id;
+    private final float torque;
+    private final float speed;
+    private final SoundEvent sound;
+    private final EngineModel model;
+    private final Supplier<FeatureSet> requiredFeatures;
+
+    public VehicleEngine(
+            Identifier id,
+            float torque,
+            float speed,
+            SoundEvent sound,
+            EngineModel model
+    ) {
+        this(id, torque, speed, sound, model, FeatureSet::empty);
+    }
+
+    public VehicleEngine(
+            Identifier id,
+            float torque,
+            float speed,
+            SoundEvent sound,
+            EngineModel model,
+            Supplier<FeatureSet> requiredFeatures
+    ) {
+        this.id = id;
+        this.torque = torque;
+        this.speed = speed;
+        this.sound = sound;
+        this.model = model;
+        this.requiredFeatures = requiredFeatures;
+    }
 
     @Override
     public boolean isEmpty() {
@@ -86,6 +115,59 @@ public record VehicleEngine(
     public String getTranslationKey() {
         return "engine." + id.getNamespace() + "." + id.getPath();
     }
+
+    public Identifier id() {
+        return id;
+    }
+
+    public float torque() {
+        return torque;
+    }
+
+    public float speed() {
+        return speed;
+    }
+
+    public SoundEvent sound() {
+        return sound;
+    }
+
+    public EngineModel model() {
+        return model;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == this) return true;
+        if (obj == null || obj.getClass() != this.getClass()) return false;
+        var that = (VehicleEngine) obj;
+        return Objects.equals(this.id, that.id) &&
+                Float.floatToIntBits(this.torque) == Float.floatToIntBits(that.torque) &&
+                Float.floatToIntBits(this.speed) == Float.floatToIntBits(that.speed) &&
+                Objects.equals(this.sound, that.sound) &&
+                Objects.equals(this.model, that.model);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, torque, speed, sound, model);
+    }
+
+    @Override
+    public String toString() {
+        return "VehicleEngine[" +
+                "id=" + id + ", " +
+                "torque=" + torque + ", " +
+                "speed=" + speed + ", " +
+                "sound=" + sound + ", " +
+                "model=" + model + ']';
+    }
+
+    @Override
+    public FeatureSet getRequiredFeatures() {
+        return requiredFeatures.get();
+    }
+
 
     public record EngineModel(
             Identifier texture,
