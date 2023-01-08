@@ -1458,10 +1458,6 @@ public class VehicleEntity extends BoatEntity implements RenderableVehicle, Enti
             return;
         }
 
-        passenger.setYaw(passenger.getYaw() + this.yawVelocity);
-        passenger.setHeadYaw(passenger.getHeadYaw() + this.yawVelocity);
-        this.copyEntityData(passenger);
-
         if (Objects.equals(frame.getId(), id("truck"))) {
             Vec3d pos;
             if (Objects.equals(passenger, getFirstPassenger())) {
@@ -1502,9 +1498,7 @@ public class VehicleEntity extends BoatEntity implements RenderableVehicle, Enti
                 );
                 passenger.setPosition(pos.x, pos.y, pos.z);
             }
-            return;
-        }
-        if (Objects.equals(frame.getId(), id("rusty_car"))) {
+        } else if (Objects.equals(frame.getId(), id("rusty_car"))) {
             Vec3d pos;
             if (Objects.equals(passenger, getFirstPassenger())) {
                 pos = getPos().add(0.0, displacement.verticalTarget + passenger.getHeightOffset(), 0.0)
@@ -1553,9 +1547,7 @@ public class VehicleEntity extends BoatEntity implements RenderableVehicle, Enti
                 );
                 passenger.setPosition(pos.x, pos.y, pos.z);
             }
-            return;
-        }
-        if (passenger == this.getFirstPassenger()) {
+        } else if (passenger == this.getFirstPassenger()) {
             var pos = this.getPos().add(0, this.displacement.verticalTarget + passenger.getHeightOffset(), 0)
                     .add(new Vec3d(0, this.getMountedHeightOffset(), 0)
                             .rotateX((float) Math.toRadians(-this.displacement.currAngularX))
@@ -1572,6 +1564,18 @@ public class VehicleEntity extends BoatEntity implements RenderableVehicle, Enti
 
             passenger.setPosition(pos.x, pos.y, pos.z);
         }
+        passenger.setYaw(passenger.getYaw() + this.yawVelocity);
+        passenger.setHeadYaw(passenger.getHeadYaw() + this.yawVelocity);
+        this.copyEntityData(passenger);
+    }
+
+    protected void copyEntityData(Entity entity) {
+        entity.setBodyYaw(MathHelper.wrapDegrees(this.getYaw()));
+        float wrapper = MathHelper.wrapDegrees(entity.getYaw() - this.getYaw());
+        float clamped = MathHelper.clamp(wrapper, -105.0f, 105.0f);
+        entity.prevYaw += clamped - wrapper;
+        entity.setYaw(entity.getYaw() + clamped - wrapper);
+        entity.setHeadYaw(entity.getYaw());
     }
 
     @Override
