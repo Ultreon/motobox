@@ -12,7 +12,6 @@ import com.ultreon.mods.motobox.screen.SingleSlotScreenHandler;
 import com.ultreon.mods.motobox.sound.MotoboxSounds;
 import com.ultreon.mods.motobox.util.AUtils;
 import com.ultreon.mods.motobox.util.midnightcontrols.ControllerUtils;
-import com.ultreon.mods.motobox.util.network.PayloadPackets;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
@@ -85,7 +84,6 @@ public class Motobox implements ModInitializer {
         MotoboxSounds.init();
         initOther();
 
-        PayloadPackets.init();
         MotoboxData.setup();
         ControllerUtils.initMidnightControlsHandler();
 

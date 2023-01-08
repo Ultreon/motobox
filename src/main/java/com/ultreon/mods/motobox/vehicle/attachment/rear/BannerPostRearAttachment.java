@@ -3,7 +3,8 @@ package com.ultreon.mods.motobox.vehicle.attachment.rear;
 import com.mojang.datafixers.util.Pair;
 import com.ultreon.mods.motobox.entity.VehicleEntity;
 import com.ultreon.mods.motobox.screen.SingleSlotScreenHandler;
-import com.ultreon.mods.motobox.util.network.PayloadPackets;
+import com.ultreon.mods.motobox.util.network.MotoboxNet;
+import com.ultreon.mods.motobox.util.network.packets.BannerPostAttachmentUpdatePacket;
 import com.ultreon.mods.motobox.vehicle.attachment.RearAttachmentType;
 import net.minecraft.block.entity.BannerBlockEntity;
 import net.minecraft.block.entity.BannerPattern;
@@ -53,7 +54,7 @@ public class BannerPostRearAttachment extends RearAttachment {
 
         if (!this.world().isClient()) {
             this.vehicle().forNearbyPlayers(200, false, p ->
-                    PayloadPackets.sendBannerPostAttachmentUpdatePacket(this.vehicle(), nbt, p));
+                    MotoboxNet.get().sendToClient(new BannerPostAttachmentUpdatePacket(this.vehicle(), nbt), p));
         }
     }
 
@@ -63,7 +64,7 @@ public class BannerPostRearAttachment extends RearAttachment {
 
         var nbt = new NbtCompound();
         this.putToNbt(nbt);
-        PayloadPackets.sendBannerPostAttachmentUpdatePacket(this.vehicle(), nbt, player);
+        MotoboxNet.get().sendToClient(new BannerPostAttachmentUpdatePacket(this.vehicle(), nbt), player);
     }
 
     public void putToNbt(NbtCompound nbt) {

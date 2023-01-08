@@ -11,7 +11,6 @@ import com.ultreon.mods.motobox.resource.MotoboxAssets;
 import com.ultreon.mods.motobox.screen.AutoMechanicTableScreen;
 import com.ultreon.mods.motobox.screen.SingleSlotScreen;
 import com.ultreon.mods.motobox.screen.VehicleHud;
-import com.ultreon.mods.motobox.util.network.PayloadPackets;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.rendering.v1.BlockEntityRendererRegistry;
@@ -28,7 +27,6 @@ public class MotoboxClient implements ClientModInitializer {
         MotoboxItems.initClient();
         MotoboxEntities.initClient();
         MotoboxParticles.initClient();
-        PayloadPackets.initClient();
 
         MotoboxAssets.setup();
 

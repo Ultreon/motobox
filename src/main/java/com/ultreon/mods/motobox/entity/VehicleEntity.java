@@ -1,6 +1,7 @@
 package com.ultreon.mods.motobox.entity;
 
 import com.google.common.collect.Lists;
+import com.ultreon.data.types.MapType;
 import com.ultreon.mods.motobox.Motobox;
 import com.ultreon.mods.motobox.block.LaunchGelBlock;
 import com.ultreon.mods.motobox.block.OffRoadBlock;
@@ -13,7 +14,8 @@ import com.ultreon.mods.motobox.sound.MotoboxSounds;
 import com.ultreon.mods.motobox.sound.VehicleSoundInstance;
 import com.ultreon.mods.motobox.util.AUtils;
 import com.ultreon.mods.motobox.util.midnightcontrols.ControllerUtils;
-import com.ultreon.mods.motobox.util.network.PayloadPackets;
+import com.ultreon.mods.motobox.util.network.MotoboxNet;
+import com.ultreon.mods.motobox.util.network.packets.*;
 import com.ultreon.mods.motobox.vehicle.*;
 import com.ultreon.mods.motobox.vehicle.attachment.FrontAttachmentType;
 import com.ultreon.mods.motobox.vehicle.attachment.RearAttachmentType;
@@ -33,13 +35,11 @@ import net.minecraft.entity.data.TrackedData;
 import net.minecraft.entity.data.TrackedDataHandlerRegistry;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.mob.WaterCreatureEntity;
-import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.vehicle.BoatEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.network.Packet;
-import net.minecraft.network.PacketByteBuf;
 import net.minecraft.network.listener.ClientPlayPacketListener;
 import net.minecraft.network.packet.s2c.play.EntitySpawnS2CPacket;
 import net.minecraft.predicate.entity.EntityPredicates;
@@ -53,7 +53,6 @@ import net.minecraft.util.math.Box;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.shape.VoxelShapes;
-import net.minecraft.world.GameRules;
 import net.minecraft.world.World;
 import net.minecraft.world.event.GameEvent;
 import org.jetbrains.annotations.Nullable;
@@ -170,30 +169,30 @@ public class VehicleEntity extends BoatEntity implements RenderableVehicle, Enti
 
     private float standStillTime = -1.3f;
 
-    public void writeSyncToClientData(PacketByteBuf buf) {
-        buf.writeInt(boostTimer);
-        buf.writeFloat(steering);
-        buf.writeFloat(wheelAngle);
-        buf.writeInt(turboCharge);
-        buf.writeFloat(engineSpeed);
-        buf.writeFloat(boostSpeed);
-        buf.writeByte(compactInputData());
+    public void writeSyncToClientData(MapType pipeline) {
+        pipeline.putInt("boostTimer", boostTimer);
+        pipeline.putFloat("steering", steering);
+        pipeline.putFloat("wheelAngle", wheelAngle);
+        pipeline.putInt("turboCharge", turboCharge);
+        pipeline.putFloat("engineSpeed", engineSpeed);
+        pipeline.putFloat("boostSpeed", boostSpeed);
+        pipeline.putByte("inputData", compactInputData());
 
-        buf.writeBoolean(drifting);
-        buf.writeBoolean(burningOut);
+        pipeline.putBoolean("drifting", drifting);
+        pipeline.putBoolean("burningOut", burningOut);
     }
 
-    public void readSyncToClientData(PacketByteBuf buf) {
-        boostTimer = buf.readInt();
-        steering = buf.readFloat();
-        wheelAngle = buf.readFloat();
-        turboCharge = buf.readInt();
-        engineSpeed = buf.readFloat();
-        boostSpeed = buf.readFloat();
-        readCompactedInputData(buf.readByte());
+    public void readSyncToClientData(MapType pipeline) {
+        boostTimer = pipeline.getInt("boostTimer");
+        steering = pipeline.getFloat("steering");
+        wheelAngle = pipeline.getFloat("wheelAngle");
+        turboCharge = pipeline.getInt("turboCharge");
+        engineSpeed = pipeline.getFloat("engineSpeed");
+        boostSpeed = pipeline.getFloat("boostSpeed");
+        readCompactedInputData(pipeline.getByte("inputData"));
 
-        setDrifting(buf.readBoolean());
-        setBurningOut(buf.readBoolean());
+        setDrifting(pipeline.getBoolean("drifring"));
+        setBurningOut(pipeline.getBoolean("burningOut"));
     }
 
     @Override
@@ -322,7 +321,7 @@ public class VehicleEntity extends BoatEntity implements RenderableVehicle, Enti
     public void onSpawnPacket(EntitySpawnS2CPacket packet) {
         super.onSpawnPacket(packet);
         if (world.isClient()) {
-            PayloadPackets.requestSyncVehicleComponentsPacket(this);
+            MotoboxNet.get().sendToServer(new UpdateVehicleComponentsPacket(this));
         }
     }
 
@@ -686,15 +685,15 @@ public class VehicleEntity extends BoatEntity implements RenderableVehicle, Enti
     }
 
     private void syncData() {
-        forNearbyPlayers(200, true, player -> PayloadPackets.sendSyncVehicleDataPacket(this, player));
+        forNearbyPlayers(200, true, player -> MotoboxNet.get().sendToClient(new VehicleDataChangedPacket(this), player));
     }
 
     private void syncComponents() {
-        forNearbyPlayers(200, false, player -> PayloadPackets.sendSyncVehicleComponentsPacket(this, player));
+        forNearbyPlayers(200, false, player -> MotoboxNet.get().sendToClient(new VehicleComponentsChangedPacket(this), player));
     }
 
     private void syncAttachments() {
-        forNearbyPlayers(200, false, player -> PayloadPackets.sendSyncVehicleAttachmentsPacket(this, player));
+        forNearbyPlayers(200, false, player -> MotoboxNet.get().sendToClient(new VehicleAttachmentsChangedPacket(this), player));
     }
 
     public ItemStack asPrefabItem() {
@@ -1125,7 +1124,7 @@ public class VehicleEntity extends BoatEntity implements RenderableVehicle, Enti
                         space == holdingDrift
         )) {
             setInputs(fwd, back, left, right, space);
-            PayloadPackets.sendSyncVehicleInputPacket(this, accelerating, braking, steeringLeft, steeringRight, holdingDrift);
+            MotoboxNet.get().sendToServer(new UpdateVehicleMovementPacket(this, accelerating, back, steeringLeft, steeringRight, holdingDrift));
         }
     }
 
