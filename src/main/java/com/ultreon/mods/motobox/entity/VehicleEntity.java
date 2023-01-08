@@ -24,6 +24,7 @@ import com.ultreon.mods.motobox.vehicle.attachment.rear.RearAttachment;
 import com.ultreon.mods.motobox.vehicle.render.RenderableVehicle;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
+import net.minecraft.block.BlockState;
 import net.minecraft.block.ShapeContext;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.model.Model;
@@ -315,6 +316,11 @@ public class VehicleEntity extends BoatEntity implements RenderableVehicle, Enti
 
     public VehicleEntity(World world) {
         this(MotoboxEntities.AUTOMOBILE, world);
+    }
+
+    @Override
+    protected void playStepSound(BlockPos pos, BlockState state) {
+
     }
 
     @Override
