@@ -19,7 +19,10 @@
     "EntityRenderersMixin",
     "GameRendererMixin",
     "ModelElementDeserializerMixin",
-    "midnightcontrols.InputHandlersMixin"
+    "midnightcontrols.InputHandlersMixin",
+    "ufo.CameraModifier",
+    "ufo.InputHandler",
+    "ufo.PlayerRenderer"
   ],
   "injectors": {
     "defaultRequire": 1

@@ -62,6 +62,9 @@ dependencies {
 	// Fabric API. This is technically optional, but you probably want it anyway.
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
+	// Geckolib
+	modImplementation "software.bernie.geckolib:geckolib-fabric-1.19.3:4.0.3"
+
 	// UltreonLib for networking.
 	modImplementation("com.github.Ultreon.ultreonlib:ultreon-lib-fabric:${ultreonlib_version}") {
 		exclude module: "fabric-api"
