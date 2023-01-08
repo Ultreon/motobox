@@ -43,7 +43,7 @@ public enum MotoboxEntities {
             "ufo",
             FabricEntityTypeBuilder
                     .create(SpawnGroup.MISC, UfoEntity::new)
-                    .dimensions(EntityDimensions.fixed(ufoScale * 3, ufoScale * 0.2f))
+                    .dimensions(EntityDimensions.fixed(ufoScale * 3, ufoScale * 0.28f))
     );
 
     public static final TagKey<EntityType<?>> DASH_PANEL_BOOSTABLES = TagKey.of(Registries.ENTITY_TYPE.getKey(), Motobox.id("dash_panel_boostables"));
@@ -75,6 +75,7 @@ public enum MotoboxEntities {
         EntityModelLayerRegistry.registerModelLayer(ExhaustFumesModel.MODEL_LAYER, ExhaustFumesModel::getTexturedModelData);
     }
 
+    @SuppressWarnings("SameParameterValue")
     private static <T extends Entity> EntityType<T> register(String name, FabricEntityTypeBuilder<T> type) {
         return Registry.register(
                 Registries.ENTITY_TYPE,
