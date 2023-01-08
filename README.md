@@ -1,6 +1,6 @@
 # This project is made as a commission to be published soon.™
-
-### A Minecraft mod adding customizable vehicles.
+*A Minecraft mod adding customizable vehicles.*  
+**Original mod** [[Automobility]](https://github.com/FoundationGames/Automobility)
 
 ## Getting Started
 
@@ -22,4 +22,5 @@
 - LStick - Steer left/right
 - RTrigger - Drift
 
-**Original mod** [[Automobility]](https://github.com/FoundationGames/Automobility)
+## Discord Server
+[![dtdc46g6ry](https://discordapp.com/api/guilds/569842567152402432/widget.png?style=banner4)](https://discord.gg/dtdc46g6ry)
