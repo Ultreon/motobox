@@ -8,10 +8,10 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 
-public class RoadBlock extends Block implements CourseElementItem {
+public class AsphaltBlock extends Block implements CourseElementItem {
     private static final VoxelShape SHAPE = Block.createCuboidShape(0, 0, 0, 16, 14, 16);
 
-    public RoadBlock(Settings settings) {
+    public AsphaltBlock(Settings settings) {
         super(settings);
     }
 

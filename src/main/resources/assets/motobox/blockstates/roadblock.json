@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "motobox:block/roadblock"
+    },
+    "facing=south": {
+      "model": "motobox:block/roadblock",
+      "y": 180
+    },
+    "facing=east": {
+      "model": "motobox:block/roadblock",
+      "y": 90
+    },
+    "facing=west": {
+      "model": "motobox:block/roadblock",
+      "y": 270
+    }
+  }
+}z
