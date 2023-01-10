@@ -23,4 +23,4 @@
 - RTrigger - Drift
 
 ## Discord Server
-[![dtdc46g6ry](https://discordapp.com/api/guilds/569842567152402432/widget.png?style=banner4)](https://discord.gg/dtdc46g6ry)
+[![dtdc46g6ry](https://discordapp.com/api/guilds/569842567152402432/widget.gif?style=banner4)](https://discord.gg/dtdc46g6ry)
