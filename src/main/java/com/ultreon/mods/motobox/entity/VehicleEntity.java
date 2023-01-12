@@ -1012,25 +1012,6 @@ public class VehicleEntity extends BoatEntity implements RenderableVehicle, Enti
             float yawInc = angularSpeed;// + (drifting ? (((this.steering + (driftDir)) * driftDir * 2.5f + 1.5f) * driftDir) * (((1 - stats.getGrip()) + 2) / 2.5f) : this.steering * ((4f * Math.min(hSpeed, 1)) + (hSpeed > 0 ? 2 : -3.5f))) * ((stats.getHandling() + 1) / 2);
             float prevYaw = getYaw();
             this.setYaw(getYaw() + yawInc);
-            if (world.isClient) {
-                var passenger = getFirstPassenger();
-                if (passenger instanceof PlayerEntity player) {
-                    if (inLockedViewMode()) {
-                        player.setYaw(MathHelper.wrapDegrees(getYaw() + lockedViewOffset));
-                        player.setBodyYaw(MathHelper.wrapDegrees(getYaw() + lockedViewOffset));
-                    } else {
-                        player.setYaw(MathHelper.wrapDegrees(player.getYaw() + yawInc));
-                        player.setBodyYaw(MathHelper.wrapDegrees(player.getYaw() + yawInc));
-                    }
-                }
-            } else {
-                for (Entity e : getPassengerList()) {
-                    if (e == getFirstPassenger()) {
-                        e.setYaw(MathHelper.wrapDegrees(e.getYaw() + yawInc));
-                        e.setBodyYaw(MathHelper.wrapDegrees(e.getYaw() + yawInc));
-                    }
-                }
-            }
             if (world.isClient()) {
                 this.prevYaw = prevYaw;
             }
