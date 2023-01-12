@@ -14,11 +14,11 @@ import com.ultreon.mods.motobox.screen.SingleSlotScreen;
 import com.ultreon.mods.motobox.screen.VehicleHud;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
-import net.fabricmc.fabric.api.client.rendering.v1.BlockEntityRendererRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.ingame.HandledScreens;
 import net.minecraft.client.render.RenderLayer;
+import net.minecraft.client.render.block.entity.BlockEntityRendererFactories;
 
 public class MotoboxClient implements ClientModInitializer {
     @Override
@@ -43,7 +43,7 @@ public class MotoboxClient implements ClientModInitializer {
 
         BlockRenderLayerMap.INSTANCE.putBlock(MotoboxBlocks.AUTOMOBILE_ASSEMBLER, RenderLayer.getCutout());
 
-        BlockEntityRendererRegistry.register(MotoboxBlocks.AUTOMOBILE_ASSEMBLER_ENTITY, VehicleAssemblerBlockEntityRenderer::new);
+        BlockEntityRendererFactories.register(MotoboxBlocks.AUTOMOBILE_ASSEMBLER_ENTITY, VehicleAssemblerBlockEntityRenderer::new);
 
         UfoInput.registerKeybinds();
     }
