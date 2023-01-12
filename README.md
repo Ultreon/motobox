@@ -1,6 +1,5 @@
 # This project is made as a commission to be published soon.™
 *A Minecraft mod adding customizable vehicles.*  
-**Original mod** [[Automobility]](https://github.com/FoundationGames/Automobility)
 
 ## Getting Started
 
