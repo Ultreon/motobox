@@ -16,6 +16,7 @@
     "CameraMixin",
     "ClientPlayerEntityMixin",
     "ClientPlayerInteractionManagerMixin",
+    "EntityRenderDispatcherMixin",
     "EntityRenderersMixin",
     "GameRendererMixin",
     "ModelElementDeserializerMixin",
